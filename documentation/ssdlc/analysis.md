@@ -1,7 +1,7 @@
 <h1> SSDLC - Analysis </h1>
 
 <h2> Functional Requirements </h2>
-Based on the project description, the functional requirements for the Online Comic Book Store should be as follows:
+The functional requirements for the Online Comic Book Store are as follows:
 
 1. **User Registration and Authentication**: Users should be able to register, log in, and log out. User credentials should be securely stored and handled.
 
@@ -21,11 +21,18 @@ Based on the project description, the functional requirements for the Online Com
 
 9. **Update Order Status (Admin)**: Admins should be able to update the status of customer orders, such as marking an order as shipped or delivered.
 
-These requirements cover the main functionalities of the system. Depending on the specific needs of your project, you might need to add, remove, or modify these requirements.
+
+<h2> Non - Functional Requirements </h2>
+The non - functional requirements for the Online Comic Book Store should be as follows:
+
+1. Performance: The application should load pages and respond to user input within a certain time frame, for example, 2 seconds.
+
+2. Scalability: The application should be able to handle a certain number of concurrent users or orders.
+
+3. Usability: The application should be user-friendly, with an intuitive interface and clear error messages.
+
+4. Availability: The application should be available for use a certain percentage of the time, for example, 99.9% (also known as "three nines" availability).
+
+5. Security: The application should comply with the OWASP ASVS
 
 
-
-
-
-
-<h2> Security Requirements </h2>
