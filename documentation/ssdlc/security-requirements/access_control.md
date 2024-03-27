@@ -14,7 +14,7 @@ To achieve this goal, requirements were defined to cover the **specific criteria
 
 |#| Description  | ASVS Level | CWE|Valid|
 |--|--|--|--|--|
-|**4.1.1**|Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed. |602|1|Valid|
+|**4.1.1**|Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed. |1|602|Valid|
 |**4.1.2**|Verify that all user and data attributes and policy information used by access controls cannot be manipulated by end users unless specifically authorized.|1|639|Valid|
 |**4.1.3**|Verify that the principle of least privilege exists - users should only be able to access functions, data files, URLs, controllers, services, and other resources, for which they possess specific authorization. This implies protection against spoofing and elevation of privilege. ([C7](https://owasp.org/www-project-proactive-controls/#div-numbering))|1|285|Valid|
 |**4.1.4**|[DELETED, DUPLICATE OF 4.1.3] |1|276|Not Applicable|
