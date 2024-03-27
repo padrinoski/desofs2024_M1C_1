@@ -1,37 +1,37 @@
 
-<h1> Authentication </h3>
+<h1> Authentication </h1>
 
-### ASVS Requirement 2.1.1
+### ASVS Requirement 2.1.1 - Auth0 Supported
 
 **ASVS Requirement Description**: Verify that user set passwords are at least 12 characters in length (after multiple spaces are combined).
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it helps to ensure that users' passwords are sufficiently complex.
+**Justification**: This requirement is relevant because it helps to ensure that users' passwords are sufficiently complex. //todo add auth0 context
 
 **Security Requirement**: User Password Length - The application should ensure that user-set passwords are at least 12 characters in length.
 
 ---
 
-### ASVS Requirement 2.1.2
+### ASVS Requirement 2.1.2 - Auth0 Supported
 
 **ASVS Requirement Description**: Verify that passwords of at least 64 characters are permitted, and that passwords of more than 128 characters are denied.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it sets boundaries on the password length. Allowing at least 64 characters enables users to set complex passwords, while denying more than 128 characters prevents potential denial of service attacks related to processing extremely long passwords.
+**Justification**: This requirement is relevant because it sets boundaries on the password length. Allowing at least 64 characters enables users to set complex passwords, while denying more than 128 characters prevents potential denial of service attacks related to processing extremely long passwords. //todo add auth0 context
 
 **Security Requirement**: User Password Length Limit - The application should permit user-set passwords of at least 64 characters and deny passwords of more than 128 characters.
 
 ---
 
-### ASVS Requirement 2.1.3
+### ASVS Requirement 2.1.3 - Auth0 Supported
 
 **ASVS Requirement Description**: Verify that password truncation is not performed. However, consecutive multiple spaces may be replaced by a single space.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that the full complexity of users' passwords is preserved. Truncating passwords could inadvertently weaken them by reducing their length and complexity.
+**Justification**: This requirement is relevant because it ensures that the full complexity of users' passwords is preserved. Truncating passwords could inadvertently weaken them by reducing their length and complexity. //todo add auth0 context
 
 **Security Requirement**: No Password Truncation - The application should not perform password truncation. However, it may replace consecutive multiple spaces with a single space.
 
@@ -601,15 +601,15 @@
 
 ---
 
-### ASVS Requirement 2.9.1
+### ASVS Requirement 2.9.1 - Not Relevant
 
 **ASVS Requirement Description**: Verify that cryptographic keys used in verification are stored securely and protected against disclosure, such as using a Trusted Platform Module (TPM) or Hardware Security Module (HSM), or an OS service that can use this secure storage.
 
-**Related Functional Requirement**: User Registration and Authentication
+**Related Functional Requirement**: Security
 
-**Justification**: This requirement is relevant because it ensures that cryptographic keys, which are often used for user authentication, are stored securely. This can help to prevent unauthorized access to user accounts.
+**Justification**: This requirement is not relevant because, given the scope of the project, it's unlikely that the team will have access to a TPM or HSM or need to implement such a high level of security.
 
-**Security Requirement**: Secure Storage of Cryptographic Keys - The application should ensure that cryptographic keys used in verification are stored securely and protected against disclosure, such as using a Trusted Platform Module (TPM) or Hardware Security Module (HSM), or an OS service that can use this secure storage.
+**Security Requirement**: NOT APPLICABLE > Secure Storage of Cryptographic Keys - The application should ensure that cryptographic keys used in verification are stored securely and protected against disclosure, such as using a Trusted Platform Module (TPM) or Hardware Security Module (HSM), or an OS service that can use this secure storage.
 
 ---
 
@@ -637,15 +637,16 @@
 
 ---
 
-### ASVS Requirement 2.10.1
+### ASVS Requirement 2.10.1 - Not Relevant
 
 **ASVS Requirement Description**: Verify that intra-service secrets do not rely on unchanging credentials such as passwords, API keys or shared accounts with privileged access.
 
 **Related Non-Functional Requirement**: Security
 
-**Justification**: This requirement is relevant because it ensures that intra-service secrets, which are often used for secure communication between different services in the application, do not rely on unchanging credentials. This can help to prevent unauthorized access to the services.
+**Justification**: This requirement is not relevant because, given the scope of the project, it's unlikely that the application will have multiple services that need to communicate securely with each other.
 
-**Security Requirement**: Dynamic Intra-Service Secrets - The application should ensure that intra-service secrets do not rely on unchanging credentials such as passwords, API keys or shared accounts with privileged access.
+
+**Security Requirement**: NOT APPLICABLE > Dynamic Intra-Service Secrets - The application should ensure that intra-service secrets do not rely on unchanging credentials such as passwords, API keys or shared accounts with privileged access.
 
 ---
 
@@ -673,12 +674,12 @@
 
 ---
 
-### ASVS Requirement 2.10.4
+### ASVS Requirement 2.10.4 - Not Relevant
 
 **ASVS Requirement Description**: Verify passwords, integrations with databases and third-party systems, seeds and internal secrets, and API keys are managed securely and not included in the source code or stored within source code repositories. Such storage SHOULD resist offline attacks. The use of a secure software key store (L1), hardware TPM, or an HSM (L3) is recommended for password storage.
 
 **Related Non-Functional Requirement**: Security
 
-**Justification**: This requirement is relevant because it ensures that sensitive data, such as passwords and API keys, are managed securely and not exposed in the source code or source code repositories. This can help to prevent unauthorized access to the application and its associated resources.
+**Justification**: This requirement is not relevant because, while it's important to not include sensitive data in the source code, the part about resisting offline attacks and using a secure software key store, hardware TPM, or an HSM is beyond the scope of the project.
 
-**Security Requirement**: Secure Management of Secrets - The application should ensure that passwords, integrations with databases and third-party systems, seeds and internal secrets, and API keys are managed securely and not included in the source code or stored within source code repositories. Such storage should resist offline attacks.
+**Security Requirement**: NOT APPLICABLE > Secure Management of Secrets - The application should ensure that passwords, integrations with databases and third-party systems, seeds and internal secrets, and API keys are managed securely and not included in the source code or stored within source code repositories. Such storage should resist offline attacks.
