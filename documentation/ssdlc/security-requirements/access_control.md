@@ -10,7 +10,7 @@ To achieve this goal, requirements were defined to cover the **specific criteria
 
 *ASVS* requirements are categorized into 3 levels, each representing different and increasing levels of security assurance and rigor, covering various aspects of application security.
 
-##  1 General Access Control Design
+##  1. General Access Control Design
 
 |#| Description  | ASVS Level | CWE|Valid|
 |--|--|--|--|--|
@@ -20,14 +20,14 @@ To achieve this goal, requirements were defined to cover the **specific criteria
 |**1.4**|[DELETED, DUPLICATE OF  1.3] |1|276|Not Applicable|
 |**1.5**|Verify that access controls fail securely including when an exception occurs. ([C10](https://owasp.org/www-project-proactive-controls/#div-numbering)) |1|285|Valid|
 
-##  2 Operation Level Access Control
+##  2. Operation Level Access Control
 
 | # | Description | ASVS Level| CWE |Valid|
 |---| :---: | :--- | :---: | :---:|
 | **2.1** | Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records. | 1 | 639 |Valid|
 | **2.2** | Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality. | 1| 352 |Valid|
 
-##  3 Other Access Control Considerations
+##  3. Other Access Control Considerations
 
 | # | Description |ASVS Level | CWE |Valid|
 | :---: | :--- | :---: | :---:| --|
