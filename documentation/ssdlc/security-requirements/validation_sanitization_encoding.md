@@ -1,4 +1,3 @@
-
 # Validation, Sanitization and Encoding
 
 ## Objective
@@ -48,7 +47,7 @@ Encoding refers to the process of transforming data into a format that is safe f
 
 ## 5.3 Output Encoding and Injection Prevention
 
-Output encoding close or adjacent to the interpreter in use is critical to the security of any application. Typically, output encoding is not persisted, but used to render the output safe in the appropriate output context for immediate use. Failing to output encode will result in an insecure, injectable, and unsafe application.
+Output encoding, close or adjacent to the interpreter in use, is critical to the security of any application, as it is used to render the output safely in the appropriate output context for its immediate use.
 
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
@@ -65,20 +64,20 @@ Output encoding close or adjacent to the interpreter in use is critical to the s
 
 ## 5.4 Memory, String, and Unmanaged Code
 
-The following requirements will only apply when the application uses a systems language or unmanaged code.
+Generally, the following requirements will only apply when the application uses a systems language or unmanaged code. As it  won't  be the case, these are marked as 'Not Applicable'.
 
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
-| **5.4.1** | Verify that the application uses memory-safe string, safer memory copy and pointer arithmetic to detect or prevent stack, buffer, or heap overflows. | 2 | 120 |?
-| **5.4.2** | Verify that format strings do not take potentially hostile input, and are constant. | 2 | 134 |?
-| **5.4.3** | Verify that sign, range, and input validation techniques are used to prevent integer overflows. |2 | 190 |?
+| **5.4.1** | Verify that the application uses memory-safe string, safer memory copy and pointer arithmetic to detect or prevent stack, buffer, or heap overflows. | 2 | 120 |Not Applicable
+| **5.4.2** | Verify that format strings do not take potentially hostile input, and are constant. | 2 | 134 |Not Applicable
+| **5.4.3** | Verify that sign, range, and input validation techniques are used to prevent integer overflows. |2 | 190 |Not Applicable
 
 ## 5.5 Deserialization Prevention
 
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
-| **5.5.1** | Verify that serialized objects use integrity checks or are encrypted to prevent hostile object creation or data tampering. ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 502 |?
-| **5.5.2** | Verify that the application correctly restricts XML parsers to only use the most restrictive configuration possible and to ensure that unsafe features such as resolving external entities are disabled to prevent XML eXternal Entity (XXE) attacks. |1| 611 |?
-| **5.5.3** | Verify that deserialization of untrusted data is avoided or is protected in both custom code and third-party libraries (such as JSON, XML and YAML parsers). | 1 | 502 |?
-| **5.5.4** | Verify that when parsing JSON in browsers or JavaScript-based backends, JSON.parse is used to parse the JSON document. Do not use eval() to parse JSON. | 1| 95 |?
+| **5.5.1** | Verify that serialized objects use integrity checks or are encrypted to prevent hostile object creation or data tampering. ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 502 |Valid
+| **5.5.2** | Verify that the application correctly restricts XML parsers to only use the most restrictive configuration possible and to ensure that unsafe features such as resolving external entities are disabled to prevent XML eXternal Entity (XXE) attacks. |1| 611 |Valid
+| **5.5.3** | Verify that deserialization of untrusted data is avoided or is protected in both custom code and third-party libraries (such as JSON, XML and YAML parsers). | 1 | 502 | Not Applicable
+| **5.5.4** | Verify that when parsing JSON in browsers or JavaScript-based backends, JSON.parse is used to parse the JSON document. Do not use eval() to parse JSON. | 1| 95 |Valid
 
