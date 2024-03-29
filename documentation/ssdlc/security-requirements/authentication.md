@@ -588,14 +588,14 @@
 **Security Requirement**: Revocation of Physical Single-Factor OTP Generator - The application should ensure that a physical single-factor OTP generator can be revoked in case of theft or other loss, and that revocation is immediately effective across logged in sessions, regardless of location.
 
 ---
-//todo
-### ASVS Requirement 2.8.7
+
+### ASVS Requirement 2.8.7 - Auth0 Support
 
 **ASVS Requirement Description**: Verify that biometric authenticators are limited to use only as secondary factors in conjunction with either something you have and something you know.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that biometric authenticators, which are often used for two-factor authentication, are not used as the sole method of authentication. This can help to prevent unauthorized access to user accounts.
+**Justification**: This requirement is relevant because it ensures that biometric authenticators, which are often used for two-factor authentication, are not used as the sole method of authentication. This can help to prevent unauthorized access to user accounts. This requirement is supported by Auth0 api and allows for customization, as described in these links (https://auth0.com/blog/enable-fingerprint-authentication-with-auth0/),(https://auth0.com/docs/authenticate/login/auth0-universal-login/passwordless-login/webauthn-device-biometrics),(https://auth0.com/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa)
 
 **Security Requirement**: Limited Use of Biometric Authenticators - The application should ensure that biometric authenticators are limited to use only as secondary factors in conjunction with either something you have and something you know.
 
@@ -613,27 +613,27 @@
 
 ---
 
-### ASVS Requirement 2.9.2
+### ASVS Requirement 2.9.2 - Not Relevant
 
 **ASVS Requirement Description**: Verify that the challenge nonce is at least 64 bits in length, and statistically unique or unique over the lifetime of the cryptographic device.
 
 **Related Non-Functional Requirement**: Security
 
-**Justification**: This requirement is relevant because it ensures that the challenge nonce, which is often used for user authentication but not exclusively, is unique and of sufficient length. 
+**Justification**: This requirement is relevant because it ensures that the challenge nonce, which is often used for user authentication but not exclusively, is unique and of sufficient length. Auth0 currently does not support the usage of a challenge nonce for authentication, it offers different ways of authentication that do not require a challenge nonce.
 
-**Security Requirement**: Unique Challenge Nonce - The application should ensure that the challenge nonce is at least 64 bits in length, and statistically unique or unique over the lifetime of the cryptographic device.
+**Security Requirement**: NOT APPLICABLE > Unique Challenge Nonce - The application should ensure that the challenge nonce is at least 64 bits in length, and statistically unique or unique over the lifetime of the cryptographic device.
 
 ---
 
-### ASVS Requirement 2.9.3
+### ASVS Requirement 2.9.3 - Not Relevant
 
 **ASVS Requirement Description**: Verify that approved cryptographic algorithms are used in the generation, seeding, and verification.
 
 **Related Non-Functional Requirement**: Security
 
-**Justification**: This requirement is relevant because it ensures that approved cryptographic algorithms are used in the generation, seeding, and verification, which is a fundamental aspect of secure communication and data protection in the application.
+**Justification**: This requirement is relevant because it ensures that approved cryptographic algorithms are used in the generation, seeding, and verification, which is a fundamental aspect of secure communication and data protection in the application. Through Auth0 api it is not possible to determine or verify approved cryptographic algorithms are used in the generation, seeding and verification.
 
-**Security Requirement**: Use of Approved Cryptographic Algorithms - The application should ensure that approved cryptographic algorithms are used in the generation, seeding, and verification.
+**Security Requirement**: NOT APPLICABLE > Use of Approved Cryptographic Algorithms - The application should ensure that approved cryptographic algorithms are used in the generation, seeding, and verification.
 
 ---
 
@@ -650,25 +650,25 @@
 
 ---
 
-### ASVS Requirement 2.10.2
+### ASVS Requirement 2.10.2 - Auth0 Support
 
 **ASVS Requirement Description**: Verify that if passwords are required for service authentication, the service account used is not a default credential. (e.g. root/root or admin/admin are default in some services during installation).
 
 **Related Non-Functional Requirement**: Security
 
-**Justification**: This requirement is relevant because it ensures that service accounts, which are often used for secure communication between different services in the application, do not use default credentials. This can help to prevent unauthorized access to the services.
+**Justification**: This requirement is relevant because it ensures that service accounts, which are often used for secure communication between different services in the application, do not use default credentials. This can help to prevent unauthorized access to the services. Auth0 allows to customize accounts, this is a requirement of customization and must be implemented by the team.
 
 **Security Requirement**: Non-Default Service Account Credentials - The application should ensure that if passwords are required for service authentication, the service account used is not a default credential.
 
 ---
 
-### ASVS Requirement 2.10.3
+### ASVS Requirement 2.10.3 - Not Relevant
 
 **ASVS Requirement Description**: Verify that passwords are stored with sufficient protection to prevent offline recovery attacks, including local system access.
 
 **Related Non-Functional Requirement**: Security
 
-**Justification**: This requirement is relevant because it ensures that passwords, which are often used for user authentication, are stored securely. This can help to prevent unauthorized access to user accounts.
+**Justification**: This requirement is relevant because it ensures that passwords, which are often used for user authentication, are stored securely. This can help to prevent unauthorized access to user accounts. Auth0 user's passwords are stored on Auth0's servers, therefore an offline attack will be extremely unlikely.
 
 **Security Requirement**: Sufficient Protection of Stored Passwords - The application should ensure that passwords are stored with sufficient protection to prevent offline recovery attacks, including local system access.
 
