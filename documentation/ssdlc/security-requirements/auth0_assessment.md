@@ -71,6 +71,4 @@
 
 // need to contextualize all of these risks with our application, to see what really needs to be done
 
-//todo identify Auth0 features and see what exists and can be used to implement the ASVS requirements.
-
 // need to contextualize the security requirements with the scope of the project.
