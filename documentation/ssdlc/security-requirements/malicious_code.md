@@ -1,4 +1,5 @@
 
+
 # Malicious Code
 
 ## Objective
@@ -13,6 +14,12 @@ The concept of malicious code is addressed primarily in requirements related to 
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
 | **1.1** | Verify that a code analysis tool is in use that can detect potentially malicious code, such as time functions, unsafe file operations and network connections. |3| 749 |Valid
+
+### Analysis
+
+- 1.1 - Source code analysis tools, also known as Static Application Security Testing (SAST) Tools, can help analyze source code or compiled versions of code to help find security flaws, providing good scalability and identification of well-know vulnerabilities.
+
+	> https://github.com/features/security
 
 ## 2 Malicious Code Search
 
