@@ -34,6 +34,15 @@ The concept of malicious code is addressed primarily in requirements related to 
 
 
 > Complying with this section is not possible without complete access to source code, including third-party libraries.
+> 
+### Analysis
+
+- **2.1** - This topic is relevant as it is important to know if, by using such libraries, we are exposing personal data to third-parties without the user's consent and, more importantly, ensuring that no sensible data is being sent to them.
+- **2.2** - It is important to ensure the that **only strictly necessary permissions** are asked in order to comply with intended use of the application.
+- **2.3** - This requirement is valid as this back doors could be exploited presenting themselves as possible vulnerabilities.
+- **2.4**- Time bombs are programs/functions with delayed execution that are designed to run when certain conditions are being met, for example reaching a specific date. Although software like this doesn’t have to be necessarily malicious, sometimes they can used by threat actors to create devious malware.
+- **2.5**- Just like time bombs, the presence of malicious presents itself as an entry point for attackers and could provoke harm for the system. For these reason, these vulnerabilities must be mitigated.
+- **2.6**- Easter eggs or unwanted functionalities can present themselves as vulnerabilities as they are often disguised as harmless features or games, making them difficult to detect. Easter egg attacks can take many forms, from hidden codes in software to hidden scripts in websites, often used to gain access to sensitive information, to take control of your system or even used to install malware or other unwanted software on your device.
 
 ## 3 Application Integrity
 
@@ -44,5 +53,8 @@ Complying with this section is likely to be operational and continuous.
 | # | Description | ASVS Level | CWE |Valid|
 | :---: | :--- | :---: | :---:| :---: | 
 | **3.1** | Verify that if the application has a client or server auto-update feature, updates should be obtained over secure channels and digitally signed. The update code must validate the digital signature of the update before installing or executing the update. | 1 | 16 |Valid / Not Applicable
-| **3.2** | Verify that the application employs integrity protections, such as code signing or subresource integrity. The application must not load or execute code from untrusted sources, such as loading includes, modules, plugins, code, or libraries from untrusted sources or the Internet. | 1 | 353 |Valid
+| **3.2** | Verify that the application employs integrity protections, such as code signing or subresource integrity. The application must not load or execute code from untrusted sources, such as loading includes, modules, plugins, code, or libraries from untrusted sources or the Internet. | 1 | 353 |Valid/ Not Applicable
 | **3.3** | Verify that the application has protection from subdomain takeovers if the application relies upon DNS entries or DNS subdomains, such as expired domain names, out of date DNS pointers or CNAMEs, expired projects at public source code repos, or transient cloud APIs, serverless functions, or storage buckets (*autogen-bucket-id*.cloud.example.com) or similar. Protections can include ensuring that DNS names used by applications are regularly checked for expiry or change. | 1 | 350 |Valid / Not Applicable
+
+### Analysis
+As for right now, the soon to be developed application wont be deployed making these requirements not applicable altough, in other scenarios, valid.
