@@ -1,3 +1,4 @@
+
 # Validation, Sanitization and Encoding
 
 ## Objective
@@ -32,6 +33,13 @@ Encoding refers to the process of transforming data into a format that is safe f
 | **1.4** | Verify that structured data is strongly typed and validated against a defined schema including allowed characters, length and pattern (e.g. credit card numbers, e-mail addresses, telephone numbers, or validating that two related fields are reasonable, such as checking that suburb and zip/postcode match). ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 20 |Valid
 | **1.5** | Verify that URL redirects and forwards only allow destinations which appear on an allow list, or show a warning when redirecting to potentially untrusted content. | 1 | 601 |Valid
 
+## Analysis
+**1.1**- HTTP Parameter Pollution (HPP) is an attack evasion technique that allows the attacker to craft an HTTP request to manipulate or retrieve hidden information by splitting an attack vector between multiple instances of a parameter with the same name. Due to the fact that the application is intended to be an web application, this requirement is valid as these attacks are presented as threats to the system.
+**1.2**- This requirement is valid because it presents a threat to the system as it could be easily exploited by an attacker to take profit or harm the system. From a software development stand point, it is also a good practice to make variables private and implement getters and setters for its management, provinding an overall more secure application. 
+**1.3**- "Positive" validation (also know as “positive” security approach or allowlists) assertively specify what values are permitted to access and engage with your application's functionality. Facing the blacklist validation that was used, Allowlist validation is more powerful as this validation restrains and prevents the exploitability of inputs, ensuring that **all input  originated from the exterior (outside the system/application)** wont be presented as a risk. It is important to be rigorous with what values are allowed as these can be harmfull if properly exploited from an attacker.
+**1.4**- This requirement is valid because these type of input values have a pre-defined struture/schema that can be easily validated through regexes or other pattern based validation. This effectively reduces the risk of exploitation originated from these inputs.
+**1.5**- It is important to ensure that all navigation is done within the specified and originally designed pages. Failing to do so can lead the system to open or load infected pages from insecure origins, that in turn can provoke harm for the system and its users.
+
 ## 2. Sanitization and Sandboxing
 
 | # | Description | ASVS Level | CWE |Valid
@@ -44,6 +52,8 @@ Encoding refers to the process of transforming data into a format that is safe f
 | **2.6** | Verify that the application protects against SSRF attacks, by validating or sanitizing untrusted data or HTTP file metadata, such as filenames and URL input fields, and uses allow lists of protocols, domains, paths and ports. | 1 | 918 |Valid
 | **2.7** | Verify that the application sanitizes, disables, or sandboxes user-supplied Scalable Vector Graphics (SVG) scriptable content, especially as they relate to XSS resulting from inline scripts, and foreignObject. | 1 | 159 |Valid
 | **2.8** | Verify that the application sanitizes, disables, or sandboxes user-supplied scriptable or expression template language content, such as Markdown, CSS or XSL stylesheets, BBCode, or similar. | 1 | 94 |Valid
+
+## Analysis
 
 ## 3. Output Encoding and Injection Prevention
 
@@ -62,15 +72,18 @@ Output encoding, close or adjacent to the interpreter in use, is critical to the
 | **3.9** | Verify that the application protects against Local File Inclusion (LFI) or Remote File Inclusion (RFI) attacks. | 1 | 829 |Valid?
 | **3.10** | Verify that the application protects against XPath injection or XML injection attacks. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 643 |Valid
 
-## 4. Memory, String, and Unmanaged Code
+## Analysis
 
-Generally, the following requirements will only apply when the application uses a systems language or unmanaged code. As it  won't  be the case, these are marked as 'Not Applicable'.
+## 4. Memory, String, and Unmanaged Code
 
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
 | **4.1** | Verify that the application uses memory-safe string, safer memory copy and pointer arithmetic to detect or prevent stack, buffer, or heap overflows. | 2 | 120 |Not Applicable
 | **4.2** | Verify that format strings do not take potentially hostile input, and are constant. | 2 | 134 |Not Applicable
 | **4.3** | Verify that sign, range, and input validation techniques are used to prevent integer overflows. |2 | 190 |Not Applicable
+
+## Analysis
+Generally, the these requirements will only apply when the application uses a systems language or unmanaged code. As it  won't  be the case, these are marked as 'Not Applicable'.
 
 ## 5. Deserialization Prevention
 
@@ -81,3 +94,4 @@ Generally, the following requirements will only apply when the application uses 
 | **3** | Verify that deserialization of untrusted data is avoided or is protected in both custom code and third-party libraries (such as JSON, XML and YAML parsers). | 1 | 502 | Not Applicable
 | **4** | Verify that when parsing JSON in browsers or JavaScript-based backends, JSON.parse is used to parse the JSON document. Do not use eval() to parse JSON. | 1| 95 |Valid
 
+## Analysis
