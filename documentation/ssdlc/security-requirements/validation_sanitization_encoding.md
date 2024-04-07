@@ -34,26 +34,34 @@ Encoding refers to the process of transforming data into a format that is safe f
 | **1.5** | Verify that URL redirects and forwards only allow destinations which appear on an allow list, or show a warning when redirecting to potentially untrusted content. | 1 | 601 |Valid
 
 ## Analysis
-**1.1**- HTTP Parameter Pollution (HPP) is an attack evasion technique that allows the attacker to craft an HTTP request to manipulate or retrieve hidden information by splitting an attack vector between multiple instances of a parameter with the same name. Due to the fact that the application is intended to be an web application, this requirement is valid as these attacks are presented as threats to the system.
-**1.2**- This requirement is valid because it presents a threat to the system as it could be easily exploited by an attacker to take profit or harm the system. From a software development stand point, it is also a good practice to make variables private and implement getters and setters for its management, provinding an overall more secure application. 
-**1.3**- "Positive" validation (also know as “positive” security approach or allowlists) assertively specify what values are permitted to access and engage with your application's functionality. Facing the blacklist validation that was used, Allowlist validation is more powerful as this validation restrains and prevents the exploitability of inputs, ensuring that **all input  originated from the exterior (outside the system/application)** wont be presented as a risk. It is important to be rigorous with what values are allowed as these can be harmfull if properly exploited from an attacker.
-**1.4**- This requirement is valid because these type of input values have a pre-defined struture/schema that can be easily validated through regexes or other pattern based validation. This effectively reduces the risk of exploitation originated from these inputs.
-**1.5**- It is important to ensure that all navigation is done within the specified and originally designed pages. Failing to do so can lead the system to open or load infected pages from insecure origins, that in turn can provoke harm for the system and its users.
+- **1.1**- HTTP Parameter Pollution (HPP) is an attack evasion technique that allows the attacker to craft an HTTP request to manipulate or retrieve hidden information by splitting an attack vector between multiple instances of a parameter with the same name. Due to the fact that the application is intended to be an web application, this requirement is valid as these attacks are presented as threats to the system.
+- **1.2**- This requirement is valid because it presents a threat to the system as it could be easily exploited by an attacker to take profit or harm the system. From a software development stand point, it is also a good practice to make variables private and implement getters and setters for its management, provinding an overall more secure application. 
+- **1.3**- "Positive" validation (also know as “positive” security approach or allowlists) assertively specify what values are permitted to access and engage with your application's functionality. Facing the blacklist validation that was used, Allowlist validation is more powerful as this validation restrains and prevents the exploitability of inputs, ensuring that **all input  originated from the exterior (outside the system/application)** wont be presented as a risk. It is important to be rigorous with what values are allowed as these can be harmfull if properly exploited from an attacker.
+- **1.4**- This requirement is valid because these type of input values have a pre-defined struture/schema that can be easily validated through regexes or other pattern based validation. This effectively reduces the risk of exploitation originated from these inputs.
+- **1.5**- It is important to ensure that all navigation is done within the specified and originally designed pages. Failing to do so can lead the system to open or load infected pages from insecure origins, that in turn can provoke harm for the system and its users.
 
 ## 2. Sanitization and Sandboxing
 
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
-| **2.1** | Verify that all untrusted HTML input from WYSIWYG editors or similar is properly sanitized with an HTML sanitizer library or framework feature. ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 116 |Valid
+| **2.1** | Verify that all untrusted HTML input from WYSIWYG editors or similar is properly sanitized with an HTML sanitizer library or framework feature. ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 116 |Not Applicable
 | **2.2** | Verify that unstructured data is sanitized to enforce safety measures such as allowed characters and length. | 1 | 138 |Valid
 | **2.3** | Verify that the application sanitizes user input before passing to mail systems to protect against SMTP or IMAP injection. | 1 | 147 |Not Applicable
 | **2.4** | Verify that the application avoids the use of eval() or other dynamic code execution features. Where there is no alternative, any user input being included must be sanitized or sandboxed before being executed. | 1 | 95 | Valid
-| **2.5** | Verify that the application protects against template injection attacks by ensuring that any user input being included is sanitized or sandboxed. | 1| 94 |Valid
+| **2.5** | Verify that the application protects against template injection attacks by ensuring that any user input being included is sanitized or sandboxed. | 1| 94 |Not Applicable
 | **2.6** | Verify that the application protects against SSRF attacks, by validating or sanitizing untrusted data or HTTP file metadata, such as filenames and URL input fields, and uses allow lists of protocols, domains, paths and ports. | 1 | 918 |Valid
-| **2.7** | Verify that the application sanitizes, disables, or sandboxes user-supplied Scalable Vector Graphics (SVG) scriptable content, especially as they relate to XSS resulting from inline scripts, and foreignObject. | 1 | 159 |Valid
+| **2.7** | Verify that the application sanitizes, disables, or sandboxes user-supplied Scalable Vector Graphics (SVG) scriptable content, especially as they relate to XSS resulting from inline scripts, and foreignObject. | 1 | 159 |Not applicable
 | **2.8** | Verify that the application sanitizes, disables, or sandboxes user-supplied scriptable or expression template language content, such as Markdown, CSS or XSL stylesheets, BBCode, or similar. | 1 | 94 |Valid
 
 ## Analysis
+- **2.1**- WYSIWYG Editors aren't planned to be implemented in this or any other iterations. If the scenario changes, this requirement will be valid.
+- **2.2**- Due to the fact that document management is a feature in the application, the proper sanitization of these documents is something required as it's important that these soon to be uploaded documents wont compromise the system. For these reasons, this requirement is valid.
+- **2.3**- Just like the first requirement, email systems are not a feature that is planned to be implemented and for this reason, this requirement is not applicable.
+- **2.4**- The use of eval() or other dynamic code execution features presents itself as a vulnerability and it could be exploited to [Direct Dynamic Code Evaluation/ Eval Injection attacks](https://owasp.org/www-community/attacks/Direct_Dynamic_Code_Evaluation_Eval%20Injection). By threatening the system, this requirement is valid.
+- **2.5**- Template engines are not planned to be implemented and, for this reason, this requirement is not applicable. If the scenario changes, and template engines are used, this requirement will be valid.
+- **2.6**- This requirement, and being the application a web application, is valid. Failing to comply with this requirement could result in exploitations and harm for the system and its users.
+- **2.7**- SVG are not planned to ( and wont ) be implemented, making this requirement not applicable.
+- **2.8**-User-supplied scriptable or expression template language content can be placed inside inputs, making this requirement is valid.
 
 ## 3. Output Encoding and Injection Prevention
 
