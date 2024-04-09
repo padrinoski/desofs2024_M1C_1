@@ -70,17 +70,36 @@ Output encoding, close or adjacent to the interpreter in use, is critical to the
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
 | **3.1** | Verify that output encoding is relevant for the interpreter and context required. For example, use encoders specifically for HTML values, HTML attributes, JavaScript, URL parameters, HTTP headers, SMTP, and others as the context requires, especially from untrusted inputs (e.g. names with Unicode or apostrophes, such as ねこ or O'Hara). ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1| 116 | Valid
-| **3.2** | Verify that output encoding preserves the user's chosen character set and locale, such that any Unicode character point is valid and safely handled. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1| 176 |Valid
+| **3.2** | Verify that output encoding preserves the user's chosen character set and locale, such that any Unicode character point is valid and safely handled. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1| 176 |Valid / Not Applicable
 | **3.3** | Verify that context-aware, preferably automated - or at worst, manual - output escaping protects against reflected, stored, and DOM based XSS. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 79 |?
 | **3.4** | Verify that data selection or database queries (e.g. SQL, HQL, ORM, NoSQL) use parameterized queries, ORMs, entity frameworks, or are otherwise protected from database injection attacks. ([C3](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 89 |Valid
 | **3.5** | Verify that where parameterized or safer mechanisms are not present, context-specific output encoding is used to protect against injection attacks, such as the use of SQL escaping to protect against SQL injection. ([C3, C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 89 | Valid
 | **3.6** | Verify that the application protects against JSON injection attacks, JSON eval attacks, and JavaScript expression evaluation. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) |1 | 830 |Valid
-| **3.7** | Verify that the application protects against LDAP injection vulnerabilities, or that specific security controls to prevent LDAP injection have been implemented. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 90 |Valid
-| **3.8** | Verify that the application protects against OS command injection and that operating system calls use parameterized OS queries or use contextual command line output encoding. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 78 |Not Applicable?
-| **3.9** | Verify that the application protects against Local File Inclusion (LFI) or Remote File Inclusion (RFI) attacks. | 1 | 829 |Valid?
-| **3.10** | Verify that the application protects against XPath injection or XML injection attacks. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 643 |Valid
+| **3.7** | Verify that the application protects against LDAP injection vulnerabilities, or that specific security controls to prevent LDAP injection have been implemented. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 90 | Not Valid
+| **3.8** | Verify that the application protects against OS command injection and that operating system calls use parameterized OS queries or use contextual command line output encoding. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 78 | Not Applicable
+| **3.9** | Verify that the application protects against Local File Inclusion (LFI) or Remote File Inclusion (RFI) attacks. | 1 | 829 |Valid
+| **3.10** | Verify that the application protects against XPath injection or XML injection attacks. ([C4](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 643 |Not Valid
 
 ## Analysis
+
+- **3.1** - Valid. Each context has its own encoding system. This means is that we encode for JavaScript if we are outputting content between `<script> … </script>` tags, or encode for HTML attributes between `<` and `>`, including tag names, attribute names, and attribute values. Encode for HTML body between tags and style between `<style>` tags.
+
+	These are the four contexts.
+
+	-   HTML body (text between tags)
+	-   HTML attributes (text within the tags)
+	-  JavaScript (content between `<script>` and `</script>` tags)
+	-   Cascading Style Sheets (CSS, content between `<style>` and `</style>` tags)
+
+- **3.2**- Valid. Output encoding libraries handle this. This requirement is set to be removed. See [ASVS Issue 1017](https://github.com/OWASP/ASVS/issues/1017).
+- **3.3**-
+- **3.4**- Valid as it presents itself as a thread and therefore needs to be addressed.
+- **3.5**- Valid as it presents itself as a thread and therefore needs to be addressed.
+- **3.6**- As the application relies on JSON to communicate between user interface and backend, this requirement is valid.
+- **3.7**- The application wont contruct any LDAP  statements based on input or any other thing. See [LDAP Injection](https://owasp.org/www-community/attacks/LDAP_Injection)
+- **3.8**- It is used library calls rather than external processes to recreate the desired functionality. This acts as a mitigator for these attacks. See [CWE OS Command Injection](https://cwe.mitre.org/data/definitions/78.html)
+- **3.9**- As file management is a required feature to implement, this requirement is relevant and therefore valid.
+- **3.10**- An injection attack technique used to manipulate or compromise the logic of an XML application or document. This does not comply with the intended specifications of the application designed.
 
 ## 4. Memory, String, and Unmanaged Code
 
@@ -97,9 +116,14 @@ Generally, the these requirements will only apply when the application uses a sy
 
 | # | Description | ASVS Level | CWE |Valid
 | :---: | :--- | :---: | :---:| :---: |
-| **1** | Verify that serialized objects use integrity checks or are encrypted to prevent hostile object creation or data tampering. ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 502 |Valid
-| **2** | Verify that the application correctly restricts XML parsers to only use the most restrictive configuration possible and to ensure that unsafe features such as resolving external entities are disabled to prevent XML eXternal Entity (XXE) attacks. |1| 611 |Valid
-| **3** | Verify that deserialization of untrusted data is avoided or is protected in both custom code and third-party libraries (such as JSON, XML and YAML parsers). | 1 | 502 | Not Applicable
-| **4** | Verify that when parsing JSON in browsers or JavaScript-based backends, JSON.parse is used to parse the JSON document. Do not use eval() to parse JSON. | 1| 95 |Valid
+| **5.1** | Verify that serialized objects use integrity checks or are encrypted to prevent hostile object creation or data tampering. ([C5](https://owasp.org/www-project-proactive-controls/#div-numbering)) | 1 | 502 |Valid / Not Applicable
+| **5.2** | Verify that the application correctly restricts XML parsers to only use the most restrictive configuration possible and to ensure that unsafe features such as resolving external entities are disabled to prevent XML eXternal Entity (XXE) attacks. |1| 611 |Not Applicable
+| **5.3** | Verify that deserialization of untrusted data is avoided or is protected in both custom code and third-party libraries (such as JSON, XML and YAML parsers). | 1 | 502 | Valid / Not Applicable
+| **5.4** | Verify that when parsing JSON in browsers or JavaScript-based backends, JSON.parse is used to parse the JSON document. Do not use eval() to parse JSON. | 1| 95 | Valid
 
 ## Analysis
+
+- **5.1**- To prevent hostile object creation or data tampering, this requirement must attended. The system will most likely have comunications between user interface and backend through DTOs, being these serialized and deserialized. Although the fact that the application is not intended to be launched into production, this is still a valid requirement.
+- **5.2**- XML and XML parsers wont be part of the soon to be devoloped system.
+- **5.3** - Currently, I don't see where our system would consume and deserialiaze untrusted data outside from the requests made from the user interface to the backend. Object creation will most likely be implemented with the help of DTOs so, even if the DTO is tampered, the input data will be most likely sanitized in the controller.
+- **5.4** - The application will most likely be developed in JavaScript-based backends making this requirement valid.
