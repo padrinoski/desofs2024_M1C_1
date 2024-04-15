@@ -36,3 +36,6 @@ For an accurate risk assessment, the following potential risks we identified and
 - **1.2 Insecure Error Handling** - Implement error handling and, most importantly, that errors do not display any sensible information or exploitable content.
 - **1.3 Outdated API** - As we are using external code, we are not able to ensure its maintenance. We can monitorized developements on it and, when discontinuation arrives, adopt new tools for the job. 
 
+### Relevant topics
+- [sanitize-html vulnerabilities](https://security.snyk.io/package/npm/sanitize-html)
+- [SnykAdvisor sanitize-html](https://snyk.io/advisor/npm-package/sanitize-html)
