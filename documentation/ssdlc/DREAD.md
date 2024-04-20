@@ -1,0 +1,10 @@
+# DREAD Analysis
+
+|       **Threat**       | **Damage Potential** | **Reproducibility** | **Exploitability** | **Affected Users** | **Discoverability** | **DREAD Score** | **Justification** |
+|:----------------------:|:--------------------:|:-------------------:|:------------------:|:------------------:|:-------------------:|:---------------:|:-----------------:|
+|        Spoofing        |          7           |          5          |         6          |         8          |          6          |       6.4       | Spoofing can lead to unauthorized access, affecting many users. However, it requires some skill and knowledge to perform. |
+|       Tampering        |          8           |          4          |         7          |         7          |          5          |       6.2       | Tampering can lead to data corruption or loss, but it's not always easy to perform or discover. |
+|      Repudiation       |          6           |          6          |         5          |         5          |          7          |       5.8       | Repudiation might not directly harm the system, but it can lead to disputes and loss of trust. It's relatively easy to claim an action wasn't performed. |
+| Information Disclosure |          9           |          5          |         6          |         9          |          6          |       7.0       | Information disclosure can lead to serious consequences like identity theft, and it can potentially affect many users. |
+|   Denial of Service    |          7           |          7          |         6          |         8          |          6          |       6.8       | A successful DoS attack can make the system unavailable to all users, but it requires some resources and skills to perform. |
+| Elevation of Privilege |          8           |          4          |         7          |         7          |          5          |       6.2       | Elevation of privilege can lead to serious damage, but it's not always easy to perform or discover. |
