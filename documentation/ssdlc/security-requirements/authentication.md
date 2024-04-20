@@ -145,15 +145,15 @@
 
 ---
 
-### ASVS Requirement 2.2.1 - Auth0 Supported
+### ASVS Requirement 2.2.1 - Auth0 Supported ; Not Applicable
 
 **ASVS Requirement Description**: Verify that anti-automation controls are effective at mitigating breached credential testing, brute force, and account lockout attacks. Such controls include blocking the most common breached passwords, soft lockouts, rate limiting, CAPTCHA, ever increasing delays between attempts, IP address restrictions, or risk-based restrictions such as location, first login on a device, recent attempts to unlock the account, or similar. Verify that no more than 100 failed attempts per hour is possible on a single account.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it helps to protect user accounts from automated attacks. Implementing effective anti-automation controls can help to prevent unauthorized access to user accounts. Auth0 supports attack protection against bots, ip throttling, brute force and breached password detection, as described here (https://auth0.com/docs/secure/attack-protection). However, some features like breached password detection are not available in the free version.
+**Justification**: This requirement helps to protect user accounts from automated attacks. Implementing effective anti-automation controls can help to prevent unauthorized access to user accounts. Auth0 supports attack protection against bots, ip throttling, brute force and breached password detection, as described here (https://auth0.com/docs/secure/attack-protection). However, some features like breached password detection are not available in the free version. More over, the scope of this project is too small to have the need to implement a security feature like this.
 
-**Security Requirement**: Effective Anti-Automation Controls - The application should implement effective anti-automation controls to mitigate breached credential testing, brute force, and account lockout attacks. These controls could include blocking the most common breached passwords, soft lockouts, rate limiting, CAPTCHA, ever increasing delays between attempts, IP address restrictions, or risk-based restrictions such as location, first login on a device, recent attempts to unlock the account, or similar. The application should also ensure that no more than 100 failed attempts per hour is possible on a single account.
+**Security Requirement**: NOT APPLICABLE > Effective Anti-Automation Controls - The application should implement effective anti-automation controls to mitigate breached credential testing, brute force, and account lockout attacks. These controls could include blocking the most common breached passwords, soft lockouts, rate limiting, CAPTCHA, ever increasing delays between attempts, IP address restrictions, or risk-based restrictions such as location, first login on a device, recent attempts to unlock the account, or similar. The application should also ensure that no more than 100 failed attempts per hour is possible on a single account.
 
 ---
 
@@ -193,63 +193,63 @@
 
 ---
 
-### ASVS Requirement 2.2.5 - Auth0 Supported
+### ASVS Requirement 2.2.5 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify that where a Credential Service Provider (CSP) and the application verifying authentication are separated, mutually authenticated TLS is in place between the two endpoints.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures secure communication between the application and the CSP. Mutually authenticated TLS can help to prevent man-in-the-middle attacks and ensure the integrity and confidentiality of the authentication data. Auth0 clearly allows authentication with mTLS as stated here (https://auth0.com/docs/get-started/authentication-and-authorization-flow/authenticate-with-mtls).
+**Justification**: This requirement ensures secure communication between the application and the CSP. Mutually authenticated TLS can help to prevent man-in-the-middle attacks and ensure the integrity and confidentiality of the authentication data. Auth0 clearly allows authentication with mTLS as stated here (https://auth0.com/docs/get-started/authentication-and-authorization-flow/authenticate-with-mtls). Given the scope of this project and it being too small, there will be no need to use maTLS for this.
 
-**Security Requirement**: Mutually Authenticated TLS - If a Credential Service Provider (CSP) and the application verifying authentication are separated, the application should ensure that mutually authenticated TLS is in place between the two endpoints.
+**Security Requirement**: Not Applicable > Mutually Authenticated TLS - If a Credential Service Provider (CSP) and the application verifying authentication are separated, the application should ensure that mutually authenticated TLS is in place between the two endpoints.
 
 ---
 
-### ASVS Requirement 2.2.6 - Auth0 Supported
+### ASVS Requirement 2.2.6 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify replay resistance through the mandated use of One-time Passwords (OTP) devices, cryptographic authenticators, or lookup codes.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it helps to protect user accounts from replay attacks. Implementing measures like OTP devices, cryptographic authenticators, or lookup codes can significantly increase the difficulty for an attacker to replay a user's authentication sequence. Auth0 api allows for replay attack mitigation through cryptographic authenticators, as stated here (https://auth0.com/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post/mitigate-replay-attacks-when-using-the-implicit-flow).
+**Justification**: This requirement helps to protect user accounts from replay attacks. Implementing measures like OTP devices, cryptographic authenticators, or lookup codes can significantly increase the difficulty for an attacker to replay a user's authentication sequence. Auth0 api allows for replay attack mitigation through cryptographic authenticators, as stated here (https://auth0.com/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post/mitigate-replay-attacks-when-using-the-implicit-flow). Given the scope of the project being too small, this won't be necessary to implement.
 
-**Security Requirement**: Replay Resistance - The application should ensure replay resistance through the mandated use of One-time Passwords (OTP) devices, cryptographic authenticators, or lookup codes.
+**Security Requirement**: Not Applicable > Replay Resistance - The application should ensure replay resistance through the mandated use of One-time Passwords (OTP) devices, cryptographic authenticators, or lookup codes.
 
 ---
 
-### ASVS Requirement 2.2.7 - Auth0 Supported
+### ASVS Requirement 2.2.7 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify intent to authenticate by requiring the entry of an OTP token or user-initiated action such as a button press on a FIDO hardware key.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that the user intends to authenticate. Requiring an OTP token or a user-initiated action can help to prevent unintentional or accidental authentication. This requirement can be implemented with Auth0 by way of customizing the flow of authentication in order to verify an intent to authenticate by the user.
+**Justification**: This requirement ensures that the user intends to authenticate. Requiring an OTP token or a user-initiated action can help to prevent unintentional or accidental authentication. This requirement can be implemented with Auth0 by way of customizing the flow of authentication in order to verify an intent to authenticate by the user. Given the scope of the project, it's very unlikely we will even have real users that wish to verify their intent to authenticate, this is something for a bigger scope project.
 
-**Security Requirement**: Verify Intent to Authenticate - The application should verify the intent to authenticate by requiring the entry of an OTP token or user-initiated action such as a button press on a FIDO hardware key.
+**Security Requirement**: Not Applicable > Verify Intent to Authenticate - The application should verify the intent to authenticate by requiring the entry of an OTP token or user-initiated action such as a button press on a FIDO hardware key.
 
 ---
 
-### ASVS Requirement 2.3.1 - Auth0 Supported
+### ASVS Requirement 2.3.1 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify system generated initial passwords or activation codes SHOULD be securely randomly generated, SHOULD be at least 6 characters long, and MAY contain letters and numbers, and expire after a short period of time. These initial secrets must not be permitted to become the long term password.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that initial passwords or activation codes are secure and temporary. This can help to prevent unauthorized access to user accounts. Auth0 supports customization for this requirement.
+**Justification**: This requirement ensures that initial passwords or activation codes are secure and temporary. This can help to prevent unauthorized access to user accounts. Auth0 supports customization for this requirement. This requirement even though should be straightforward to implement, is not a high priority requirement given the scope of our project.
 
-**Security Requirement**: Secure Initial Passwords and Activation Codes - The application should ensure that system generated initial passwords or activation codes are securely randomly generated, are at least 6 characters long, may contain letters and numbers, and expire after a short period of time. These initial secrets must not be permitted to become the long term password.
+**Security Requirement**: Not Applicable > Secure Initial Passwords and Activation Codes - The application should ensure that system generated initial passwords or activation codes are securely randomly generated, are at least 6 characters long, may contain letters and numbers, and expire after a short period of time. These initial secrets must not be permitted to become the long term password.
 
 ---
 
-### ASVS Requirement 2.3.2 - Auth0 Supported
+### ASVS Requirement 2.3.2 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify that enrollment and use of user-provided authentication devices are supported, such as a U2F or FIDO tokens.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it allows users to use their own authentication devices, which can provide a higher level of security. Supporting user-provided authentication devices can help to prevent unauthorized access to user accounts. Auth0 is supporting WebAuthn with FIDO security keys for multi-factor authentication as described here (https://auth0.com/blog/fido-security-key-support-comes-to-auth0/)
+**Justification**: This requirement allows users to use their own authentication devices, which can provide a higher level of security. Supporting user-provided authentication devices can help to prevent unauthorized access to user accounts. Auth0 is supporting WebAuthn with FIDO security keys for multi-factor authentication as described here (https://auth0.com/blog/fido-security-key-support-comes-to-auth0/). This will not be implemented, and is not considered to be high priority for our project.
 
-**Security Requirement**: Support for User-Provided Authentication Devices - The application should support the enrollment and use of user-provided authentication devices, such as U2F or FIDO tokens.
+**Security Requirement**: Not Applicable > Support for User-Provided Authentication Devices - The application should support the enrollment and use of user-provided authentication devices, such as U2F or FIDO tokens.
 
 ---
 
@@ -277,15 +277,15 @@
 
 ---
 
-### ASVS Requirement 2.4.2 - Auth0 Supported
+### ASVS Requirement 2.4.2 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify that the salt is at least 32 bits in length and be chosen arbitrarily to minimize salt value collisions among stored hashes. For each credential, a unique salt value and the resulting hash SHALL be stored.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that salts used in password hashing are adequately long and unique. This can help to prevent attacks that rely on precomputed tables of hash values, such as rainbow table attacks. The Auth0-hosted database is highly secure. Passwords are never stored or logged in plain text but are hashed with bcrypt (https://auth0.com/docs/authenticate/database-connections/auth0-user-store) and they also support costumization with salt as described here (https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/).
+**Justification**: This requirement ensures that salts used in password hashing are adequately long and unique. This can help to prevent attacks that rely on precomputed tables of hash values, such as rainbow table attacks. The Auth0-hosted database is highly secure. Passwords are never stored or logged in plain text but are hashed with bcrypt (https://auth0.com/docs/authenticate/database-connections/auth0-user-store) and they also support costumization with salt as described here (https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/). The passwords will already be hashed and salted, but given the scope of the project there will be no need to monitor the salt length or minimize collisions.
 
-**Security Requirement**: Adequate Salt Length and Uniqueness - The application should ensure that the salt is at least 32 bits in length and is chosen arbitrarily to minimize salt value collisions among stored hashes. For each credential, a unique salt value and the resulting hash should be stored.
+**Security Requirement**: Not Applicable > Adequate Salt Length and Uniqueness - The application should ensure that the salt is at least 32 bits in length and is chosen arbitrarily to minimize salt value collisions among stored hashes. For each credential, a unique salt value and the resulting hash should be stored.
 
 ---
 
@@ -301,27 +301,27 @@
 
 ---
 
-### ASVS Requirement 2.4.4 - Auth0 Supported
+### ASVS Requirement 2.4.4 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify that if bcrypt is used, the work factor SHOULD be as large as verification server performance will allow, with a minimum of 10.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that if bcrypt is used for password hashing, the work factor is sufficiently large to provide a good level of security. A higher work factor can help to protect against brute force attacks. The Auth0-hosted database is highly secure. Passwords are never stored or logged in plain text but are hashed with bcrypt (https://auth0.com/docs/authenticate/database-connections/auth0-user-store)
+**Justification**: This requirement ensures that if bcrypt is used for password hashing, the work factor is sufficiently large to provide a good level of security. A higher work factor can help to protect against brute force attacks. The Auth0-hosted database is highly secure. Passwords are never stored or logged in plain text but are hashed with bcrypt (https://auth0.com/docs/authenticate/database-connections/auth0-user-store). PBKDF2 will already be implemented for password hashing, so this will not be needed.
 
-**Security Requirement**: Adequate bcrypt Work Factor - If bcrypt is used, the application should ensure that the work factor is as large as verification server performance will allow, with a minimum of 10.
+**Security Requirement**: Not applicable > Adequate bcrypt Work Factor - If bcrypt is used, the application should ensure that the work factor is as large as verification server performance will allow, with a minimum of 10.
 
 ---
 
-### ASVS Requirement 2.4.5 - Auth0 Supported
+### ASVS Requirement 2.4.5 - Auth0 Supported; Not Applicable
 
 **ASVS Requirement Description**: Verify that an additional iteration of a key derivation function is performed, using a salt value that is secret and known only to the verifier. Generate the salt value using an approved random bit generator [SP 800-90Ar1] and provide at least the minimum security strength specified in the latest revision of SP 800-131A. The secret salt value SHALL be stored separately from the hashed passwords (e.g., in a specialized device like a hardware security module).
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that an additional layer of security is added to the password hashing process. This can help to protect against brute force and rainbow table attacks. Auth0 supports customization of bcrypt and the flow of hashing a password, as described here (https://auth0.com/blog/hashing-in-action-understanding-bcrypt/) which allows to customize salt and verify an additional iteration of key derivation function.
+**Justification**: This requirement ensures that an additional layer of security is added to the password hashing process. This can help to protect against brute force and rainbow table attacks. Auth0 supports customization of bcrypt and the flow of hashing a password, as described here (https://auth0.com/blog/hashing-in-action-understanding-bcrypt/) which allows to customize salt and verify an additional iteration of key derivation function. Bcrypt will not be used for this, and salt will not be tightly monitored.
 
-**Security Requirement**: Additional Key Derivation Iteration and Secret Salt - The application should perform an additional iteration of a key derivation function, using a salt value that is secret and known only to the verifier. The salt value should be generated using an approved random bit generator and provide at least the minimum security strength specified in the latest revision of SP 800-131A. The secret salt value should be stored separately from the hashed passwords (e.g., in a specialized device like a hardware security module).
+**Security Requirement**: Not Applicable > Additional Key Derivation Iteration and Secret Salt - The application should perform an additional iteration of a key derivation function, using a salt value that is secret and known only to the verifier. The salt value should be generated using an approved random bit generator and provide at least the minimum security strength specified in the latest revision of SP 800-131A. The secret salt value should be stored separately from the hashed passwords (e.g., in a specialized device like a hardware security module).
 
 ---
 
@@ -397,15 +397,15 @@
 
 ---
 
-### ASVS Requirement 2.5.7 - Auth0 Support
+### ASVS Requirement 2.5.7 - Auth0 Support; Not Applicable
 
 **ASVS Requirement Description**: Verify that if OTP or multi-factor authentication factors are lost, that evidence of identity proofing is performed at the same level as during enrollment.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that if OTP or multi-factor authentication factors are lost, the user's identity is verified at the same level as during enrollment. This can help to prevent unauthorized access to user accounts. This requirement is supported with Auth0 as described here (https://auth0.com/docs/get-started/manage-dashboard-access/add-change-remove-mfa/remove-or-change-dashboard-multi-factor-authentication).
+**Justification**: This requirement ensures that if OTP or multi-factor authentication factors are lost, the user's identity is verified at the same level as during enrollment. This can help to prevent unauthorized access to user accounts. This requirement is supported with Auth0 as described here (https://auth0.com/docs/get-started/manage-dashboard-access/add-change-remove-mfa/remove-or-change-dashboard-multi-factor-authentication). This is not considered high priority into our project scope.
 
-**Security Requirement**: Identity Proofing for Lost OTP or MFA Factors - The application should ensure that if OTP or multi-factor authentication factors are lost, evidence of identity proofing is performed at the same level as during enrollment.
+**Security Requirement**: Not Applicable > Identity Proofing for Lost OTP or MFA Factors - The application should ensure that if OTP or multi-factor authentication factors are lost, evidence of identity proofing is performed at the same level as during enrollment.
 
 ---
 
@@ -421,25 +421,25 @@
 
 ---
 
-### ASVS Requirement 2.6.2 - Auth0 Support
+### ASVS Requirement 2.6.2 - Auth0 Support; Not Applicable
 
 **ASVS Requirement Description**: Verify that lookup secrets have sufficient randomness (112 bits of entropy), or if less than 112 bits of entropy, salted with a unique and random 32-bit salt and hashed with an approved one-way hash.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that lookup secrets, which are often used for password recovery or account activation, have sufficient randomness. This can help to prevent unauthorized access to user accounts. Auth0 supports customization of this requirement. (https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
+**Justification**: This requirement ensures that lookup secrets, which are often used for password recovery or account activation, have sufficient randomness. This can help to prevent unauthorized access to user accounts. Auth0 supports customization of this requirement. (https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa). 
 
-**Security Requirement**: Sufficient Randomness for Lookup Secrets - The application should ensure that lookup secrets have sufficient randomness (112 bits of entropy), or if less than 112 bits of entropy, they are salted with a unique and random 32-bit salt and hashed with an approved one-way hash.
+**Security Requirement**: Not Applicable > Sufficient Randomness for Lookup Secrets - The application should ensure that lookup secrets have sufficient randomness (112 bits of entropy), or if less than 112 bits of entropy, they are salted with a unique and random 32-bit salt and hashed with an approved one-way hash.
 
 ---
 
-### ASVS Requirement 2.6.3 - Auth0 Support
+### ASVS Requirement 2.6.3 - Auth0 Support; Not Applicable
 
 **ASVS Requirement Description**: Verify that lookup secrets are resistant to offline attacks, such as predictable values.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that lookup secrets, which are often used for password recovery or account activation, are resistant to offline attacks. This can help to prevent unauthorized access to user accounts. Auth0 customization (https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
+**Justification**: This requirement is relevant because it ensures that lookup secrets, which are often used for password recovery or account activation, are resistant to offline attacks. This can help to prevent unauthorized access to user accounts. Auth0 customization (https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa). Given the scope of the project, we will not suffer offline attacks amd so we will have no way of testing if the implementation even works against those attacks.
 
 **Security Requirement**: Resistance to Offline Attacks for Lookup Secrets - The application should ensure that lookup secrets are resistant to offline attacks, such as predictable values.
 
@@ -529,15 +529,15 @@
 
 ---
 
-### ASVS Requirement 2.8.2 - Auth0 Support (uncertain)
+### ASVS Requirement 2.8.2 - Auth0 Support (uncertain) ; Not Applicable
 
 **ASVS Requirement Description**: Verify that symmetric keys used to verify submitted OTPs are highly protected, such as by using a hardware security module or secure operating system based key storage.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that symmetric keys, which are often used for OTP verification, are stored securely. This can help to prevent unauthorized access to user accounts. Auth0 supports OTPs, but there is no way to verify that symmetric keys are highly protected.
+**Justification**: This requirement is relevant because it ensures that symmetric keys, which are often used for OTP verification, are stored securely. This can help to prevent unauthorized access to user accounts. Auth0 supports OTPs, but there is no way to verify that symmetric keys are highly protected. This will not be implemented, due to the security requirements not being this highly needed in terms of protection.
 
-**Security Requirement**: High Protection for Symmetric Keys - The application should ensure that symmetric keys used to verify submitted OTPs are highly protected, such as by using a hardware security module or secure operating system based key storage.
+**Security Requirement**: Not Applicable > High Protection for Symmetric Keys - The application should ensure that symmetric keys used to verify submitted OTPs are highly protected, such as by using a hardware security module or secure operating system based key storage.
 
 ---
 
@@ -577,15 +577,15 @@
 
 ---
 
-### ASVS Requirement 2.8.6 - Auth0 Support (uncertain)
+### ASVS Requirement 2.8.6 - Auth0 Support (uncertain); Not Applicable
 
 **ASVS Requirement Description**: Verify physical single-factor OTP generator can be revoked in case of theft or other loss. Ensure that revocation is immediately effective across logged in sessions, regardless of location.
 
 **Related Functional Requirement**: User Registration and Authentication
 
-**Justification**: This requirement is relevant because it ensures that a physical single-factor OTP generator, which is often used for two-factor authentication, can be revoked in case of theft or other loss. This can help to prevent unauthorized access to user accounts. Auth0 supports physical OTPs as described here (https://auth0.com/blog/not-all-mfa-is-created-equal/), however it is not possible to verify that a physical single-factor OTP generator can be revoked in case of theft or other loss.
+**Justification**: This requirement is relevant because it ensures that a physical single-factor OTP generator, which is often used for two-factor authentication, can be revoked in case of theft or other loss. This can help to prevent unauthorized access to user accounts. Auth0 supports physical OTPs as described here (https://auth0.com/blog/not-all-mfa-is-created-equal/), however it is not possible to verify that a physical single-factor OTP generator can be revoked in case of theft or other loss. In the scope of the project, we will not be able to test the theft of an OTP, this will not be implemented.
 
-**Security Requirement**: Revocation of Physical Single-Factor OTP Generator - The application should ensure that a physical single-factor OTP generator can be revoked in case of theft or other loss, and that revocation is immediately effective across logged in sessions, regardless of location.
+**Security Requirement**: Not Applicable > Revocation of Physical Single-Factor OTP Generator - The application should ensure that a physical single-factor OTP generator can be revoked in case of theft or other loss, and that revocation is immediately effective across logged in sessions, regardless of location.
 
 ---
 

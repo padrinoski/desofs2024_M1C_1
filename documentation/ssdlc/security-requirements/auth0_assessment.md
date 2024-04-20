@@ -67,8 +67,3 @@
 - **1.11 Not Implementing Rate Limiting**: Implement rate limiting to prevent brute force attacks. Auth0 provides built-in anomaly detection features that can help with this.
 - **1.12 Not Using Multi-Factor Authentication**: If possible, use multi-factor authentication for added security. Auth0 supports multi-factor authentication.
 - **1.13 Not Following the Principle of Least Privilege**: Only request the minimum level of access necessary for our application to function. Regularly review and update access controls to ensure they follow this principle.
-
-
-// need to contextualize all of these risks with our application, to see what really needs to be done
-
-// need to contextualize the security requirements with the scope of the project.
