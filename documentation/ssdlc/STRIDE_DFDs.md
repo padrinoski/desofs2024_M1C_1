@@ -14,7 +14,7 @@
 |   Denial of Service    | An attacker could overwhelm the system with requests, preventing legitimate users from registering or logging in.          | Implementing rate limiting, and by using scalable and resilient system architectures.                                                      |
 | Elevation of Privilege | An attacker could gain unauthorized access to privileged functionalities or data.                                          | Implementing the principle of least privilege, and by regularly reviewing and updating user permissions.                                   |
 
-![BrowseComicBooksLV1](../domain/Diagrams/BrowseComicBooksLV1.jpg)
+![BrowseComicBooksLV1](../domain/Diagrams/DFD/BrowseComicBooksLV1.jpg)
 
 
 |       **Threat**       | **Description**                                                                                                                         | **Mitigation**                                                                                                                    |
@@ -26,7 +26,7 @@
 |   Denial of Service    | An attacker could overwhelm the system with catalog requests, preventing legitimate users from browsing.                                | Implementing rate limiting, and by using scalable and resilient system architectures.                                             |
 | Elevation of Privilege | TALVEZ REMOVER An attacker could potentially exploit vulnerabilities to gain unauthorized access to privileged functionalities or data. | Implementing the principle of least privilege, and by regularly reviewing and updating user permissions.                          |
 
-![ManageComicBooksLV1](../domain/Diagrams/ManageComicBooksLV1.jpg)
+![ManageComicBooksLV1](../domain/Diagrams/DFD/ManageComicBooksLV1.jpg)
 
 
 |       **Threat**       | **Description**                                                                                                                       | **Mitigation**                                                                                                                             |
@@ -39,7 +39,7 @@
 | Elevation of Privilege | An attacker could gain unauthorized access to privileged functionalities or data.                                                     | Implementing the principle of least privilege, and by regularly reviewing and updating user permissions.                                   |
 
 
-![OrderDataFlowLV1](../domain/Diagrams/OrderDataFlowLV1.jpg)
+![OrderDataFlowLV1](../domain/Diagrams/DFD/OrderDataFlowLV1.jpg)
 
 
 |       **Threat**       | **Description**                                                                                                                                                   | **Mitigation**                                                                                                                             |
