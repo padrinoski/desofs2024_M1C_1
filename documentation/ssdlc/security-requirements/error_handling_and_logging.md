@@ -14,7 +14,7 @@ In order to ensure the security and reliability of our web application, we have 
 | **7.1.4**  | 2          | 778 | Verify that each log event includes necessary information that would allow for a detailed investigation of the timeline when an event happens. | Not Valid |
 
 ### Analysis
-* **7.1.1** and **7.1.2** : These requirements are crucial for protecting sensitive data such as credentials, payment details, and personally identifiable information (PII). Even in a simple e-commerce application, it's essential to avoid logging such sensitive information to prevent data breaches and ensure compliance with privacy regulations.
+* **7.1.1** and **7.1.2** : These requirements are crucial for protecting sensitive data such as personal data and payment details. Even in a simple e-commerce application, it's essential to avoid logging such sensitive information to prevent data breaches and ensure compliance with privacy regulations.
 * **7.1.3** and **7.1.4** : While logging security-relevant events and including detailed information in log events are valuable for larger and more complex systems, it may be excessive for a simple e-commerce application with fewer security risks and a limited scope.
 
 ## 2 - Log Processing
@@ -24,7 +24,7 @@ In order to ensure the security and reliability of our web application, we have 
 | **7.2.2**  | 2          | 285 | Verify that all access control decisions can be logged and all failed decisions are logged. This should include requests with relevant metadata needed for security investigations. | Not Valid |
 
 ### Analysis
-* **7.2.1** and **7.2.2** : While logging authentication and access control decisions is important for auditing and security analysis, it may not be necessary for a simple e-commerce application with fewer authentication mechanisms and access control requirements.
+* **7.2.1** and **7.2.2** : While logging authentication and access control decisions is important for auditing and security analysis, it may not be necessary for our simple e-commerce application with fewer authentication mechanisms and access control requirements.
 
 ## 3 - Log Protection
 | #          | ASVS Level | CWE | Verification Requirement | Valid |
@@ -44,4 +44,4 @@ In order to ensure the security and reliability of our web application, we have 
 | **7.4.3**  | 2          | 431 | Verify that a "last resort" error handler is defined which will catch all unhandled exceptions. | Valid |
 
 ### Analysis
-* **7.4.1** to **7.4.3** : Error handling is important in any application to provide a smooth user experience and maintain system stability. While a simple e-commerce application may not require elaborate error handling mechanisms, having basic error messages, exception handling, and a "last resort" error handler can prevent crashes and improve user satisfaction.
+* **7.4.1** to **7.4.3** : Error handling is important in any application to provide a smooth user experience and maintain system stability. While a simple e-commerce application may not require elaborate error handling mechanisms, having basic error messages, exception handling, and a "last resort" error handler can prevent crashes and improve the general user satisfaction.
