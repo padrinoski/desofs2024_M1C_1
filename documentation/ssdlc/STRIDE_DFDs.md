@@ -2,7 +2,7 @@
 
 ### STRIDE is a threat modeling methodology that provides a framework for identifying and mitigating security risks. It stands for Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege.
 
-![AuthenticationDiagramLV1](../domain/Diagrams/AuthenticationDiagramLV1.jpg)
+![AuthenticationDiagramLV1](../domain/Diagrams/DFD/AuthenticationDiagramLV1.jpg)
 
 
 |       **Threat**       | **Description**                                                                                                            | **Mitigation**                                                                                                                             |
