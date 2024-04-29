@@ -1,0 +1,71 @@
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\spa.proxy.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\appsettings.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.exe
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.deps.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.runtimeconfig.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.pdb
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SpaProxy.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.csproj.AssemblyReference.cache
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\spa.proxy.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.AssemblyInfoInputs.cache
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.AssemblyInfo.cs
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.csproj.CoreCompileInputs.cache
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.DESOFT.Server.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.build.DESOFT.Server.props
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.DESOFT.Server.props
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.DESOFT.Server.props
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\scopedcss\bundle\DESOFT.Server.styles.css
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.S.8650F62E.Up2Date
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\refint\DESOFT.Server.dll
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.pdb
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.genruntimeconfig.cache
+C:\Users\Leandro\source\repos\DESOFT\DESOFT.Server\obj\Debug\net8.0\ref\DESOFT.Server.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\appsettings.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\spa.proxy.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.exe
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.deps.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.runtimeconfig.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\DESOFT.Server.pdb
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SpaProxy.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.csproj.AssemblyReference.cache
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\spa.proxy.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.AssemblyInfoInputs.cache
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.AssemblyInfo.cs
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.csproj.CoreCompileInputs.cache
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.sourcelink.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.DESOFT.Server.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.build.DESOFT.Server.props
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.DESOFT.Server.props
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.DESOFT.Server.props
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\scopedcss\bundle\DESOFT.Server.styles.css
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.S.8650F62E.Up2Date
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\refint\DESOFT.Server.dll
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.pdb
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\DESOFT.Server.genruntimeconfig.cache
+C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\DESOFT.Server\obj\Debug\net8.0\ref\DESOFT.Server.dll

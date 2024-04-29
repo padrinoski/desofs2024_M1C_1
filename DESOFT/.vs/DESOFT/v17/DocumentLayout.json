@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8BE14167-B6D0-435F-8325-5E88E9C37B86}|desoft.client\\desoft.client.esproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8BE14167-B6D0-435F-8325-5E88E9C37B86}|desoft.client\\desoft.client.esproj|solutionrelative:desoft.client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\desoft.client\\package.json",
+              "RelativeDocumentMoniker": "desoft.client\\package.json",
+              "ToolTip": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\desoft.client\\package.json",
+              "RelativeToolTip": "desoft.client\\package.json",
+              "ViewState": "AQIAABYAAAAAAAAAAAAUwBwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-29T21:06:33.294Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
