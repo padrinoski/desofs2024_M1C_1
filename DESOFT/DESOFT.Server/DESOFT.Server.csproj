@@ -34,14 +34,4 @@
     </ProjectReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="API\Application\DTO\" />
-    <Folder Include="API\Application\Interfaces\Repositories\" />
-    <Folder Include="API\Application\Interfaces\Services\" />
-    <Folder Include="API\Application\Services\" />
-    <Folder Include="API\Domain\Entities\User\" />
-    <Folder Include="API\Infrastructure\Migrations\" />
-    <Folder Include="API\Infrastructure\Repositories\" />
-  </ItemGroup>
-
 </Project>

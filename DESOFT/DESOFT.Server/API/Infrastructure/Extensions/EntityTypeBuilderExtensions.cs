@@ -11,7 +11,7 @@ namespace DESOFT.Server.API.Infrastructure.Extensions
             builder.AsPartialAuditableEntity();
 
             builder.Property(e => e.AlteracaoData)
-                .HasDefaultValue(DateTime.UtcNow)
+                .HasDefaultValueSql("getdate()")
                 .HasComment("Data de alteração do registo (auditoria).");
 
             builder.Property(e => e.AlteracaoUtilizadorId)
@@ -21,7 +21,7 @@ namespace DESOFT.Server.API.Infrastructure.Extensions
         public static void AsPartialAuditableEntity<T>(this EntityTypeBuilder<T> builder) where T : PartialAuditableEntity
         {
             builder.Property(e => e.CriacaoData)
-                .HasDefaultValue(DateTime.UtcNow)
+                .HasDefaultValueSql("getdate()")
                 .HasComment("Data de criação do registo (auditoria).");
 
             builder.Property(e => e.CriacaoUtilizadorId)

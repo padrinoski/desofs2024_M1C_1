@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DESOFT.Server.Migrations
+namespace DESOFT.Server.API.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20240430213425_Initial_Migration")]
-    partial class Initial_Migration
+    [Migration("20240501110907_Insere_Aggregado_User")]
+    partial class Insere_Aggregado_User
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("AlteracaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 36, DateTimeKind.Utc).AddTicks(226))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 89, DateTimeKind.Utc).AddTicks(5739))
                         .HasComment("Data de alteração do registo (auditoria).");
 
                     b.Property<int>("AlteracaoUtilizadorId")
@@ -53,7 +53,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("CriacaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 35, DateTimeKind.Utc).AddTicks(9817))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 89, DateTimeKind.Utc).AddTicks(5114))
                         .HasComment("Data de criação do registo (auditoria).");
 
                     b.Property<int>("CriacaoUtilizadorId")
@@ -107,7 +107,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("AlteracaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 36, DateTimeKind.Utc).AddTicks(5355))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 90, DateTimeKind.Utc).AddTicks(153))
                         .HasComment("Data de alteração do registo (auditoria).");
 
                     b.Property<int>("AlteracaoUtilizadorId")
@@ -121,7 +121,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("CriacaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 36, DateTimeKind.Utc).AddTicks(4934))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 89, DateTimeKind.Utc).AddTicks(9666))
                         .HasComment("Data de criação do registo (auditoria).");
 
                     b.Property<int>("CriacaoUtilizadorId")
@@ -156,7 +156,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("AlteracaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 36, DateTimeKind.Utc).AddTicks(8205))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 90, DateTimeKind.Utc).AddTicks(3155))
                         .HasComment("Data de alteração do registo (auditoria).");
 
                     b.Property<int>("AlteracaoUtilizadorId")
@@ -166,7 +166,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("CriacaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 36, DateTimeKind.Utc).AddTicks(7882))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 90, DateTimeKind.Utc).AddTicks(2692))
                         .HasComment("Data de criação do registo (auditoria).");
 
                     b.Property<int>("CriacaoUtilizadorId")
@@ -194,7 +194,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("AlteracaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 37, DateTimeKind.Utc).AddTicks(4400))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 90, DateTimeKind.Utc).AddTicks(8406))
                         .HasComment("Data de alteração do registo (auditoria).");
 
                     b.Property<int>("AlteracaoUtilizadorId")
@@ -208,7 +208,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("CriacaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 37, DateTimeKind.Utc).AddTicks(3750))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 90, DateTimeKind.Utc).AddTicks(7818))
                         .HasComment("Data de criação do registo (auditoria).");
 
                     b.Property<int>("CriacaoUtilizadorId")
@@ -244,7 +244,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("AlteracaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 38, DateTimeKind.Utc).AddTicks(3143))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 99, DateTimeKind.Utc).AddTicks(2245))
                         .HasComment("Data de alteração do registo (auditoria).");
 
                     b.Property<int>("AlteracaoUtilizadorId")
@@ -254,14 +254,21 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("CriacaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 38, DateTimeKind.Utc).AddTicks(2816))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 99, DateTimeKind.Utc).AddTicks(1724))
                         .HasComment("Data de criação do registo (auditoria).");
 
                     b.Property<int>("CriacaoUtilizadorId")
                         .HasColumnType("int")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasComment("ID of the User");
+
                     b.HasKey("ShoppingCartId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("ShoppingCart", (string)null);
                 });
@@ -278,7 +285,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("AlteracaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 38, DateTimeKind.Utc).AddTicks(6494))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 99, DateTimeKind.Utc).AddTicks(6242))
                         .HasComment("Data de alteração do registo (auditoria).");
 
                     b.Property<int>("AlteracaoUtilizadorId")
@@ -292,7 +299,7 @@ namespace DESOFT.Server.Migrations
                     b.Property<DateTime>("CriacaoData")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 30, 21, 34, 25, 38, DateTimeKind.Utc).AddTicks(6048))
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 99, DateTimeKind.Utc).AddTicks(5754))
                         .HasComment("Data de criação do registo (auditoria).");
 
                     b.Property<int>("CriacaoUtilizadorId")
@@ -307,6 +314,141 @@ namespace DESOFT.Server.Migrations
                     b.HasIndex("ComicBookId");
 
                     b.ToTable("ShoppingCartItem", (string)null);
+                });
+
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.Role", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("ID of the Role");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
+
+                    b.Property<DateTime>("AlteracaoData")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 99, DateTimeKind.Utc).AddTicks(9064))
+                        .HasComment("Data de alteração do registo (auditoria).");
+
+                    b.Property<int>("AlteracaoUtilizadorId")
+                        .HasColumnType("int")
+                        .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
+
+                    b.Property<DateTime>("CriacaoData")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 99, DateTimeKind.Utc).AddTicks(8611))
+                        .HasComment("Data de criação do registo (auditoria).");
+
+                    b.Property<int>("CriacaoUtilizadorId")
+                        .HasColumnType("int")
+                        .HasComment("Identificador do utilizador que criou o registo (auditoria).");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("ID of the User");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Role", (string)null);
+                });
+
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("ID of the User");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Address");
+
+                    b.Property<DateTime>("AlteracaoData")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 100, DateTimeKind.Utc).AddTicks(2005))
+                        .HasComment("Data de alteração do registo (auditoria).");
+
+                    b.Property<int>("AlteracaoUtilizadorId")
+                        .HasColumnType("int")
+                        .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
+
+                    b.Property<DateTime>("CriacaoData")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 100, DateTimeKind.Utc).AddTicks(1567))
+                        .HasComment("Data de criação do registo (auditoria).");
+
+                    b.Property<int>("CriacaoUtilizadorId")
+                        .HasColumnType("int")
+                        .HasComment("Identificador do utilizador que criou o registo (auditoria).");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Password");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Username");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("User", (string)null);
+                });
+
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User_Role", b =>
+                {
+                    b.Property<int>("UserRoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("ID of the UserRole");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserRoleId"));
+
+                    b.Property<DateTime>("AlteracaoData")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 100, DateTimeKind.Utc).AddTicks(7533))
+                        .HasComment("Data de alteração do registo (auditoria).");
+
+                    b.Property<int>("AlteracaoUtilizadorId")
+                        .HasColumnType("int")
+                        .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
+
+                    b.Property<DateTime>("CriacaoData")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 5, 1, 11, 9, 7, 100, DateTimeKind.Utc).AddTicks(7003))
+                        .HasComment("Data de criação do registo (auditoria).");
+
+                    b.Property<int>("CriacaoUtilizadorId")
+                        .HasColumnType("int")
+                        .HasComment("Identificador do utilizador que criou o registo (auditoria).");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int")
+                        .HasComment("ID of the Role");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasComment("ID of the User");
+
+                    b.HasKey("UserRoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("User_Role", (string)null);
                 });
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook", b =>
@@ -346,6 +488,17 @@ namespace DESOFT.Server.Migrations
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", b =>
+                {
+                    b.HasOne("DESOFT.Server.API.Domain.Entities.User.User", "User")
+                        .WithOne("ShoppingCart")
+                        .HasForeignKey("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCartItem", b =>
                 {
                     b.HasOne("DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook", "ComicBook")
@@ -355,6 +508,25 @@ namespace DESOFT.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("ComicBook");
+                });
+
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User_Role", b =>
+                {
+                    b.HasOne("DESOFT.Server.API.Domain.Entities.User.Role", "Role")
+                        .WithMany("User_Role")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DESOFT.Server.API.Domain.Entities.User.User", "User")
+                        .WithOne("Role")
+                        .HasForeignKey("DESOFT.Server.API.Domain.Entities.User.User_Role", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook", b =>
@@ -371,6 +543,20 @@ namespace DESOFT.Server.Migrations
                     b.Navigation("ComicBook");
 
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.Role", b =>
+                {
+                    b.Navigation("User_Role");
+                });
+
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User", b =>
+                {
+                    b.Navigation("Role")
+                        .IsRequired();
+
+                    b.Navigation("ShoppingCart")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -15,6 +15,13 @@ namespace DESOFT.Server.API.Infrastructure.EntityConfigurations.ShoppingCart
 
             builder.Property(e => e.ShoppingCartId)
                 .HasComment("ID of the ShoppingCart");
+                
+            builder.Property(e => e.UserId)
+                .HasComment("ID of the User");
+
+            builder.HasOne(e => e.User)
+                .WithOne(e => e.ShoppingCart)
+                .HasForeignKey<Domain.Entities.ShoppingCart.ShoppingCart>(e => e.UserId);
 
             builder.AsAuditableEntity();
         }

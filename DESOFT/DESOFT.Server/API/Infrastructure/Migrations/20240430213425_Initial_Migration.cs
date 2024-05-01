@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DESOFT.Server.Migrations
+namespace DESOFT.Server.API.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class Initial_Migration : Migration

@@ -1,4 +1,8 @@
-﻿using DESOFT.Server.API.Domain.Entities.Common;
+﻿using DESOFT.Server.API.Domain.Entities.ComicBooks;
+using DESOFT.Server.API.Domain.Entities.Common;
+using DESOFT.Server.API.Domain.Entities.Order;
+using DESOFT.Server.API.Domain.Entities.ShoppingCart;
+using DESOFT.Server.API.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -32,6 +36,7 @@ namespace DESOFT.Server.API.Infrastructure
                 fk.DeleteBehavior = DeleteBehavior.Restrict;
 
             #endregion Remove Cascade Delete
+
         }
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -91,5 +96,12 @@ namespace DESOFT.Server.API.Infrastructure
                 actualItem.AlteracaoUtilizadorId = currentUserId;
             }
         }
+
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<User_Role> UserRoles { get; set; }
+        public virtual DbSet<ComicBook> ComicBook { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }
