@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ws++kGMIOYyKm7u5wEnI/+nU4VExFcjxncF05AGlikySmZCAkGwcGjJZGn0YJUUwfZvEBAOygoT/WXONpyun9w==",
+  "dgSpecHash": "cfpr2TSd99A0aVQEWBmvrVAqJNqneFw3/s/LEjgmZO3WWFiW4+bof8JR4VC7R0hXUEgWtP8/piBfxvpg4jlQKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFT.Server.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Leandro\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Leandro\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Leandro\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Leandro\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

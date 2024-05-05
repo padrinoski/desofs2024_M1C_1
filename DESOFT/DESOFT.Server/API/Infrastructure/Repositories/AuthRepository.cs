@@ -17,11 +17,15 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
 
         public async Task<bool> PodeAcederBackOffice(int userId)
         {
+
             var user = await _context.Users
                 .Include(e => e.Role)
                 .Where(u => u.UserId == userId)
                 .AsNoTracking()
-                .SingleAsync();
+                .SingleOrDefaultAsync();
+
+            if (user == null)
+                return false;
 
             return user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.Admin;
         }

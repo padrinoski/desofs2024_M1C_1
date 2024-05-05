@@ -1,5 +1,6 @@
 ﻿using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Application.Interfaces.Services;
+using static DESOFT.Server.API.Shared.Infrastructure.Result;
 
 namespace DESOFT.Server.API.Application.Services
 {
@@ -7,22 +8,42 @@ namespace DESOFT.Server.API.Application.Services
     {
 
         private readonly IAuthRepository _authRepo;
+        private readonly ILogger<AuthService> _logger;
 
-        public AuthService(IAuthRepository authRepo)
+        public AuthService(IAuthRepository authRepo, ILogger<AuthService> logger)
         {
-
             _authRepo = authRepo;
-
+            _logger = logger;
         }
 
-        public Task<bool> PodeAcederBackOffice(int userId)
+        public async Task<ServiceResult<bool>> PodeAcederBackOffice(int userId)
         {
-            throw new NotImplementedException();
+            var result = new ServiceResult<bool>();
+
+            try
+            {
+                result.Data = await _authRepo.PodeAcederBackOffice(userId);
+
+            }catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
         }
 
-        public Task<bool> PodeAcederFrontOffice(int userId)
+        public async Task<ServiceResult<bool>> PodeAcederFrontOffice(int userId)
         {
-            throw new NotImplementedException();
+            var result = new ServiceResult<bool>();
+
+            try
+            {
+                result.Data = await _authRepo.PodeAcederFrontOffice(userId);
+            }catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return result;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DESOFT.Server.API.Domain.Entities.ComicBooks
 
         public int ComicBookId { get; set; }
         public string Version { get; set; }
-        public DateOnly PublishingDate { get; set; }
+        public DateTime PublishingDate { get; set; }
         public decimal Price { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

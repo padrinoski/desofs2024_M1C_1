@@ -10,7 +10,6 @@ namespace DESOFT.Server.API.Domain.Entities.Order
         public int ComicBookId { get; set; }
         public int Quantity { get; set; }
 
-
         public Order Order { get; set; }
         public ComicBook ComicBook { get; set; }
 

@@ -6,7 +6,7 @@ namespace DESOFT.Server.API.Shared.Infrastructure
     public class Result
     {
         [DataMember]
-        public bool Status
+        public bool Success
         {
             get => !Errors.Any();
             private set { }

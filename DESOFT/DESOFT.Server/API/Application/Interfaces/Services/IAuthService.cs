@@ -1,9 +1,10 @@
-﻿namespace DESOFT.Server.API.Application.Interfaces.Services
+﻿using static DESOFT.Server.API.Shared.Infrastructure.Result;
+
+namespace DESOFT.Server.API.Application.Interfaces.Services
 {
     public interface IAuthService
     {
-        Task<bool> PodeAcederBackOffice(int userId);
-        Task<bool> PodeAcederFrontOffice(int userId);
-        
+        Task<ServiceResult<bool>> PodeAcederBackOffice(int userId);
+        Task<ServiceResult<bool>> PodeAcederFrontOffice(int userId);
     }
 }

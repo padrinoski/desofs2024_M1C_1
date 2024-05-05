@@ -9,7 +9,6 @@ namespace DESOFT.Server.API.Domain.Entities.Order
         public Order()
         {
             OrderItems = new HashSet<OrderItem>();
-            ComicBook = new HashSet<ComicBook>();
         }
 
         public int OrderId { get; set; }
@@ -17,7 +16,6 @@ namespace DESOFT.Server.API.Domain.Entities.Order
         public string Address { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; }
-        public ICollection<ComicBook> ComicBook { get; set; }
 
     }
 }
