@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:5173",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\..\\desoft.client",
+"WorkingDirectory": "/Users/ctw02447/Documents/Mestrado/DESOFS/desofs2024_M1C_1/DESOFT/DESOFT.Server/../desoft.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }
