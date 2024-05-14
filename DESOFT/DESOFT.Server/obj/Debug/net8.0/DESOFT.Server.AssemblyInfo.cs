@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DESOFT.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4feee79c740bfe5c894206541b1f8fc1112cc69d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0de38b8c1fa387232edec6854962a76fc7602d7a")]
 [assembly: System.Reflection.AssemblyProductAttribute("DESOFT.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DESOFT.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,5 +8,8 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
 
         Task<ServiceResult> CreateComicBook(ComicBookDTO comicBookDTO);
         Task<ServiceResult<List<ComicBookDTO>>> GetCatalog();
+        Task<ServiceResult> EditComicBook(int comicBookId, ComicBookDTO dto);
+        Task<ServiceResult<ComicBookDTO>> GetComicBook(int comicBookId);
+        Task<ServiceResult> DeleteComicBook(int comicBookId);
     }
 }

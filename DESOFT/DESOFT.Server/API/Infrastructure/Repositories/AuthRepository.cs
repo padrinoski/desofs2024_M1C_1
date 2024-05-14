@@ -27,7 +27,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             if (user == null)
                 return false;
 
-            return user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.Admin;
+            return user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.StoreClerk || user.Role.RoleId == (int)Roles.Admin;
         }
 
         public async Task<bool> PodeAcederFrontOffice(int userId)
@@ -38,7 +38,29 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
                             .AsNoTracking()
                             .SingleAsync();
 
+            if (user == null)
+                return false;
+
             return user.Role.RoleId == (int)Roles.Client || user.Role.RoleId == (int)Roles.Admin;
+        }
+        
+        public async Task<bool> PodeEditarComicBookFilter(int comicBookId, int userId)
+        {
+            var user = await _context.Users
+                            .Include(e => e.Role)
+                            .Where(u => u.UserId == userId)
+                            .AsNoTracking()
+                            .SingleAsync();
+
+            if (user == null)
+                return false;
+
+            var comicBook = await _context.ComicBook.SingleOrDefaultAsync(e => e.ComicBookId == comicBookId);
+
+            if (comicBook == null)
+                return false;
+
+            return comicBook.CriacaoUtilizadorId == userId;
         }
     }
 }

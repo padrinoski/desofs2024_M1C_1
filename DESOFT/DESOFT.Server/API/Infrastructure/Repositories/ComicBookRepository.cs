@@ -22,11 +22,25 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             await _context.ComicBook.AddAsync(model);
         }
 
+        public async Task DeleteComicBook(ComicBook model)
+        {
+            await Task.Run(() =>
+            {
+                _context.ComicBook.Remove(model);
+            });
+        }
+
         public async Task<List<ComicBook>> GetCatalog()
         {
             return await _context.ComicBook
                 .AsNoTracking()
                 .ToListAsync();
+        }
+
+        public async Task<ComicBook?> GetComicBook(int comicBookId, bool tracking = false)
+        {
+            return tracking ? await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).SingleOrDefaultAsync() :
+                 await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).AsNoTracking().SingleOrDefaultAsync();
         }
     }
 }

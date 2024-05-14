@@ -4,6 +4,6 @@
     {
         Task<bool> PodeAcederBackOffice(int userId);
         Task<bool> PodeAcederFrontOffice(int userId);
-
+        Task<bool> PodeEditarComicBookFilter(int userId, int userId1);
     }
 }

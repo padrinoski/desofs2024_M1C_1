@@ -42,6 +42,65 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
+        public async Task<ServiceResult> DeleteComicBook(int comicBookId)
+        {
+            var result = new ServiceResult();
+
+            try
+            {
+                var model = await _comicBookRepository.GetComicBook(comicBookId,true);
+
+                if (model == null)
+                {
+                    result.Errors.Add(new KeyVal { Key = "The comic book was not found" });
+                    return result;
+                }
+
+                await _comicBookRepository.DeleteComicBook(model);
+
+                await _comicBookRepository.SaveTransaction(result, "Ocorreu um erro a guardar os dados.");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+
+        public async Task<ServiceResult> EditComicBook(int comicBookId, ComicBookDTO dto)
+        {
+            var result = new ServiceResult();
+
+            try
+            {
+                var model = await _comicBookRepository.GetComicBook(comicBookId, true);
+
+                if (model == null)
+                {
+                    result.Errors.Add(new KeyVal { Key = "The comic book was not found" });
+                    return result;
+                }
+
+                model.Author = dto.Author;
+                model.Description = dto.Description;
+                model.Price = dto.Price;
+                model.PublishingDate = dto.PublishingDate;
+                model.Title = dto.Title;
+                model.Version = dto.Version;
+
+                await _comicBookRepository.SaveTransaction(result, "Ocorreu um erro a guardar os dados.");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+
         public async Task<ServiceResult<List<ComicBookDTO>>> GetCatalog()
         {
             var result = new ServiceResult<List<ComicBookDTO>>();
@@ -51,6 +110,31 @@ namespace DESOFT.Server.API.Application.Services
                 result.Data = _mapper.Map<List<ComicBookDTO>>(await _comicBookRepository.GetCatalog());
 
             }catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+
+        public async Task<ServiceResult<ComicBookDTO>> GetComicBook(int comicBookId)
+        {
+            var result = new ServiceResult<ComicBookDTO>();
+
+            try
+            {
+                var model = _mapper.Map<ComicBookDTO>(await _comicBookRepository.GetComicBook(comicBookId));
+
+                if (model == null)
+                {
+                    result.Errors.Add(new KeyVal { Key = "The comic book was not found" });
+                    return result;
+                }
+
+                result.Data = model;
+
+            }
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
             }

@@ -27,11 +27,34 @@ namespace DESOFT.Server.API.Controllers.ComicBook
             return await _comicService.GetCatalog();
         }
         
+        [HttpGet(nameof(GetComicBook)+"/{comicBookId}")]
+        [TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
+        public async Task<ServiceResult<ComicBookDTO>> GetComicBook(int comicBookId)
+        {
+            return await _comicService.GetComicBook(comicBookId);
+        }
+        
         [HttpPost(nameof(CreateComicbook))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
         public async Task<ServiceResult> CreateComicbook(ComicBookDTO dto)
         {
             return await _comicService.CreateComicBook(dto);
+        }
+        
+        [HttpPost(nameof(EditComicBook)+ "/{comicBookId}")]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        [TypeFilter(typeof(PodeEditarComicBookFilter))]
+        public async Task<ServiceResult> EditComicBook(int comicBookId, ComicBookDTO dto)
+        {
+            return await _comicService.EditComicBook(comicBookId,dto);
+        }
+        
+        [HttpDelete(nameof(DeleteComicBook)+ "/{comicBookId}")]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        [TypeFilter(typeof(PodeEditarComicBookFilter))]
+        public async Task<ServiceResult> DeleteComicBook(int comicBookId)
+        {
+            return await _comicService.DeleteComicBook(comicBookId);
         }
         
     }

@@ -4,6 +4,8 @@ using DESOFT.Server.API.Domain.Entities.Order;
 using DESOFT.Server.API.Domain.Entities.ShoppingCart;
 using DESOFT.Server.API.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 
 namespace DESOFT.Server.API.Infrastructure
@@ -67,6 +69,23 @@ namespace DESOFT.Server.API.Infrastructure
         {
             var currentDateTime = DateTime.UtcNow;
             int currentUserId = 1;
+
+            var authorizationHeader = _httpContextAccessor.HttpContext.Request.Headers["Authorization"];
+
+            string accessToken = string.Empty;
+
+            if (!authorizationHeader.IsNullOrEmpty() || authorizationHeader.ToString().StartsWith("Bearer"))
+            {
+                accessToken = authorizationHeader.ToString().Substring("Bearer ".Length).Trim();
+
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(accessToken);
+                var tokenS = jsonToken as JwtSecurityToken;
+
+                tokenS.Payload.TryGetValue("userId", out var userId);
+
+                currentUserId = int.Parse(userId.ToString());
+            }
 
             foreach (var item in ChangeTracker.Entries()
                 .Where(e => e.State == EntityState.Added && e.Entity is IAuditableEntity))
