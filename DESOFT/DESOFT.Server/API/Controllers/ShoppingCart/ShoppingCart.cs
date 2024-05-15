@@ -30,6 +30,14 @@ namespace DESOFT.Server.API.Controllers.ShoppingCart
         {
             return await _shoppingCartService.AddToCart(cartId, shoppingCartItem);
         }
+
+        [HttpPost(nameof(CreateCart))]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        public  async Task<ServiceResult> CreateCart(ShoppingCartDTO shoppingCart)
+        {
+            return await _shoppingCartService.CreateCart(shoppingCart);
+        }
+
         [HttpDelete(nameof(RemoveFromCart))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
         public  async Task<ServiceResult> RemoveFromCart(int cartId, int id)

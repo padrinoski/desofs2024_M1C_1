@@ -27,6 +27,12 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task CreateCart(ShoppingCart shoppingCart)
+        {
+            await _context.ShoppingCarts.AddAsync(shoppingCart);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task RemoveFromCart(int cartId, int id)
         {
             var itemToRemove = await _context.ShoppingCartItems.FindAsync(id);

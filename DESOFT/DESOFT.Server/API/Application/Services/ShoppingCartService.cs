@@ -43,6 +43,29 @@ namespace DESOFT.Server.API.Application.Services
 
             return result;
         }
+
+        public async Task<ServiceResult> CreateCart(ShoppingCartDTO shoppingCartDTO)
+        {
+            _logger.LogError("EntrouServico");
+            var result = new ServiceResult();
+
+            try
+            {
+                var shoppingCart = _mapper.Map<ShoppingCart>(shoppingCartDTO);
+
+                await _shoppingCartRepository.CreateCart(shoppingCart);
+
+                await _shoppingCartRepository.SaveTransaction(result, "An error occurred while saving the data.");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+
         public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetCartItems(int cartId)
         {
             var result = new ServiceResult<List<ShoppingCartItemDTO>>();

@@ -9,6 +9,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Repositories.Common
     {
         Task<List<ShoppingCartItem>> GetCartItems(int cartId);
         Task AddToCart(int cartId, ShoppingCartItem shoppingCartItem);
+        Task CreateCart(ShoppingCart shoppingCart);
         Task RemoveFromCart(int cartId, int id);
     }
 }
