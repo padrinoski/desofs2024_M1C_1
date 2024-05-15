@@ -18,10 +18,10 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
 
         public async Task<List<ShoppingCartItem>> GetCartItems(int cartId)
         {
-            return await _context.ShoppingCartItems.ToListAsync();
+            return await _context.ShoppingCartItems.Where(e => e.ShoppingCartId == cartId).ToListAsync();
         }
 
-        public async Task AddToCart(int cartId, ShoppingCartItem shoppingCartItem)
+        public async Task AddToCart(ShoppingCartItem shoppingCartItem)
         {
             await _context.ShoppingCartItems.AddAsync(shoppingCartItem);
             await _context.SaveChangesAsync();

@@ -8,7 +8,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
     {
         Task<ServiceResult> CreateCart(ShoppingCartDTO shoppingCartDTO);
         Task<ServiceResult<List<ShoppingCartItemDTO>>> GetCartItems(int cartId);
-        Task<ServiceResult> AddToCart(int cartId, ShoppingCartItemDTO shoppingCartItemDTO);
+        Task<ServiceResult> AddToCart(ShoppingCartItemDTO shoppingCartItemDTO);
         Task<ServiceResult> RemoveFromCart(int cartId, int id);
     }
 

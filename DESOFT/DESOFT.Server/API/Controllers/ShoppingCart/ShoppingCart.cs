@@ -17,18 +17,18 @@ namespace DESOFT.Server.API.Controllers.ShoppingCart
             _shoppingCartService = shoppingCartService;
         }
 
-        [HttpGet(nameof(GetShoppingCart))]
+        [HttpGet(nameof(GetShoppingCart)+ "/{id}")]
         [TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
         public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetShoppingCart(int id)
         {
             return await _shoppingCartService.GetCartItems(id);
         }
 
-        [HttpPost(nameof(AddToCart) + "/{cartId}")]
+        [HttpPost(nameof(AddToCart))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
-        public  async Task<ServiceResult> AddToCart(int cartId, ShoppingCartItemDTO shoppingCartItem)
+        public  async Task<ServiceResult> AddToCart(ShoppingCartItemDTO shoppingCartItem)
         {
-            return await _shoppingCartService.AddToCart(cartId, shoppingCartItem);
+            return await _shoppingCartService.AddToCart(shoppingCartItem);
         }
 
         [HttpPost(nameof(CreateCart))]
