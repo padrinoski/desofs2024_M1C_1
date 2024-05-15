@@ -23,11 +23,13 @@ builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<ILoginService, LoginService>();
 builder.Services.AddTransient<IComicBookService, ComicBookService>();
+builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
 
 //Repositories
 builder.Services.AddTransient<IAuthRepository, AuthRepository>();
 builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 builder.Services.AddTransient<IComicBookRepository, ComicBookRepository>();
+builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
 
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
@@ -50,6 +52,8 @@ builder.Services.AddSession(options =>
 var autoMapperConfig = new MapperConfiguration(mc =>
 {
     mc.AddProfile(new ComicBookMapping());
+    mc.AddProfile(new ShoppingCartMapper());
+    mc.AddProfile(new ShoppingCartItemMapper());
 });
 
 IMapper mapper = autoMapperConfig.CreateMapper();
