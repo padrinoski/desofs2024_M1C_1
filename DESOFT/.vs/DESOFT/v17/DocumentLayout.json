@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.server\\api\\application\\dto\\comicbook\\comicbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|solutionrelative:desoft.server\\api\\application\\dto\\comicbook\\comicbookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.server\\api\\controllers\\comicbook\\comicbookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|solutionrelative:desoft.server\\api\\controllers\\comicbook\\comicbookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.server\\api\\authorization\\podeacederfrontofficefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|solutionrelative:desoft.server\\api\\authorization\\podeacederfrontofficefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.server\\api\\application\\services\\comicbookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|solutionrelative:desoft.server\\api\\application\\services\\comicbookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.server\\api\\application\\interfaces\\services\\icomicbookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|solutionrelative:desoft.server\\api\\application\\interfaces\\services\\icomicbookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.server\\api\\controllers\\comicbook\\comicbookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|solutionrelative:desoft.server\\api\\controllers\\comicbook\\comicbookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B3BFEF6-7C8C-4369-9EF5-63D5BC6D6ECB}|DESOFT.Server\\DESOFT.Server.csproj|c:\\users\\leandro\\desktop\\faculdade\\2\u00BA ano\\desofs\\desofs2024_m1c_1\\desoft\\desoft.server\\api\\application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,6 +79,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ComicBookDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\DTO\\ComicBook\\ComicBookDTO.cs",
+              "RelativeDocumentMoniker": "DESOFT.Server\\API\\Application\\DTO\\ComicBook\\ComicBookDTO.cs",
+              "ToolTip": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\DTO\\ComicBook\\ComicBookDTO.cs",
+              "RelativeToolTip": "DESOFT.Server\\API\\Application\\DTO\\ComicBook\\ComicBookDTO.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAuwAYAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T20:01:17.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PodeAcederFrontOfficeFilter.cs",
+              "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Authorization\\PodeAcederFrontOfficeFilter.cs",
+              "RelativeDocumentMoniker": "DESOFT.Server\\API\\Authorization\\PodeAcederFrontOfficeFilter.cs",
+              "ToolTip": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Authorization\\PodeAcederFrontOfficeFilter.cs",
+              "RelativeToolTip": "DESOFT.Server\\API\\Authorization\\PodeAcederFrontOfficeFilter.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAjwCYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T17:49:05.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ComicBookService.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\Services\\ComicBookService.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Application\\Services\\ComicBookService.cs",
@@ -78,12 +111,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Application\\Services\\ComicBookService.cs",
               "ViewState": "AQIAACMAAAAAAAAAAAAuwDIAAABUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T20:51:10.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-13T20:51:10.728Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "IComicBookService.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\Interfaces\\Services\\IComicBookService.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Application\\Interfaces\\Services\\IComicBookService.cs",
@@ -91,25 +123,24 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Application\\Interfaces\\Services\\IComicBookService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T20:36:23.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-13T20:36:23.114Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ComicBookController.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Controllers\\ComicBook\\ComicBookController.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Controllers\\ComicBook\\ComicBookController.cs",
               "ToolTip": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Controllers\\ComicBook\\ComicBookController.cs",
               "RelativeToolTip": "DESOFT.Server\\API\\Controllers\\ComicBook\\ComicBookController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAYwDAAAAA0AAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAwCgAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-13T20:35:21.092Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ComicBook.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Domain\\Entities\\ComicBooks\\ComicBook.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Domain\\Entities\\ComicBooks\\ComicBook.cs",
@@ -121,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Application\\Services\\AuthService.cs",
@@ -129,12 +160,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Application\\Services\\AuthService.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAhwDYAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T13:48:13.335Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T13:48:13.335Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ComicBookRepository.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Infrastructure\\Repositories\\ComicBookRepository.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Infrastructure\\Repositories\\ComicBookRepository.cs",
@@ -142,12 +172,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Infrastructure\\Repositories\\ComicBookRepository.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAzwBgAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T20:57:40.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-13T20:57:40.65Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "PodeEditarComicBookFilter.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Authorization\\PodeEditarComicBookFilter.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Authorization\\PodeEditarComicBookFilter.cs",
@@ -155,12 +184,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Authorization\\PodeEditarComicBookFilter.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAQwBgAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T17:46:26.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T17:46:26.421Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\Interfaces\\Services\\IAuthService.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Application\\Interfaces\\Services\\IAuthService.cs",
@@ -168,12 +196,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Application\\Interfaces\\Services\\IAuthService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T17:46:54.979Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T17:46:54.979Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "IAuthRepository.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\Interfaces\\Repositories\\IAuthRepository.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Application\\Interfaces\\Repositories\\IAuthRepository.cs",
@@ -181,12 +208,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Application\\Interfaces\\Repositories\\IAuthRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T17:47:49.989Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T17:47:49.989Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "AuthRepository.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Infrastructure\\Repositories\\AuthRepository.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Infrastructure\\Repositories\\AuthRepository.cs",
@@ -194,12 +220,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Infrastructure\\Repositories\\AuthRepository.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAlwD4AAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T17:40:51.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T17:40:51.096Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "AppDBContext.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Infrastructure\\AppDBContext.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Infrastructure\\AppDBContext.cs",
@@ -207,12 +232,11 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Infrastructure\\AppDBContext.cs",
               "ViewState": "AQIAAEQAAAAAAAAAAAAlwFYAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T17:28:03.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T17:28:03.017Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "IComicBookRepository.cs",
               "DocumentMoniker": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2\u00BA Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\API\\Application\\Interfaces\\Repositories\\Common\\IComicBookRepository.cs",
               "RelativeDocumentMoniker": "DESOFT.Server\\API\\Application\\Interfaces\\Repositories\\Common\\IComicBookRepository.cs",
@@ -220,8 +244,7 @@
               "RelativeToolTip": "DESOFT.Server\\API\\Application\\Interfaces\\Repositories\\Common\\IComicBookRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T15:10:17.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-05T15:10:17.016Z"
             }
           ]
         }
