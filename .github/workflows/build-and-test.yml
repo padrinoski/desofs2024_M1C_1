@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -18,8 +17,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Restore dependencies
-      run: dotnet restore
-
     - name: Build
+      working-directory: DESOFT/DESOFT.Server
       run: dotnet build --configuration Release
