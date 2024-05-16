@@ -42,5 +42,12 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             return tracking ? await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).SingleOrDefaultAsync() :
                  await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).AsNoTracking().SingleOrDefaultAsync();
         }
+
+        public async Task<List<ComicBook>> FilterComicBooks(string title, string author)
+        {
+            return await _context.ComicBook
+                .Where(cb => cb.Title.ToLower().Contains(title.ToLower()) && cb.Author.ToLower().Contains(author.ToLower()))
+                .ToListAsync();
+        }
     }
 }
