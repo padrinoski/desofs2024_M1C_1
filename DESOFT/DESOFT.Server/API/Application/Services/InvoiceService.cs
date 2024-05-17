@@ -1,4 +1,5 @@
 using AutoMapper;
+using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
 using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Domain.Entities.Invoice;
 using DESOFT.Server.API.Domain.Entities.Order;
@@ -14,13 +15,13 @@ namespace DESOFT.Server.API.Application.Services
 
         //TODO: Implementar
 
-        //private readonly IComicBookRepository _comicBookRepository;
+        private readonly IOrderRepository _orderRepository;
         private readonly ILogger<InvoiceService> _logger;
         private readonly IMapper _mapper;
 
-        public InvoiceService( ILogger<InvoiceService> logger, IMapper mapper)
+        public InvoiceService(IOrderRepository orderRepository, ILogger<InvoiceService> logger, IMapper mapper)
         {
-            //_comicBookRepository = comicBookRepository;
+            _orderRepository = orderRepository;
             _logger = logger;
             _mapper = mapper;
         }
@@ -49,18 +50,16 @@ namespace DESOFT.Server.API.Application.Services
             try
             {
 
-                //Call Order repo
+                var order = await _orderRepository.GetOrder(orderId);
 
-                //Get Order
+                order = order ?? throw new Exception("Order not found");
 
-                //Map Order to InvoiceModel
-
-                var model = await generateInvoiceModel(new Order());
+                var model = await generateInvoiceModel(order);
                 var document = new InvoiceDocument(model);
-                byte[] generatedDocument = document.GeneratePdf();
+                //byte[] generatedDocument = document.GeneratePdf();
 
                 //Save document in DTO format
-
+                document.GeneratePdfAndShow();
                 //Create record in DB
 
 
