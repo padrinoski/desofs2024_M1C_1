@@ -1,4 +1,8 @@
-/DESOFT/.vs
+.vs
 .idea
 *.lck
+DESOFT.Server\bin
+DESOFT.Server\obj
+Test\obj
 /DESOFT/.vs/DESOFT/FileContentIndex/12c557d3-ea93-451c-9656-6a888177ca8f.vsidx
+/DESOFT/.vs/DESOFT/FileContentIndex/f7be8fa6-2d0e-47b7-9f1f-056215cb8211.vsidx
