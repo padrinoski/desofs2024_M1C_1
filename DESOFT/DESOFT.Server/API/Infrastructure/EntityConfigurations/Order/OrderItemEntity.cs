@@ -19,16 +19,16 @@ namespace DESOFT.Server.API.Infrastructure.EntityConfigurations.Order
             builder.Property(e => e.OrderId)
                 .HasComment("ID of the Order");
 
-            builder.HasOne(e => e.Order)
-                .WithMany(e => e.OrderItems)
-                .HasForeignKey(e => e.OrderId);
+            //builder.HasOne(e => e.Order)
+              //  .WithMany(e => e.OrderItems)
+                //.HasForeignKey(e => e.OrderId);
             
             builder.Property(e => e.ComicBookId)
                 .HasComment("ID of the ComicBook");
 
-            builder.HasOne(e => e.ComicBook)
-                .WithMany(e => e.OrderItems)
-                .HasForeignKey(e => e.ComicBookId);
+            //builder.HasOne(e => e.ComicBook)
+              //  .WithMany(e => e.OrderItems)
+                //.HasForeignKey(e => e.ComicBookId);
 
             builder.Property(e => e.Quantity)
                 .HasComment("Quantity");
