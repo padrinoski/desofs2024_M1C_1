@@ -23,5 +23,12 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<Order?> GetOrder(int orderId, bool tracking = false)
+        {
+
+            return tracking ? await _context.Orders.Where(e => e.OrderId == orderId).SingleOrDefaultAsync() :
+                 await _context.Orders.Where(e => e.OrderId == orderId).AsNoTracking().SingleOrDefaultAsync();
+        }
+
     }
 }
