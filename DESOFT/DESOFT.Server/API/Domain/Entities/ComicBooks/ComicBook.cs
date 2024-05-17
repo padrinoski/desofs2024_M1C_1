@@ -1,5 +1,4 @@
 ﻿using DESOFT.Server.API.Domain.Entities.Common;
-using DESOFT.Server.API.Domain.Entities.Order;
 using DESOFT.Server.API.Domain.Entities.ShoppingCart;
 
 namespace DESOFT.Server.API.Domain.Entities.ComicBooks
@@ -11,7 +10,6 @@ namespace DESOFT.Server.API.Domain.Entities.ComicBooks
         {
             ShoppingCartItem = new HashSet<ShoppingCartItem>();
             Inventory = new HashSet<Inventory.Inventory>();
-            OrderItems = new HashSet<OrderItem>();
         }
 
         public int ComicBookId { get; set; }
@@ -24,6 +22,5 @@ namespace DESOFT.Server.API.Domain.Entities.ComicBooks
 
         public ICollection<ShoppingCartItem> ShoppingCartItem { get; set; }
         public ICollection<Inventory.Inventory> Inventory { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }
