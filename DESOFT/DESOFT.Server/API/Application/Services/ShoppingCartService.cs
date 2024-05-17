@@ -21,7 +21,6 @@ namespace DESOFT.Server.API.Application.Services
             _mapper = mapper;
         }
 
-
         public async Task<ServiceResult> AddToCart(ShoppingCartItemDTO shoppingCartItemDTO)
         {
             _logger.LogInformation("EntrouServico");
