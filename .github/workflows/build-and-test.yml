@@ -88,6 +88,7 @@ jobs:
         export PATH="$PATH:$HOME/.dotnet/tools"
         dotnet-trace collect --process-id $pid --output mytrace.nettrace --duration 00:00:00:20
         dotnet-trace convert mytrace.nettrace --format Speedscope --output dynamictesting.speedscope
+ 
       
     # Upload the dynamic report
     - name: DynamicTesting - Upload dynamic report
