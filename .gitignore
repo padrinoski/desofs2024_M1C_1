@@ -3,6 +3,8 @@
 *.lck
 
 
+/DESOFT/Test/obj/*
+/DESOFT/Test/bin/*
 /DESOFT/DESOFT.Server/obj/*
 /DESOFT/DESOFT.Server/bin/*
 .vscode
