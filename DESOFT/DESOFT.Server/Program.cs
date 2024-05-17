@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using AutoMapper;
 using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
@@ -8,11 +9,16 @@ using DESOFT.Server.API.Infrastructure;
 using DESOFT.Server.API.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(opt =>
+     {
+         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+     });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -24,12 +30,14 @@ builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<ILoginService, LoginService>();
 builder.Services.AddTransient<IComicBookService, ComicBookService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 
 //Repositories
 builder.Services.AddTransient<IAuthRepository, AuthRepository>();
 builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 builder.Services.AddTransient<IComicBookRepository, ComicBookRepository>();
 builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
@@ -54,6 +62,7 @@ var autoMapperConfig = new MapperConfiguration(mc =>
     mc.AddProfile(new ComicBookMapping());
     mc.AddProfile(new ShoppingCartMapper());
     mc.AddProfile(new ShoppingCartItemMapper());
+    mc.AddProfile(new OrderMapping());
 });
 
 IMapper mapper = autoMapperConfig.CreateMapper();

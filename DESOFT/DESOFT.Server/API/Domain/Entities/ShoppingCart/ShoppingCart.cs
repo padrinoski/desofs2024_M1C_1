@@ -14,6 +14,8 @@ namespace DESOFT.Server.API.Domain.Entities.ShoppingCart
         public int UserId { get; set; }
 
         public User.User User { get; set; }
+
+        public Order.Order Order { get; set; }
         public ICollection<ShoppingCartItem> ShoppingCartItem { get; set; }
     }
 }
