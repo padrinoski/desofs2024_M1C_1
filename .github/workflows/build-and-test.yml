@@ -1,0 +1,101 @@
+name: Automatic Pipeline Workflow
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    # Setup necessary for executing the application
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    
+    # JDK Used for dynamic testing -> dotnet-trace
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: 17
+        distribution: 'zulu'
+
+    # Node used for Speedscope that will render the dynamic testing
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    
+    # Checkout code will checkout the repository and branch code to the runner machine
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # SonarCloud Scanner will configure the environment for the static analysis made by Sonarqube
+    - name: Install SonarCloud scanner
+      working-directory: DESOFT/DESOFT.Server
+      run: |
+          mkdir -p ./.sonar/scanner
+          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
+    
+    # Install dotnet-trace to execute the dynamic analysis
+    - name: Install dotnet-trace tool
+      run: dotnet tool install --global dotnet-trace
+
+    # Speedscope is used for the dynamic test rendering
+    - name: Install Speedscope
+      run: npm install -g speedscope
+
+    
+    # Build the project
+    - name: Build
+      working-directory: DESOFT/DESOFT.Server
+      run: dotnet build --configuration Release
+
+    # Run the tests for the project
+    - name: Test
+      working-directory: DESOFT/DESOFT.Server
+      run: dotnet test
+    
+    # Execute the static analysis using SonarQube
+    - name: StaticTesting -  Run SonarQube Analysis
+      working-directory: DESOFT/DESOFT.Server
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        ./.sonar/scanner/dotnet-sonarscanner begin /k:"padrinoski_desofs2024_M1C_1" /o:"padrinoski" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        dotnet build
+        ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+    # Executing the application on background in order to validate the dynamic testing
+    - name: DynamicTesting - Run application
+      working-directory: DESOFT/DESOFT.Server
+      run: |
+        nohup dotnet run > app.log 2>&1 &
+        echo $! > app_pid.txt
+        sleep 20
+        if ! kill -0 $(cat app_pid.txt); then
+          echo "Application did not start successfully."
+          exit 1
+        fi
+
+    # Gather the test data of the dynamic test
+    - name: DynamicTesting - Collect trace data
+      run: |
+        pid=$(ps aux | grep 'dotnet run' | grep -v grep | awk '{print $2}')
+        export PATH="$PATH:$HOME/.dotnet/tools"
+        dotnet-trace collect --process-id $pid --output mytrace.nettrace --duration 00:00:00:20
+        dotnet-trace convert mytrace.nettrace --format Speedscope --output dynamictesting.speedscope
+      
+    # Upload the dynamic report
+    - name: DynamicTesting - Upload dynamic report
+      uses: actions/upload-artifact@v2
+      with:
+        name: dynamic-testing-artifacts
+        path: dynamictesting.speedscope.json
+
+    # Stop the application that was runned for the dynamic testing
+    - name: Stop the application
+      run: kill $(ps aux | grep 'dotnet run' | grep -v grep | awk '{print $2}')
