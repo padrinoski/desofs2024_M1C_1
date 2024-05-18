@@ -60,27 +60,6 @@ jobs:
       working-directory: DESOFT/DESOFT.Server
       run: dotnet build --configuration Release
 
-  # Executing the application on background in order to run postman tests
-    - name: Postman Tests - Run application
-      working-directory: DESOFT/DESOFT.Server
-      run: |
-        dotnet run > app.log 2>&1 &
-        echo $! > app_pid.txt
-        sleep 20
-        if ! kill -0 $(cat app_pid.txt); then
-          echo "Application did not start successfully."
-          exit 1
-        fi
-
-    # Postman Tests
-    - name : Postman Tests
-      continue-on-error: false
-      run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure  -e "DESOFT/DESOFT.postman_environment.json"
-
-    # Stop the application that was runned for the postman tests
-    - name: Stop the application
-      run: kill $(ps aux | grep 'dotnet run' | grep -v grep | awk '{print $2}')
-
     # Run the tests for the project
     - name: Test
       working-directory: DESOFT/DESOFT.Server
@@ -107,6 +86,11 @@ jobs:
           echo "Application did not start successfully."
           exit 1
         fi
+
+     # Postman Tests
+    - name : Postman Tests
+      continue-on-error: false
+      run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure  -e "DESOFT/DESOFT.postman_environment.json"
 
     # Gather the test data of the dynamic test
     - name: DynamicTesting - Collect trace data
