@@ -6,6 +6,7 @@ using DESOFT.Server.API.Domain.Entities.Order;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
 using DESOFT.Server.API.Domain.Entities.ShoppingCart;
 using DESOFT.Server.API.Application.DTO.ShoppingCart;
+using DESOFT.Server.API.Domain.Entities.ComicBooks;
 
 namespace DESOFT.Server.API.Application.Services
 
@@ -92,9 +93,35 @@ namespace DESOFT.Server.API.Application.Services
 
                     var cartItems = await _shoppingCartService.GetCartItems(order.ShoppingCartId);
 
+                    _logger.LogInformation("cart items count is " + cartItems.Data.Count);
+
                     if (cartItems.Success)
                     {
-                        completeOrder.ShoppingCartItems = cartItems.Data.ToList();
+
+                        List<CompleteOrderItemDTO> orderItems = new List<CompleteOrderItemDTO>();
+
+                        foreach (var item in cartItems.Data)
+                        {
+
+                            _logger.LogInformation("cart item id is " + item.ShoppingCartItemId);
+
+                            var comicBook = await _comicBookService.GetComicBook(item.ComicBookId);
+                            if (comicBook.Success)
+                            {
+
+                                CompleteOrderItemDTO orderItem = new CompleteOrderItemDTO();
+
+                                orderItem.ShoppingCartItemId = item.ShoppingCartItemId;
+                                orderItem.Quantity = item.Quantity;
+                                orderItem.ShoppingCartId = item.ShoppingCartId;
+                                orderItem.ComicBookTitle = comicBook.Data.Title;
+                                orderItem.ComicBookPrice = comicBook.Data.Price;
+                                
+                                orderItems.Add(orderItem);
+                            }
+                        }
+
+                        completeOrder.ShoppingCartItems = orderItems;
 
                         completeOrders.Add(completeOrder);
                     }
