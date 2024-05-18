@@ -213,5 +213,47 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
+        public async Task<ServiceResult<List<CompleteOrderDTO>>> GetAllOrders()
+        {
+            var result = new ServiceResult<List<CompleteOrderDTO>>();
+            try
+            {
+                List<Order> orders = await _orderRepository.GetAllOrders();
+                List<CompleteOrderDTO> completeOrders = new List<CompleteOrderDTO>();
+                foreach (Order order in orders)
+                {
+                    CompleteOrderDTO completeOrder = new CompleteOrderDTO();
+                    var cartItems = await _shoppingCartService.GetCartItems(order.ShoppingCartId);
+                    if (cartItems.Success)
+                    {
+                        List<CompleteOrderItemDTO> orderItems = new List<CompleteOrderItemDTO>();
+                        foreach (var item in cartItems.Data)
+                        {
+                            var comicBook = await _comicBookService.GetComicBook(item.ComicBookId);
+                            if (comicBook.Success)
+                            {
+                                CompleteOrderItemDTO orderItem = new CompleteOrderItemDTO();
+                                orderItem.ShoppingCartItemId = item.ShoppingCartItemId;
+                                orderItem.Quantity = item.Quantity;
+                                orderItem.ShoppingCartId = item.ShoppingCartId;
+                                orderItem.ComicBookTitle = comicBook.Data.Title;
+                                orderItem.ComicBookPrice = comicBook.Data.Price;
+
+                                orderItems.Add(orderItem);
+                            }
+                        }
+                        completeOrder.ShoppingCartItems = orderItems;
+                        completeOrders.Add(completeOrder);
+                    }
+                }
+                result.Data = completeOrders;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return result;
+        }
+
     }
 }
