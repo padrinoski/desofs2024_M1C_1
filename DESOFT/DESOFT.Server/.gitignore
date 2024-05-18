@@ -1,0 +1,12 @@
+/DESOFT/.vs
+.idea
+*.lck
+
+
+/DESOFT/Test/obj/*
+/DESOFT/Test/bin/*
+/DESOFT/DESOFT.Server/obj/*
+/DESOFT/DESOFT.Server/bin/*
+/DESOFT/DESOFT.Client/obj/*
+.vscode
+
