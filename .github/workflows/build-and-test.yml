@@ -61,10 +61,10 @@ jobs:
       run: dotnet build --configuration Release
 
   # Executing the application on background in order to run postman tests
-    - name: DynamicTesting - Run application
+    - name: Postman Tests - Run application
       working-directory: DESOFT/DESOFT.Server
       run: |
-        dotnet run 
+        dotnet run --host
 
     # Postman Tests
     - name : Postman Tests
