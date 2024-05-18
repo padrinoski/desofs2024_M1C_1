@@ -67,7 +67,7 @@ jobs:
         # Environment ID to use
         environment: 17778118-06e6121e-cca8-48ed-8d52-4a06016b8b23
         # Postman API key
-        apiKey: PMAT-01HY5NY732HFB4J7KPE9AJN3MC
+        apiKey: https://api.postman.com/collections/17778118-c196e601-d43c-42e3-ab20-385d419d531c?access_key=PMAT-01HY5NY732HFB4J7KPE9AJN3MC
     
     # Execute the static analysis using SonarQube
     - name: StaticTesting -  Run SonarQube Analysis
