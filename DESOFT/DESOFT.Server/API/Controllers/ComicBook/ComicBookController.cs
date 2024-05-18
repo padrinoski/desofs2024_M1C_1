@@ -59,9 +59,9 @@ namespace DESOFT.Server.API.Controllers.ComicBook
 
         [HttpGet((nameof(SearchComicBooks)))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
-        public async Task<IActionResult> SearchComicBooks([FromQuery] string? title, [FromQuery] string? author)
+        public async Task<IActionResult> SearchComicBooks([FromQuery] string? title, [FromQuery] string? author, [FromQuery] string sortBy = "title", [FromQuery] string sortOrder = "asc")
         {
-            var result = await _comicService.SearchComicBooks(title, author);
+            var result = await _comicService.SearchComicBooks(title, author, sortBy, sortOrder);
             return Ok(result);
         }
         
