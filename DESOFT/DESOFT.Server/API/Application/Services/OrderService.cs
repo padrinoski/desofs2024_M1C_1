@@ -4,6 +4,8 @@ using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Application.DTO.Order;
 using DESOFT.Server.API.Domain.Entities.Order;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
+using DESOFT.Server.API.Domain.Entities.ShoppingCart;
+using DESOFT.Server.API.Application.DTO.ShoppingCart;
 
 namespace DESOFT.Server.API.Application.Services
 
@@ -64,6 +66,49 @@ namespace DESOFT.Server.API.Application.Services
                 await _orderRepository.CreateOrder(order);
 
                 await _orderRepository.SaveTransaction(result, "An error occurred while saving the data.");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+
+        public async Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(int userId)
+        {
+            var result = new ServiceResult<List<CompleteOrderDTO>>();
+
+            try
+            {
+                List<Order> orders = await _orderRepository.GetOrdersByUserId(userId);
+
+                List<CompleteOrderDTO> completeOrders = new List<CompleteOrderDTO>();
+
+                foreach (Order order in orders)
+                {
+                    CompleteOrderDTO completeOrder = new CompleteOrderDTO();
+
+                    var cartItems = await _shoppingCartService.GetCartItems(order.ShoppingCartId);
+
+                    if (cartItems.Success)
+                    {
+                        completeOrder.ShoppingCartItems = cartItems.Data.ToList();
+
+                        completeOrders.Add(completeOrder);
+                    }
+                    else
+                    {
+                        _logger.LogError("Failed to retrieve cart items.");
+                    }
+
+                    
+                }
+
+                result.Data = completeOrders;
+
+                await _orderRepository.SaveTransaction(result, "An error occurred while retrieving the data.");
 
             }
             catch (Exception ex)

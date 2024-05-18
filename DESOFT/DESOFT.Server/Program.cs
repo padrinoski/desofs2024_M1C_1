@@ -32,6 +32,7 @@ builder.Services.AddTransient<IComicBookService, ComicBookService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<IUsersService, UsersService>();
+builder.Services.AddTransient<IInvoiceService, InvoiceService>();
 
 //Repositories
 builder.Services.AddTransient<IAuthRepository, AuthRepository>();

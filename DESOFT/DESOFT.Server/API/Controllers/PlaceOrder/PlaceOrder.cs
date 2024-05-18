@@ -75,6 +75,30 @@ namespace DESOFT.Server.API.Controllers.PlaceOrder
             return result;
         }
 
+        [HttpGet(nameof(GetOrdersByUserId) + "/{userId}")]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        public async Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(int userId)
+        {
+            var result = new ServiceResult<List<CompleteOrderDTO>>();
+            try
+            {
+                var resultFromCall = await _orderService.GetOrdersByUserId(userId);
+                if (resultFromCall.Success)
+                {
+                    result.Data = resultFromCall.Data;
+                }
+                else
+                {
+                    result.Errors.Add(new KeyVal { Key = "Error retrieving the orders." });
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Errors.Add(new KeyVal { Key = "Error processing the request. Exception" + ex.Message });
+            }
+            return result;
+        }
+
 /* 
 
         [HttpDelete(nameof(RemoveFromCart) + "/{cartId}" + "/{id}")]

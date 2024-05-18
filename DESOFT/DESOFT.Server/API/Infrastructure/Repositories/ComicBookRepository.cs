@@ -42,5 +42,22 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             return tracking ? await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).SingleOrDefaultAsync() :
                  await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).AsNoTracking().SingleOrDefaultAsync();
         }
+
+        public async Task<List<ComicBook>> SearchComicBooks(string title, string author)
+        {
+            var query = _context.ComicBook.AsQueryable();
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                query = query.Where(cb => cb.Title.ToLower().Contains(title.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(author))
+            {
+                query = query.Where(cb => cb.Author.ToLower().Contains(author.ToLower()));
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }

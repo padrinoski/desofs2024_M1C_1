@@ -56,6 +56,14 @@ namespace DESOFT.Server.API.Controllers.ComicBook
         {
             return await _comicService.DeleteComicBook(comicBookId);
         }
+
+        [HttpGet((nameof(SearchComicBooks)))]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        public async Task<IActionResult> SearchComicBooks([FromQuery] string? title, [FromQuery] string? author)
+        {
+            var result = await _comicService.SearchComicBooks(title, author);
+            return Ok(result);
+        }
         
     }
 }
