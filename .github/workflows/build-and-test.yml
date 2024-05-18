@@ -65,6 +65,9 @@ jobs:
       working-directory: DESOFT/DESOFT.Server
       run: dotnet test
 
+    - name : Run Application
+      run : dotnet run --project DESOFT/DESOFT.Server
+
     - name : Postman Tests
       continue-on-error: true
       run : newman run "DESOFT/DESOFT.postman_collection.json" -e "DESOFT/DESOFT.postman_environment.json" -r cli
