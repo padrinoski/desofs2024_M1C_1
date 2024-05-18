@@ -88,8 +88,8 @@ jobs:
         fi
 
     - name : Postman Tests
-      continue-on-error: true
-      run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure -e "DESOFT/DESOFT.postman_environment.json"
+      continue-on-error: false
+      run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure
 
     # Gather the test data of the dynamic test
     - name: DynamicTesting - Collect trace data
