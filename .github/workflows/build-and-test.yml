@@ -27,7 +27,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'
     
     # Checkout code will checkout the repository and branch code to the runner machine
     - name: Checkout code
