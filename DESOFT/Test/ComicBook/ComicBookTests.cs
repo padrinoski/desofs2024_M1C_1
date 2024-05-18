@@ -214,5 +214,27 @@ namespace Test.ComicBook
 
         }
 
+        [Fact]
+        public async void SearchComicBooks()
+        {
+            var catalog = new List<DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook>();
+
+            catalog.Add(model);
+
+            _comicBookRepository.SearchComicBooks("Title", "Ian Brooke", "title", "asc").Returns(catalog);
+
+            //Act
+            var result = await comicBookService.SearchComicBooks("Title", "Ian Brooke", "title", "asc");
+
+            //Assert
+
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.StatusCode.Should().BeNull();
+            result.Data.Should().NotBeNull();
+            result.Data.Should().BeEquivalentTo(_mapper.Map<List<ComicBookDTO>>(catalog));
+
+        }
+
     }
 }
