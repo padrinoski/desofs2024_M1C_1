@@ -89,8 +89,12 @@ jobs:
 
     - name : Check processes
       run: |
-        ps aux | grep '[d]otnet' | awk '{print $2}' | xargs -I {} sudo netstat -tuln | grep {}
-      
+        ps aux | grep dotnet
+
+    - name : Check netstat
+      run: |
+        sudo netstat -tuln
+        
     - name: Wait for the server to be ready
       run: |
         echo "Waiting for the server to start..."
