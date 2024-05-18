@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "c196e601-d43c-42e3-ab20-385d419d531c",
+		"name": "DESOFT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17778118"
+	},
+	"item": [
+		{
+			"name": "Get Catalog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/GetCatalog",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"GetCatalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Catalog Forbidden",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.KH7G2R024N4ufqnVJYVRb5QAOA7T6OioaiL-ukaygDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/GetCatalog",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"GetCatalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comick Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"GetComicBook",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comick Book Forbidden",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.KH7G2R024N4ufqnVJYVRb5QAOA7T6OioaiL-ukaygDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"GetComicBook",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comick Book Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Request body not null\", function () {\r",
+							"    pm.expect(pm.response.body).to.be.not.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Request errors not to be null\", function () {\r",
+							"    let responseData = pm.response.json();\r",
+							"    pm.expect(responseData.errors).to.be.not.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Request success response equals false\", function () {\r",
+							"    let responseData = pm.response.json();\r",
+							"    pm.expect(responseData.success).to.eql(false);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"GetComicBook",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comic Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.KH7G2R024N4ufqnVJYVRb5QAOA7T6OioaiL-ukaygDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"version\": \"2.3.1\",\r\n  \"publishingDate\": \"2024-05-05T16:45:43.536Z\",\r\n  \"price\": 20.0,\r\n  \"title\": \"Três Macaquinhos\",\r\n  \"description\": \"It's a story.\",\r\n  \"author\": \"Ian Brooke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/CreateComicbook",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"CreateComicbook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comic Book Invalid Object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Bad POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Request errors not to be null\", function () {\r",
+							"    let responseData = pm.response.json();\r",
+							"    pm.expect(responseData.errors).to.be.not.null;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.KH7G2R024N4ufqnVJYVRb5QAOA7T6OioaiL-ukaygDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"version\": \"2.3.1\",\r\n  \"publishingDate\": \"2024-05-05T16:45:43.536Z\",\r\n  \"price\": 20.0,\r\n  \"title\": \"Testeeeeeeeeeeeeeeeeeeeeeeeee\",\r\n  \"description\": \"It's a story.\",\r\n  \"author\": \"Ian Brooke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/CreateComicbook",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"CreateComicbook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Comic Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.KH7G2R024N4ufqnVJYVRb5QAOA7T6OioaiL-ukaygDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"comicBookId\": 7,\r\n  \"version\": \"1.1\",\r\n  \"publishingDate\": \"2024-05-14T17:54:43.600Z\",\r\n  \"price\": 300.00,\r\n  \"title\": \"Once Upon a Time\",\r\n  \"description\": \"Its a story\",\r\n  \"author\": \"Ian Brooke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/EditComicBook/7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"EditComicBook",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Comic Book Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"comicBookId\": 2,\r\n  \"version\": \"1.1\",\r\n  \"publishingDate\": \"2024-05-14T17:54:43.600Z\",\r\n  \"price\": 300.00,\r\n  \"title\": \"Once Upon a Time\",\r\n  \"description\": \"Its a story\",\r\n  \"author\": \"Ian Brooke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/EditComicBook/48",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"EditComicBook",
+						"48"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comic Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/DeleteComicBook/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"DeleteComicBook",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Comic Book Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.KH7G2R024N4ufqnVJYVRb5QAOA7T6OioaiL-ukaygDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7242/api/ComicBook/DeleteComicBook/50",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7242",
+					"path": [
+						"api",
+						"ComicBook",
+						"DeleteComicBook",
+						"50"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

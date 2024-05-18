@@ -1,6 +1,15 @@
 /DESOFT/.vs
 .idea
 *.lck
+
+
+/DESOFT/Test/obj/*
+/DESOFT/Test/bin/*
+/DESOFT/DESOFT.Server/obj/*
+/DESOFT/DESOFT.Server/bin/*
+/DESOFT/DESOFT.Client/obj/*
+.vscode
+
 /DESOFT/DESOFT.Server/bin/Debug/net8.0/2c146be8b8694dc18b9230f0dede9ca9.sh
 /DESOFT/DESOFT.Server/obj/Debug/net8.0/apphost
 /DESOFT/DESOFT.Server/bin/Debug/net8.0/Auth0.AspNetCore.Authentication.dll

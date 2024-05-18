@@ -165,63 +165,25 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Payment Method");
+
+                    b.Property<int>("ShoppingCartId")
+                        .HasColumnType("int")
+                        .HasComment("ID of the Shopping Cart");
+
                     b.Property<decimal>("TotalCost")
                         .HasColumnType("decimal(18,2)")
                         .HasComment("Total Cost");
 
                     b.HasKey("OrderId");
 
+                    b.HasIndex("ShoppingCartId")
+                        .IsUnique();
+
                     b.ToTable("Order", (string)null);
-                });
-
-            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.Order.OrderItem", b =>
-                {
-                    b.Property<int>("OrderItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasComment("ID of the OrderItem");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemId"));
-
-                    b.Property<DateTime>("AlteracaoData")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()")
-                        .HasComment("Data de alteração do registo (auditoria).");
-
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
-                        .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
-
-                    b.Property<int>("ComicBookId")
-                        .HasColumnType("int")
-                        .HasComment("ID of the ComicBook");
-
-                    b.Property<DateTime>("CriacaoData")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()")
-                        .HasComment("Data de criação do registo (auditoria).");
-
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
-                        .HasComment("Identificador do utilizador que criou o registo (auditoria).");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int")
-                        .HasComment("ID of the Order");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int")
-                        .HasComment("Quantity");
-
-                    b.HasKey("OrderItemId");
-
-                    b.HasIndex("ComicBookId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderItem", (string)null);
                 });
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", b =>
@@ -301,9 +263,15 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("ShoppingCartId")
+                        .HasColumnType("int")
+                        .HasComment("ID of the Shopping Cart");
+
                     b.HasKey("ShoppingCartItemId");
 
                     b.HasIndex("ComicBookId");
+
+                    b.HasIndex("ShoppingCartId");
 
                     b.ToTable("ShoppingCartItem", (string)null);
                 });
@@ -454,23 +422,15 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                     b.Navigation("ComicBook");
                 });
 
-            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.Order.OrderItem", b =>
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.Order.Order", b =>
                 {
-                    b.HasOne("DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook", "ComicBook")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("ComicBookId")
+                    b.HasOne("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", "ShoppingCart")
+                        .WithOne("Order")
+                        .HasForeignKey("DESOFT.Server.API.Domain.Entities.Order.Order", "ShoppingCartId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DESOFT.Server.API.Domain.Entities.Order.Order", "Order")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("ComicBook");
-
-                    b.Navigation("Order");
+                    b.Navigation("ShoppingCart");
                 });
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", b =>
@@ -492,7 +452,15 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", "ShoppingCart")
+                        .WithMany("ShoppingCartItem")
+                        .HasForeignKey("ShoppingCartId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("ComicBook");
+
+                    b.Navigation("ShoppingCart");
                 });
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User_Role", b =>
@@ -518,14 +486,15 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                 {
                     b.Navigation("Inventory");
 
-                    b.Navigation("OrderItems");
-
                     b.Navigation("ShoppingCartItem");
                 });
 
-            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.Order.Order", b =>
+            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", b =>
                 {
-                    b.Navigation("OrderItems");
+                    b.Navigation("Order")
+                        .IsRequired();
+
+                    b.Navigation("ShoppingCartItem");
                 });
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.Role", b =>
