@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "93abecfb-5c1d-4c01-aa2b-e0e3696ee69f",
-		"name": "DESOFT",
+		"_postman_id": "4b8e5c8a-5e73-4111-91ca-8ba196af8fbb",
+		"name": "DESOFT Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17778118"
 	},
@@ -16,6 +16,18 @@
 							"pm.test(\"Forbidden POST request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([401]);\r",
 							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(pm.request.url);\r",
+							"console.log(pm.request.headers);\r",
+							"console.log(pm.request.body);"
 						],
 						"type": "text/javascript",
 						"packages": {}
