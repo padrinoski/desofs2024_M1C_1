@@ -99,7 +99,7 @@ jobs:
       run: |
         echo "Waiting for the server to start..."
         for i in `seq 1 30`; do
-          nc -z 127.0.0.1 7242 && echo "Server is up!" && break
+          nc -z 127.0.0.1 5265 && echo "Server is up!" && break
           echo "Waiting..."
           sleep 1
         done
