@@ -13,7 +13,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful POST request\", function () {\r",
+							"pm.test(\"Forbidden POST request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([401]);\r",
 							"});"
 						],
@@ -22,6 +22,9 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableUrlEncoding": false
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
