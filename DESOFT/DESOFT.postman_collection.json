@@ -71,7 +71,7 @@
 				}
 			],
 			"protocolProfileBehavior": {
-				"disableUrlEncoding": false,
+				"disableUrlEncoding": true,
 				"followRedirects": true,
 				"strictSSL": false
 			},
