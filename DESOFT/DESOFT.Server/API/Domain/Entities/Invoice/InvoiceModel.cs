@@ -10,7 +10,16 @@ namespace DESOFT.Server.API.Domain.Entities.Invoice
 
         public String CustomerAddress { get; set; }
 
-        public List<ShoppingCartItem> Items { get; set; }
+        public List<InvoiceItem> Items { get; set; }
+    }
+
+    public class InvoiceItem
+    {
+        public int ShoppingCartItemId { get; set; }
+        public int ShoppingCartId { get; set; }
+        public string ComicBookTitle { get; set; }
+        public decimal ComicBookPrice { get; set; }
+        public int Quantity { get; set; }
     }
 
 }

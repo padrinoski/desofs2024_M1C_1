@@ -8,6 +8,7 @@ using DESOFT.Server.API.Application.Services;
 using DESOFT.Server.API.Infrastructure;
 using DESOFT.Server.API.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -57,6 +58,9 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(5);
 });
 
+//QuestPDF Configuration
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 //AutoMapper
 

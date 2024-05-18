@@ -27,7 +27,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'
     
     # Checkout code will checkout the repository and branch code to the runner machine
     - name: Checkout code
@@ -64,7 +64,7 @@ jobs:
     - name: Test
       working-directory: DESOFT/DESOFT.Server
       run: dotnet test
-    
+      
     # Execute the static analysis using SonarQube
     - name: StaticTesting -  Run SonarQube Analysis
       working-directory: DESOFT/DESOFT.Server
@@ -86,6 +86,10 @@ jobs:
           echo "Application did not start successfully."
           exit 1
         fi
+
+    - name : Postman Tests
+      continue-on-error: false
+      run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure
 
     # Gather the test data of the dynamic test
     - name: DynamicTesting - Collect trace data

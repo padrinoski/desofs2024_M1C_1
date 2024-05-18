@@ -39,12 +39,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/GetCatalog",
+					"raw": "https://localhost:5173/api/ComicBook/GetCatalog",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -70,12 +70,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/2",
+					"raw": "https://localhost:5173/api/ComicBook/GetComicBook/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -116,12 +116,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/2",
+					"raw": "https://localhost:5173/api/ComicBook/GetComicBook/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -176,12 +176,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/4",
+					"raw": "https://localhost:5173/api/ComicBook/GetComicBook/4",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -231,12 +231,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/CreateComicbook",
+					"raw": "https://localhost:5173/api/ComicBook/CreateComicbook",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -282,12 +282,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/GetCatalog",
+					"raw": "https://localhost:5173/api/ComicBook/GetCatalog",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -341,12 +341,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/CreateComicbook",
+					"raw": "https://localhost:5173/api/ComicBook/CreateComicbook",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -395,12 +395,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/EditComicBook/{{ComicBookId}}",
+					"raw": "https://localhost:5173/api/ComicBook/EditComicBook/{{ComicBookId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -450,12 +450,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/EditComicBook/999",
+					"raw": "https://localhost:5173/api/ComicBook/EditComicBook/999",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -496,12 +496,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
+					"raw": "https://localhost:5173/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",
@@ -542,12 +542,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7242/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
+					"raw": "https://localhost:5173/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "7242",
+					"port": "5173",
 					"path": [
 						"api",
 						"ComicBook",

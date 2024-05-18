@@ -15,6 +15,6 @@ namespace DESOFT.Server.API.Application.DTO.Order
         
         public PaymentMethod PaymentMethod { get; set; }
 
-        public List<ShoppingCartItemDTO> ShoppingCartItems { get; set; }
+        public List<CompleteOrderItemDTO> ShoppingCartItems { get; set; }
     }
 }

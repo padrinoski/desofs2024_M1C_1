@@ -7,9 +7,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
     public interface IInvoiceService
     {
 
-        Task<InvoiceModel> generateInvoiceModel(Order order);
-
-        Task<ServiceResult> generateInvoiceDocument(int orderId);
+        Task<ServiceResult<byte[]>> generateInvoiceDocument(int orderId);
         
     }
 }

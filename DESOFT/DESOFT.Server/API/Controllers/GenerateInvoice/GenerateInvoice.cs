@@ -1,5 +1,6 @@
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
 using DESOFT.Server.API.Application.Interfaces.Services;
+using DESOFT.Server.API.Authorization;
 using DESOFT.Server.API.Shared.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
@@ -17,7 +18,8 @@ namespace DESOFT.Server.API.Controllers.GenerateInvoice
             _invoiceService = invoiceService;
         }
 
-        [HttpPost(nameof(GenerateInvoiceDocument) + "/{orderId}")]
+        [HttpGet(nameof(GenerateInvoiceDocument) + "/{orderId}")]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
         public async Task<ServiceResult> GenerateInvoiceDocument(int orderId)
         {
             var result = new ServiceResult();
