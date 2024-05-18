@@ -142,13 +142,13 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
-        public async Task<ServiceResult<List<ComicBookDTO>>> FilterComicBooks(string title, string author)
+        public async Task<ServiceResult<List<ComicBookDTO>>> SearchComicBooks(string title, string author)
         {
             var result = new ServiceResult<List<ComicBookDTO>>();
 
             try
             {
-                var comicBooks = await _comicBookRepository.FilterComicBooks(title, author);
+                var comicBooks = await _comicBookRepository.SearchComicBooks(title, author);
                 result.Data = _mapper.Map<List<ComicBookDTO>>(comicBooks);
             }
             catch (Exception ex)

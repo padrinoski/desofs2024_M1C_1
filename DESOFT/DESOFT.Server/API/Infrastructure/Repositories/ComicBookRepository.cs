@@ -43,7 +43,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
                  await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).AsNoTracking().SingleOrDefaultAsync();
         }
 
-        public async Task<List<ComicBook>> FilterComicBooks(string title, string author)
+        public async Task<List<ComicBook>> SearchComicBooks(string title, string author)
         {
             var query = _context.ComicBook.AsQueryable();
 
