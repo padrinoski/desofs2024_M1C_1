@@ -51,8 +51,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/GetCatalog",
-					"protocol": "https",
+					"raw": "http://localhost:5265/api/ComicBook/GetCatalog",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
