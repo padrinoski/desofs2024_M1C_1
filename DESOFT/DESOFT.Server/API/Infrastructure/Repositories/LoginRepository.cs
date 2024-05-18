@@ -1,5 +1,6 @@
 ﻿using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Domain.Entities.User;
+using Microsoft.EntityFrameworkCore;
 
 namespace DESOFT.Server.API.Infrastructure.Repositories
 {
@@ -14,15 +15,15 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             _logger = logger;
             _context = context;
         }
-
-        public Task Login()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public async Task Register(User user)
         {
             await _context.Users.AddAsync(user);
+        }
+        
+        public async Task<User> GetUserByUsernameAndPassword(string username, string password)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username && u.Password == password);
         }
     }
 }

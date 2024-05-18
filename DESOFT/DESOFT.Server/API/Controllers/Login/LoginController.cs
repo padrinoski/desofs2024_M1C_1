@@ -22,9 +22,9 @@ namespace DESOFT.Server.API.Controllers.Login
 
         //[TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
         [HttpPost(nameof(Login))]
-        public async Task<bool> Login(LoginDTO dto)
+        public async Task<ServiceResult> Login(LoginDTO dto)
         {
-            return await Task.Run(() => true);
+            return await _loginService.Login(dto);
         }
         
         [HttpPost(nameof(Register))]
