@@ -64,13 +64,7 @@ jobs:
     - name: DynamicTesting - Run application
       working-directory: DESOFT/DESOFT.Server
       run: |
-        dotnet run > app.log 2>&1 &
-        echo $! > app_pid.txt
-        sleep 20
-        if ! kill -0 $(cat app_pid.txt); then
-          echo "Application did not start successfully."
-          exit 1
-        fi
+        dotnet run 
 
     # Postman Tests
     - name : Postman Tests
