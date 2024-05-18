@@ -45,9 +45,19 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
 
         public async Task<List<ComicBook>> FilterComicBooks(string title, string author)
         {
-            return await _context.ComicBook
-                .Where(cb => cb.Title.ToLower().Contains(title.ToLower()) && cb.Author.ToLower().Contains(author.ToLower()))
-                .ToListAsync();
+            var query = _context.ComicBook.AsQueryable();
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                query = query.Where(cb => cb.Title.ToLower().Contains(title.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(author))
+            {
+                query = query.Where(cb => cb.Author.ToLower().Contains(author.ToLower()));
+            }
+
+            return await query.ToListAsync();
         }
     }
 }
