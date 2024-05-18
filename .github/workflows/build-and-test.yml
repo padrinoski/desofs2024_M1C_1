@@ -58,6 +58,16 @@ jobs:
     - name: Test
       working-directory: DESOFT/DESOFT.Server
       run: dotnet test
+
+    - name: Newman - Postman.
+      uses: gasparhe/newman-action@1.0.0
+      with:
+         # Collection ID to use
+        collection: 17778118-c196e601-d43c-42e3-ab20-385d419d531c
+        # Environment ID to use
+        environment: asd
+        # Postman API key
+        apiKey: https://api.postman.com/collections/17778118-c196e601-d43c-42e3-ab20-385d419d531c?access_key=PMAT-01HY5NY732HFB4J7KPE9AJN3MC
     
     # Execute the static analysis using SonarQube
     - name: StaticTesting -  Run SonarQube Analysis
