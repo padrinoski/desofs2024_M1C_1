@@ -30,5 +30,11 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
                  await _context.Orders.Where(e => e.OrderId == orderId).AsNoTracking().SingleOrDefaultAsync();
         }
 
+        public async Task<List<Order>> GetOrdersByUserId(int userId, bool tracking = false)
+        {
+            return tracking ? await _context.Orders.Where(e => e.CriacaoUtilizadorId == userId).ToListAsync() :
+                 await _context.Orders.Where(e => e.CriacaoUtilizadorId == userId).AsNoTracking().ToListAsync();
+        }
+
     }
 }
