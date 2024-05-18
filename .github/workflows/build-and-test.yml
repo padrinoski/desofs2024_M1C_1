@@ -87,6 +87,15 @@ jobs:
           exit 1
         fi
 
+    - name: Wait for the server to be ready
+      run: |
+        echo "Waiting for the server to start..."
+        for i in `seq 1 30`; do
+          nc -z 127.0.0.1 7242 && echo "Server is up!" && break
+          echo "Waiting..."
+          sleep 1
+        done
+
      # Postman Tests
     - name : Postman Tests
       continue-on-error: false
