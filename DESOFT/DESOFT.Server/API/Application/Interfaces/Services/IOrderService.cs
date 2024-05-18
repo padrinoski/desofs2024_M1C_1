@@ -13,6 +13,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
         
         Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(int userId);
 
+        Task<ServiceResult<List<CompleteOrderDTO>>> GetAllOrders();
     }
 
 }
