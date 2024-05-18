@@ -87,6 +87,10 @@ jobs:
           exit 1
         fi
 
+    - name : Check processes
+      run: |
+        ps aux | grep dotnet
+      
     - name: Wait for the server to be ready
       run: |
         echo "Waiting for the server to start..."
