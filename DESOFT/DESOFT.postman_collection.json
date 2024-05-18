@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "4b8e5c8a-5e73-4111-91ca-8ba196af8fbb",
-		"name": "DESOFT Copy",
+		"_postman_id": "93abecfb-5c1d-4c01-aa2b-e0e3696ee69f",
+		"name": "DESOFT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17778118"
 	},
@@ -13,7 +13,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Forbidden POST request\", function () {\r",
+							"pm.test(\"Forbidden request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([401]);\r",
 							"});"
 						],
@@ -25,7 +25,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"console.log(pm.request.url.toString());\r",
+							"console.log(pm.request.url);\r",
 							"console.log(pm.request.headers);\r",
 							"console.log(pm.request.body);"
 						],
@@ -34,9 +34,6 @@
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableUrlEncoding": false
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -51,12 +48,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/GetCatalog",
+					"raw": "https://localhost:7242/api/ComicBook/GetCatalog",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -83,9 +80,8 @@
 				}
 			],
 			"protocolProfileBehavior": {
-				"disableUrlEncoding": true,
-				"followRedirects": true,
-				"strictSSL": false
+				"disableUrlEncoding": false,
+				"followRedirects": true
 			},
 			"request": {
 				"auth": {
@@ -101,12 +97,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/GetComicBook/2",
+					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -147,12 +143,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/GetComicBook/2",
+					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -175,16 +171,16 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Request body not null\", function () {\r",
-							"    pm.expect(pm.response.body).to.be.not.null;\r",
+							"    pm.expect(pm.response.text()).to.not.be.null;\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Request errors not to be null\", function () {\r",
-							"    let responseData = JSON.parse(pm.response);\r",
-							"    pm.expect(responseData.errors).to.be.not.null;\r",
+							"    let responseData = pm.response.json();\r",
+							"    pm.expect(responseData.errors).to.not.be.null;\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Request success response equals false\", function () {\r",
-							"    let responseData = JSON.parse(pm.response);\r",
+							"    let responseData = pm.response.json();\r",
 							"    pm.expect(responseData.success).to.eql(false);\r",
 							"});"
 						],
@@ -207,12 +203,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/GetComicBook/4",
+					"raw": "https://localhost:7242/api/ComicBook/GetComicBook/4",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -262,12 +258,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/CreateComicbook",
+					"raw": "https://localhost:7242/api/ComicBook/CreateComicbook",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -284,15 +280,27 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful POST request\", function () {\r",
+							"pm.test(\"Successful request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
 							"});\r",
 							"\r",
-							"let responseData = JSON.parse(pm.response);\r",
+							"pm.test(\"Response is a JSON\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
 							"\r",
-							"let lastComicBook = responseData.data[responseData.data.length-1];\r",
+							"pm.test(\"Response has a data array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property('data').that.is.an('array');\r",
+							"});\r",
 							"\r",
-							"postman.setEnvironmentVariable(\"ComicBookId\", lastComicBook.comicBookId);"
+							"pm.test(\"Response data array is not empty\", function () {\r",
+							"    pm.expect(pm.response.json().data).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Save last comicBookId in environment variable\", function () {\r",
+							"    var lastComicBook = pm.response.json().data[pm.response.json().data.length - 1];\r",
+							"    pm.environment.set(\"ComicBookId\", lastComicBook.comicBookId);\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -313,12 +321,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/GetCatalog",
+					"raw": "https://localhost:7242/api/ComicBook/GetCatalog",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -340,9 +348,10 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Request errors not to be null\", function () {\r",
-							"    let responseData = JSON.parse(pm.response);\r",
-							"    pm.expect(responseData.errors).to.be.not.null;\r",
-							"});"
+							"    let responseData = pm.response.json();\r",
+							"    pm.expect(responseData.errors).to.not.be.null;\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -372,12 +381,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/CreateComicbook",
+					"raw": "https://localhost:7242/api/ComicBook/CreateComicbook",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -426,12 +435,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/EditComicBook/{{ComicBookId}}",
+					"raw": "https://localhost:7242/api/ComicBook/EditComicBook/{{ComicBookId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -481,12 +490,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/EditComicBook/999",
+					"raw": "https://localhost:7242/api/ComicBook/EditComicBook/999",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -527,12 +536,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
+					"raw": "https://localhost:7242/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
@@ -573,12 +582,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5265/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
+					"raw": "https://localhost:7242/api/ComicBook/DeleteComicBook/{{ComicBookId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5265",
+					"port": "7242",
 					"path": [
 						"api",
 						"ComicBook",
