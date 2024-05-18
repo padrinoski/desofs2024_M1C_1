@@ -66,8 +66,8 @@ jobs:
       run: dotnet test
 
     - name : Postman Tests
-      run : true | 
-        newman run "DESOFT/DESOFT.postman_collection.json" -e "DESOFT/DESOFT.postman_environment.json" -r cli
+      continue-on-error: true
+      run : newman run "DESOFT/DESOFT.postman_collection.json" -e "DESOFT/DESOFT.postman_environment.json" -r cli
     
     # Execute the static analysis using SonarQube
     - name: StaticTesting -  Run SonarQube Analysis
