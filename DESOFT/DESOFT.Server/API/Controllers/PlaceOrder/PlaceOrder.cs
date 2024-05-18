@@ -76,7 +76,7 @@ namespace DESOFT.Server.API.Controllers.PlaceOrder
         }
 
         [HttpGet(nameof(GetOrdersByUserId) + "/{userId}")]
-        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        [TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
         public async Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(int userId)
         {
             var result = new ServiceResult<List<CompleteOrderDTO>>();

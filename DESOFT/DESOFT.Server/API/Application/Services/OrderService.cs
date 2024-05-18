@@ -146,5 +146,72 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
+        public async Task<ServiceResult<CompleteOrderDTO>> GetOrderInformationById(int orderId)
+        {
+            var result = new ServiceResult<CompleteOrderDTO>();
+
+            try
+            {
+                var order = await _orderRepository.GetOrder(orderId);
+
+                CompleteOrderDTO completeOrder = new CompleteOrderDTO();
+
+                if(order != null)
+                {
+
+                    var cartItems = await _shoppingCartService.GetCartItems(order.ShoppingCartId);
+
+                    _logger.LogInformation("cart items count is " + cartItems.Data.Count);
+
+                    if (cartItems.Success)
+                    {
+
+                        List<CompleteOrderItemDTO> orderItems = new List<CompleteOrderItemDTO>();
+
+                        foreach (var item in cartItems.Data)
+                        {
+
+                            _logger.LogInformation("cart item id is " + item.ShoppingCartItemId);
+
+                            var comicBook = await _comicBookService.GetComicBook(item.ComicBookId);
+                            if (comicBook.Success)
+                            {
+
+                                CompleteOrderItemDTO orderItem = new CompleteOrderItemDTO();
+
+                                orderItem.ShoppingCartItemId = item.ShoppingCartItemId;
+                                orderItem.Quantity = item.Quantity;
+                                orderItem.ShoppingCartId = item.ShoppingCartId;
+                                orderItem.ComicBookTitle = comicBook.Data.Title;
+                                orderItem.ComicBookPrice = comicBook.Data.Price;
+                                
+                                orderItems.Add(orderItem);
+                            }
+                        }
+
+                        completeOrder.ShoppingCartItems = orderItems;
+
+                    }
+                    else
+                    {
+                        _logger.LogError("Failed to retrieve cart items.");
+                    }
+
+                    
+                }
+
+                result.Data = completeOrder;
+
+                await _orderRepository.SaveTransaction(result, "An error occurred while retrieving the data.");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+
     }
 }
