@@ -62,8 +62,7 @@ jobs:
     - name: Postman Tests
       uses: gasparhe/newman-action@1.0.0
       with:
-         # Collection ID to use
-        collection: 17778118-c196e601-d43c-42e3-ab20-385d419d531c
+        collection: DESOFT.postman_collection.json
         # Environment ID to use
         environment: 17778118-06e6121e-cca8-48ed-8d52-4a06016b8b23
         # Postman API key
