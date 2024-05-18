@@ -31,6 +31,7 @@ builder.Services.AddTransient<ILoginService, LoginService>();
 builder.Services.AddTransient<IComicBookService, ComicBookService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<IUsersService, UsersService>();
 
 //Repositories
 builder.Services.AddTransient<IAuthRepository, AuthRepository>();
@@ -38,6 +39,7 @@ builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 builder.Services.AddTransient<IComicBookRepository, ComicBookRepository>();
 builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 
 
 IConfigurationRoot configuration = new ConfigurationBuilder()

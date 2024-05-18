@@ -9,7 +9,7 @@ namespace DESOFT.Server.API.Shared.Infrastructure
         public bool Success
         {
             get => !Errors.Any();
-            private set { }
+            internal set { }
         }
 
         [DataMember]
