@@ -86,14 +86,6 @@ jobs:
           echo "Application did not start successfully."
           exit 1
         fi
-
-    - name : Check processes
-      run: |
-        ps aux | grep dotnet
-
-    - name : Check netstat
-      run: |
-        sudo netstat -tuln
         
     - name: Wait for the server to be ready
       run: |
