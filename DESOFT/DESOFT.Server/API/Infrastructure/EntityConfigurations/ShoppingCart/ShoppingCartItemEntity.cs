@@ -18,10 +18,17 @@ namespace DESOFT.Server.API.Infrastructure.EntityConfigurations.ShoppingCart
 
             builder.Property(e => e.ComicBookId)
                 .HasComment("ID of the Comic Book");
-
+    
             builder.HasOne(e => e.ComicBook)
                 .WithMany(e => e.ShoppingCartItem)
                 .HasForeignKey(e => e.ComicBookId);
+
+            builder.Property(e => e.ShoppingCartId)
+                .HasComment("ID of the Shopping Cart");
+
+            builder.HasOne(e => e.ShoppingCart)
+                .WithMany(e => e.ShoppingCartItem)
+                .HasForeignKey(e => e.ShoppingCartId);
 
             builder.AsAuditableEntity();
         }
