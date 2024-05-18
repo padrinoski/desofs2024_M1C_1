@@ -88,19 +88,9 @@ jobs:
         fi
 
      # Postman Tests
-      #- name : Postman Tests
-      #continue-on-error: false
-      #run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure  -e "DESOFT/DESOFT.postman_environment.json"
-
-    - name: Newman CLI (Postman) Action
-      # You may pin to the exact commit or the version.
-      # uses: anthonyvscode/newman-action@cdca06b722f82f1a6e2ff4803960dc61c9f46240
-      uses: anthonyvscode/newman-action@v1.1
-      with:
-        # Collection to use
-        collection: DESOFT/DESOFT.postman_collection.json
-        environment : DESOFT/DESOFT.postman_environment.json
-        insecure : true
+    - name : Postman Tests
+      continue-on-error: false
+      run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure  -e "DESOFT/DESOFT.postman_environment.json"
         
     # Gather the test data of the dynamic test
     - name: DynamicTesting - Collect trace data
