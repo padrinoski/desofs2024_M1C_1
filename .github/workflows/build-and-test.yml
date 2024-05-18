@@ -99,6 +99,7 @@ jobs:
       with:
         # Collection to use
         collection: DESOFT/DESOFT.postman_collection.json
+        environment : DESOFT/DESOFT.postman_environment.json
         insecure : true
         
     # Gather the test data of the dynamic test
