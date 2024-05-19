@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "93abecfb-5c1d-4c01-aa2b-e0e3696ee69f",
-		"name": "DESOFT",
-		"schema": "http://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_postman_id": "8905625d-36b7-44bc-928d-e1ab3cc2ce83",
+		"name": "DESOFS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17778118"
 	},
 	"item": [
 		{
-			"name": "Get Catalog Forbidden",
+			"name": "Get Catalog Forbidden Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -64,7 +64,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Comick Book",
+			"name": "Get Comick Book Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -114,7 +114,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Comick Book Forbidden",
+			"name": "Get Comick Book Forbidden Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -160,7 +160,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Comick Book Not Found",
+			"name": "Get Comick Book Not Found Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -220,7 +220,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Comic Book",
+			"name": "Create Comic Book Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -274,7 +274,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Catalog",
+			"name": "Get Catalog Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -337,7 +337,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Comic Book Invalid Object",
+			"name": "Create Comic Book Invalid Object Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -397,7 +397,7 @@
 			"response": []
 		},
 		{
-			"name": "Edit Comic Book",
+			"name": "Edit Comic Book Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -452,7 +452,7 @@
 			"response": []
 		},
 		{
-			"name": "Edit Comic Book Not Found",
+			"name": "Edit Comic Book Not Found Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -507,7 +507,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete Comic Book",
+			"name": "Delete Comic Book Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -553,7 +553,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete Comic Book Not Found",
+			"name": "Delete Comic Book Not Found Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -597,35 +597,550 @@
 				}
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
 		},
 		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
+			"name": "SearchComicBooks with Filter - Author and Title",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{\r\n  \"alg\": \"HS256\",\r\n  \"typ\": \"JWT\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "payload",
+							"value": "{\r\n  \"userId\": \"6\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "secret",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5265/api/ComicBook/SearchComicBooks?author=Ian&title=Time&sortBy=&sortOrder=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5265",
+					"path": [
+						"api",
+						"ComicBook",
+						"SearchComicBooks"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Ian"
+						},
+						{
+							"key": "title",
+							"value": "Time"
+						},
+						{
+							"key": "sortBy",
+							"value": ""
+						},
+						{
+							"key": "sortOrder",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
 		{
-			"key": "ComicBookId",
-			"value": "1",
-			"type": "string"
+			"name": "SearchComicBooks with Sort - More expensive ones",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{\r\n  \"alg\": \"HS256\",\r\n  \"typ\": \"JWT\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "payload",
+							"value": "{\r\n  \"userId\": \"6\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "secret",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5265/api/ComicBook/SearchComicBooks?author=&title=&sortBy=price&sortOrder=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5265",
+					"path": [
+						"api",
+						"ComicBook",
+						"SearchComicBooks"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": ""
+						},
+						{
+							"key": "title",
+							"value": ""
+						},
+						{
+							"key": "sortBy",
+							"value": "price"
+						},
+						{
+							"key": "sortOrder",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchComicBooks with both Filter and Sort - Most recent ones",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{\r\n  \"alg\": \"HS256\",\r\n  \"typ\": \"JWT\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "payload",
+							"value": "{\r\n  \"userId\": \"6\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "secret",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5265/api/ComicBook/SearchComicBooks?author=Ian&title=&sortBy=publishingDate&sortOrder=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5265",
+					"path": [
+						"api",
+						"ComicBook",
+						"SearchComicBooks"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Ian"
+						},
+						{
+							"key": "title",
+							"value": ""
+						},
+						{
+							"key": "sortBy",
+							"value": "publishingDate"
+						},
+						{
+							"key": "sortOrder",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllOrders (Store Clerk)",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "payload",
+							"value": "{\r\n  \"userId\": \"9\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "secret",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5In0.Fu_zutGZjx1sMOD8sUXhWQLKJ3WIBCPKAolDq_k6-fQ",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{\r\n  \"alg\": \"HS256\",\r\n  \"typ\": \"JWT\"\r\n}",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5265/api/PlaceOrder/GetAllOrders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5265",
+					"path": [
+						"api",
+						"PlaceOrder",
+						"GetAllOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenerateInvoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Data exist in the response\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.data).to.exist;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "header",
+							"value": "{\n  \"alg\": \"HS256\",\n  \"typ\": \"JWT\"\n}",
+							"type": "string"
+						},
+						{
+							"key": "secret",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "payload",
+							"value": "{\n  \"userId\" : \"6\"\n}",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5265/api/GenerateInvoice/GenerateInvoiceDocument/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5265",
+					"path": [
+						"api",
+						"GenerateInvoice",
+						"GenerateInvoiceDocument",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrderHistory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()",
+							"var jsonData = JSON.parse(response)",
+							"",
+							"pm.test(\"response is ok\",  ()=>{",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Data has content\", ()=> {jsonData.data.length > 0})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "header",
+							"value": "{\n  \"alg\": \"HS256\",\n  \"typ\": \"JWT\"\n}",
+							"type": "string"
+						},
+						{
+							"key": "secret",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "payload",
+							"value": "{\n  \"userId\" : \"6\"\n}",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5265/api/PlaceOrder/GetOrdersByUserId/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5265",
+					"path": [
+						"api",
+						"PlaceOrder",
+						"GetOrdersByUserId",
+						"6"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
