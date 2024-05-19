@@ -4,12 +4,12 @@
     "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFT.Server.csproj": {
+    "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFS.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFT.Server.csproj",
-        "projectName": "DESOFT.Server",
-        "projectPath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFT.Server.csproj",
+        "projectUniqueName": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFS.Server.csproj",
+        "projectName": "DESOFS.Server",
+        "projectPath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFS.Server.csproj",
         "packagesPath": "C:\\Users\\Leandro\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\obj\\",
         "projectStyle": "PackageReference",
@@ -81,6 +81,30 @@
               "target": "Package",
               "version": "[8.0.4, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "NuGet.Frameworks": {
+              "target": "Package",
+              "version": "[6.9.1, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2024.3.6, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -141,8 +165,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFT.Server.csproj": {
-                "projectPath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFT.Server.csproj"
+              "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFS.Server.csproj": {
+                "projectPath": "C:\\Users\\Leandro\\Desktop\\Faculdade\\2º Ano\\DESOFS\\desofs2024_M1C_1\\DESOFT\\DESOFT.Server\\DESOFS.Server.csproj"
               }
             }
           }

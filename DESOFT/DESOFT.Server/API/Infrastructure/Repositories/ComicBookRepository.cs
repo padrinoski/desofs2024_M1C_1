@@ -43,7 +43,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
                  await _context.ComicBook.Where(e => e.ComicBookId == comicBookId).AsNoTracking().SingleOrDefaultAsync();
         }
 
-        public async Task<List<ComicBook>> SearchComicBooks(string title, string author)
+        public async Task<List<ComicBook>> SearchComicBooks(string? title, string? author, string? sortBy, string? sortOrder)
         {
             var query = _context.ComicBook.AsQueryable();
 
@@ -55,6 +55,19 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             if (!string.IsNullOrEmpty(author))
             {
                 query = query.Where(cb => cb.Author.ToLower().Contains(author.ToLower()));
+            }
+
+            switch (sortBy)
+            {
+                case "price":
+                    query = sortOrder == "desc" ? query.OrderByDescending(cb => cb.Price) : query.OrderBy(cb => cb.Price);
+                    break;
+                case "publishingDate":
+                    query = sortOrder == "desc" ? query.OrderByDescending(cb => cb.PublishingDate) : query.OrderBy(cb => cb.PublishingDate);
+                    break;
+                default:
+                    query = query.OrderBy(cb => cb.Title); // default sort by ComicBookId
+                    break;
             }
 
             return await query.ToListAsync();

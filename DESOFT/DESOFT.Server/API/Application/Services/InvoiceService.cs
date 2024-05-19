@@ -1,8 +1,10 @@
 using AutoMapper;
+using DESOFT.Server.API.Application.DTO.Order;
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
 using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Domain.Entities.Invoice;
 using DESOFT.Server.API.Domain.Entities.Order;
+using DESOFT.Server.API.Shared.Infrastructure;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -18,50 +20,66 @@ namespace DESOFT.Server.API.Application.Services
         private readonly IOrderRepository _orderRepository;
         private readonly ILogger<InvoiceService> _logger;
         private readonly IMapper _mapper;
+        private readonly IOrderService _orderService;
 
-        public InvoiceService(IOrderRepository orderRepository, ILogger<InvoiceService> logger, IMapper mapper)
+        public InvoiceService(IOrderRepository orderRepository, ILogger<InvoiceService> logger, IMapper mapper, IOrderService orderService)
         {
             _orderRepository = orderRepository;
             _logger = logger;
             _mapper = mapper;
+            _orderService = orderService;
         }
 
-        public async Task<InvoiceModel> generateInvoiceModel(Order order)
+
+        private async Task<InvoiceModel> generateInvoiceModel(CompleteOrderDTO order)
         {
             InvoiceModel invoiceModel = new InvoiceModel();
 
-            invoiceModel.InvoiceNumber = new Random().Next(1000, 9999); //Check DB for last invoice number
+            invoiceModel.InvoiceNumber = new Random().Next(1000, 9999999);
 
             invoiceModel.IssueDate = DateTime.Now;
 
             invoiceModel.CustomerAddress = order.Address;
 
-            invoiceModel.Items = [.. order.ShoppingCart.ShoppingCartItem];
+            List<InvoiceItem> items = new List<InvoiceItem>();
+
+            foreach (var item in order.ShoppingCartItems)
+            {
+                InvoiceItem invoiceItem = new InvoiceItem();
+                invoiceItem.ShoppingCartId = item.ShoppingCartId;
+                invoiceItem.ShoppingCartItemId = item.ShoppingCartItemId;
+                invoiceItem.ComicBookTitle = item.ComicBookTitle;
+                invoiceItem.ComicBookPrice = item.ComicBookPrice;
+                invoiceItem.Quantity = item.Quantity;
+
+                items.Add(invoiceItem);
+            }
+
+            invoiceModel.Items = items;
 
             return invoiceModel;
         }
 
-        public async Task<ServiceResult> generateInvoiceDocument(int orderId)
+        public async Task<ServiceResult<byte[]>> generateInvoiceDocument(int orderId)
        {
             _logger.LogInformation("GenerateInvoiceDocument entered");
 
-            var result = new ServiceResult();
+            var result = new ServiceResult<byte[]>();
 
             try
             {
+                var order = await _orderService.GetOrderInformationById(orderId);
 
-                var order = await _orderRepository.GetOrder(orderId);
+                if (!order.Success){
+                    result.Errors.Add(new KeyVal { Key = "Order not found." });
+                    return result;
+                }
 
-                order = order ?? throw new Exception("Order not found");
-
-                var model = await generateInvoiceModel(order);
+                var model = await generateInvoiceModel(order.Data);
                 var document = new InvoiceDocument(model);
-                //byte[] generatedDocument = document.GeneratePdf();
+                result.Data = document.GeneratePdf();
 
-                //Save document in DTO format
-                document.GeneratePdfAndShow();
-                //Create record in DB
-
+                //document.GeneratePdfAndShow();
 
             }
             catch (Exception ex) {
@@ -142,6 +160,10 @@ namespace DESOFT.Server.API.Application.Services
 
                 column.Item().Element(ComposeTable);
 
+                var totalPrice = Model.Items.Sum(x => x.ComicBookPrice * x.Quantity);
+                column.Item().AlignRight().Text($"Grand total: {totalPrice}€").FontSize(14);
+
+
             });
         }
 
@@ -178,10 +200,10 @@ namespace DESOFT.Server.API.Application.Services
                 foreach (var item in Model.Items)
                 {
                     table.Cell().Element(CellStyle).Text((Model.Items.IndexOf(item) + 1).ToString());
-                    table.Cell().Element(CellStyle).Text(item.ComicBook.Title);
-                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.ComicBook.Price}€");
+                    table.Cell().Element(CellStyle).Text(item.ComicBookTitle);
+                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.ComicBookPrice}€");
                     table.Cell().Element(CellStyle).AlignRight().Text(item.Quantity.ToString());
-                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.ComicBook.Price * item.Quantity}€");
+                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.ComicBookPrice * item.Quantity}€");
                     
                     static IContainer CellStyle(IContainer container)
                     {

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DESOFT.Server\DESOFT.Server.csproj" />
+    <ProjectReference Include="..\DESOFT.Server\DESOFS.Server.csproj" />
   </ItemGroup>
 
   <ItemGroup>

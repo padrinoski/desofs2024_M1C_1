@@ -76,7 +76,7 @@ namespace DESOFT.Server.API.Controllers.PlaceOrder
         }
 
         [HttpGet(nameof(GetOrdersByUserId) + "/{userId}")]
-        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        [TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
         public async Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(int userId)
         {
             var result = new ServiceResult<List<CompleteOrderDTO>>();
@@ -95,6 +95,30 @@ namespace DESOFT.Server.API.Controllers.PlaceOrder
             catch (Exception ex)
             {
                 result.Errors.Add(new KeyVal { Key = "Error processing the request. Exception" + ex.Message });
+            }
+            return result;
+        }
+
+        [HttpGet(nameof(GetAllOrders))]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        public async Task<ServiceResult<List<CompleteOrderDTO>>> GetAllOrders()
+        {
+            var result = new ServiceResult<List<CompleteOrderDTO>>();
+            try
+            {
+                var resultFromCall = await _orderService.GetAllOrders();
+                if (resultFromCall.Success)
+                {
+                    result.Data = resultFromCall.Data;
+                }
+                else
+                {
+                    result.Errors.Add(new KeyVal { Key = "Error retrieving the orders." });
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Errors.Add(new KeyVal { Key = "Error processing the request. Exception: " + ex.Message });
             }
             return result;
         }

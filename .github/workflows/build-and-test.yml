@@ -27,7 +27,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'
     
     # Checkout code will checkout the repository and branch code to the runner machine
     - name: Checkout code
@@ -48,6 +48,12 @@ jobs:
     - name: Install Speedscope
       run: npm install -g speedscope
 
+    # Install newman globally, reporter for slack and install the html extra reporter
+    - name : Install newman
+      run : |
+        npm install -g newman
+        npm install -g newman-reporter-slackreporter
+        npm install -g newman-reporter-htmlextra
     
     # Build the project
     - name: Build
@@ -58,7 +64,7 @@ jobs:
     - name: Test
       working-directory: DESOFT/DESOFT.Server
       run: dotnet test
-    
+      
     # Execute the static analysis using SonarQube
     - name: StaticTesting -  Run SonarQube Analysis
       working-directory: DESOFT/DESOFT.Server
@@ -80,7 +86,22 @@ jobs:
           echo "Application did not start successfully."
           exit 1
         fi
+        
+    - name: Wait for the server to be ready
+      run: |
+        echo "Waiting for the server to start..."
+        for i in `seq 1 30`; do
+          nc -z 127.0.0.1 5265 && echo "Server is up!" && break
+          echo "Waiting..."
+          sleep 1
+        done
 
+     # Postman Tests
+    - name : Postman Tests
+      continue-on-error: true
+      run : newman run "DESOFT/DESOFT.postman_collection.json" --insecure -e "DESOFT/DESOFT.postman_environment.json" --verbose
+        -r htmlextra,cli
+        
     # Gather the test data of the dynamic test
     - name: DynamicTesting - Collect trace data
       run: |
