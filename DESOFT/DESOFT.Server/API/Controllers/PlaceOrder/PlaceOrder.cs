@@ -53,14 +53,15 @@ namespace DESOFT.Server.API.Controllers.PlaceOrder
 
         [HttpPost(nameof(CreateOrder))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
-        public async Task<ServiceResult> CreateOrder(OrderDTO order)
+        public async Task<ServiceResult<OrderDTO>> CreateOrder(OrderDTO order)
         {
-            var result = new ServiceResult();
+            var result = new ServiceResult<OrderDTO>();
             try
             {
                 var resultFromCall = await _orderService.CreateOrder(order);
                 if (resultFromCall.Success)
                 {
+                    result.Data = resultFromCall.Data;
                     result.Messages.Add(new KeyVal { Key = "Cart was created successfully." });
                 }
                 else

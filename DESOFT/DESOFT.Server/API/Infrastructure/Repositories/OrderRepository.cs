@@ -17,10 +17,12 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
         }
 
     
-        public async Task CreateOrder(Order order)
+        public async Task<Order> CreateOrder(Order order)
         {
-            await _context.Orders.AddAsync(order);
+            var result = await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
+
+            return result.Entity;
         }
 
         public async Task<Order?> GetOrder(int orderId, bool tracking = false)
