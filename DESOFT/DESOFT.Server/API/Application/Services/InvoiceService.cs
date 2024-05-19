@@ -15,8 +15,6 @@ namespace DESOFT.Server.API.Application.Services
     public class InvoiceService : IInvoiceService
     {
 
-        //TODO: Implementar
-
         private readonly IOrderRepository _orderRepository;
         private readonly ILogger<InvoiceService> _logger;
         private readonly IMapper _mapper;
@@ -79,6 +77,7 @@ namespace DESOFT.Server.API.Application.Services
                 var document = new InvoiceDocument(model);
                 result.Data = document.GeneratePdf();
 
+                //Uncomment for Testing purposes
                 //document.GeneratePdfAndShow();
 
             }
@@ -148,7 +147,7 @@ namespace DESOFT.Server.API.Application.Services
                     });
                 });
 
-                row.ConstantItem(100).Height(50).Placeholder();
+                row.ConstantItem(100).Height(50).Text("Comic Book Store").Style(TextStyle.Default.FontSize(14).SemiBold()); // Change this for a logo
             });
         }
 

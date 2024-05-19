@@ -7,7 +7,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
 {
     public interface IOrderService
     {
-        Task<ServiceResult> CreateOrder(OrderDTO orderDTO);
+        Task<ServiceResult<OrderDTO>> CreateOrder(OrderDTO orderDTO);
 
         Task<ServiceResult<CompleteOrderDTO>> GetOrderInformationById(int orderId);
         

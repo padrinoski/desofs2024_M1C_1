@@ -30,10 +30,10 @@ namespace DESOFT.Server.API.Application.Services
 
 
 
-        public async Task<ServiceResult> CreateOrder(OrderDTO orderDTO)
+        public async Task<ServiceResult<OrderDTO>> CreateOrder(OrderDTO orderDTO)
         {
         
-            var result = new ServiceResult();
+            var result = new ServiceResult<OrderDTO>();
 
             try
             {
@@ -64,7 +64,9 @@ namespace DESOFT.Server.API.Application.Services
 
                 var order = _mapper.Map<Order>(orderDTO);
 
-                await _orderRepository.CreateOrder(order);
+                var createdItem = await _orderRepository.CreateOrder(order);
+
+                result.Data = _mapper.Map<OrderDTO>(createdItem);
 
                 await _orderRepository.SaveTransaction(result, "An error occurred while saving the data.");
 

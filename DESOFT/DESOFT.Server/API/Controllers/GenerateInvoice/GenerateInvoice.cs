@@ -20,14 +20,15 @@ namespace DESOFT.Server.API.Controllers.GenerateInvoice
 
         [HttpGet(nameof(GenerateInvoiceDocument) + "/{orderId}")]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
-        public async Task<ServiceResult> GenerateInvoiceDocument(int orderId)
+        public async Task<ServiceResult<byte[]>> GenerateInvoiceDocument(int orderId)
         {
-            var result = new ServiceResult();
+            var result = new ServiceResult<byte[]>();
             try
             {
                 var resultFromCall = await _invoiceService.generateInvoiceDocument(orderId);
                 if (resultFromCall.Success)
                 {
+                    result.Data = resultFromCall.Data;
                     result.Messages.Add(new KeyVal { Key = "Invoice was generated for order " + orderId + "." });
                 }
                 else
