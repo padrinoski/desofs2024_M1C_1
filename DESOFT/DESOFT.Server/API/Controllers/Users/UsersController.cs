@@ -9,12 +9,12 @@ namespace DESOFT.Server.API.Controllers.Users
 
     [ApiController]
     [Route("/api/[controller]")]
-    public class ComicBookController : ControllerBase
+    public class UsersController : ControllerBase
     {
 
         private readonly IUsersService _usersService;
 
-        public ComicBookController(IUsersService userService)
+        public UsersController(IUsersService userService)
         {
             _usersService = userService;
         }

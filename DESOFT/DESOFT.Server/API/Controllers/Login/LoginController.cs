@@ -10,12 +10,12 @@ namespace DESOFT.Server.API.Controllers.Login
 
     [ApiController]
     [Route("/api/[controller]")]
-    public class ComicBookController : ControllerBase
+    public class LoginController : ControllerBase
     {
 
         private readonly ILoginService _loginService;
 
-        public ComicBookController(ILoginService loginService)
+        public LoginController(ILoginService loginService)
         {
             _loginService = loginService;
         }
