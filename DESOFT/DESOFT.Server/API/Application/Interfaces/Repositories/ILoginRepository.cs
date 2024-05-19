@@ -8,6 +8,6 @@ namespace DESOFT.Server.API.Application.Interfaces.Repositories
         Task Register(User user);
 
         Task<User> GetUserByUsernameAndPassword(string username, string password);
-
+        
     }
 }
