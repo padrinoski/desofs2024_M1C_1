@@ -62,5 +62,19 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
 
             return comicBook.CriacaoUtilizadorId == userId;
         }
+
+        public async Task<bool> PodeAcederAInformacoesSensiveisFilter(int userId)
+        {
+          var user = await _context.Users
+          .Include(e => e.Role)
+          .Where(u => u.UserId == userId)
+          .AsNoTracking()
+          .SingleOrDefaultAsync();
+
+           if (user == null)
+           return false;
+
+           return user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.StoreClerk || user.Role.RoleId == (int)Roles.Admin;
+        }
     }
 }

@@ -66,7 +66,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
                     query = sortOrder == "desc" ? query.OrderByDescending(cb => cb.PublishingDate) : query.OrderBy(cb => cb.PublishingDate);
                     break;
                 default:
-                    query = query.OrderBy(cb => cb.Title); // default sort by ComicBookId
+                    query = query.OrderBy(cb => cb.Title);
                     break;
             }
 

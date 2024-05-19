@@ -59,5 +59,19 @@ namespace DESOFT.Server.API.Application.Services
             }
             return result;
         }
+
+        public async Task<ServiceResult<bool>> PodeAcederAInformacoesSensiveisFilter(int userId)
+        {
+            var result = new ServiceResult<bool>();
+
+            try
+            {
+                result.Data = await _authRepo.PodeAcederAInformacoesSensiveisFilter(userId);
+            }catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return result;
+        }
     }
 }

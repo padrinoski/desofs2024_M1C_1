@@ -102,6 +102,7 @@ namespace DESOFT.Server.API.Controllers.PlaceOrder
 
         [HttpGet(nameof(GetAllOrders))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        [TypeFilter(typeof(PodeAcederAInformacoesSensiveisFilter))]
         public async Task<ServiceResult<List<CompleteOrderDTO>>> GetAllOrders()
         {
             var result = new ServiceResult<List<CompleteOrderDTO>>();
