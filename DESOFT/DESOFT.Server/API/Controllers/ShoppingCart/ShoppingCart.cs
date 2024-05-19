@@ -53,14 +53,15 @@ namespace DESOFT.Server.API.Controllers.ShoppingCart
 
         [HttpPost(nameof(CreateCart))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
-        public async Task<ServiceResult> CreateCart(ShoppingCartDTO shoppingCart)
+        public async Task<ServiceResult<ShoppingCartDTO>> CreateCart(ShoppingCartDTO shoppingCart)
         {
-            var result = new ServiceResult();
+            var result = new ServiceResult<ShoppingCartDTO>();
             try
             {
                 var resultFromCall = await _shoppingCartService.CreateCart(shoppingCart);
                 if (resultFromCall.Success)
                 {
+                    result.Data = resultFromCall.Data;
                     result.Messages.Add(new KeyVal { Key = "Cart was created successfully." });
                 }
                 else
