@@ -222,7 +222,15 @@ namespace DESOFT.Server.API.Application.Services
                 List<CompleteOrderDTO> completeOrders = new List<CompleteOrderDTO>();
                 foreach (Order order in orders)
                 {
-                    CompleteOrderDTO completeOrder = new CompleteOrderDTO();
+                    CompleteOrderDTO completeOrder = new CompleteOrderDTO
+                    {
+                        OrderId = order.OrderId,
+                        TotalCost = order.TotalCost,
+                        ShoppingCartId = order.ShoppingCartId,
+                        Address = order.Address,
+                        PaymentMethod = order.PaymentMethod
+                    };
+
                     var cartItems = await _shoppingCartService.GetCartItems(order.ShoppingCartId);
                     if (cartItems.Success)
                     {
@@ -232,19 +240,21 @@ namespace DESOFT.Server.API.Application.Services
                             var comicBook = await _comicBookService.GetComicBook(item.ComicBookId);
                             if (comicBook.Success)
                             {
-                                CompleteOrderItemDTO orderItem = new CompleteOrderItemDTO();
-                                orderItem.ShoppingCartItemId = item.ShoppingCartItemId;
-                                orderItem.Quantity = item.Quantity;
-                                orderItem.ShoppingCartId = item.ShoppingCartId;
-                                orderItem.ComicBookTitle = comicBook.Data.Title;
-                                orderItem.ComicBookPrice = comicBook.Data.Price;
+                                CompleteOrderItemDTO orderItem = new CompleteOrderItemDTO
+                                {
+                                    ShoppingCartItemId = item.ShoppingCartItemId,
+                                    Quantity = item.Quantity,
+                                    ShoppingCartId = item.ShoppingCartId,
+                                    ComicBookTitle = comicBook.Data.Title,
+                                    ComicBookPrice = comicBook.Data.Price
+                                };
 
                                 orderItems.Add(orderItem);
                             }
                         }
                         completeOrder.ShoppingCartItems = orderItems;
-                        completeOrders.Add(completeOrder);
                     }
+                    completeOrders.Add(completeOrder);
                 }
                 result.Data = completeOrders;
             }
