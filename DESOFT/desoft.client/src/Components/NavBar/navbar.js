@@ -5,7 +5,7 @@ switch (window.location.pathname.split('/')[1]) {
     case '/':
         document.querySelector('#homeBtn').classList.add('active');
         break;
-    default :
+    case '':
         document.querySelector('#homeBtn').classList.add('active');
         break;
 }
