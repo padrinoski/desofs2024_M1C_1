@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using System.Threading.RateLimiting;
 using AutoMapper;
 using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
@@ -7,6 +8,7 @@ using DESOFT.Server.API.Application.Mapping;
 using DESOFT.Server.API.Application.Services;
 using DESOFT.Server.API.Infrastructure;
 using DESOFT.Server.API.Infrastructure.Repositories;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
 
@@ -62,6 +64,21 @@ builder.Services.AddSession(options =>
 
 QuestPDF.Settings.License = LicenseType.Community;
 
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("fixed", context =>
+            
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: context.Connection.RemoteIpAddress?.ToString(),
+                    factory: _ => new FixedWindowRateLimiterOptions{
+                        PermitLimit = 10,
+                        Window = TimeSpan.FromSeconds(10),
+                    }));
+});
+
+
+
 //AutoMapper
 
 var autoMapperConfig = new MapperConfiguration(mc =>
@@ -96,6 +113,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseRateLimiter();
+
 app.MapFallbackToFile("/index.html");
 
 app.Run();
+

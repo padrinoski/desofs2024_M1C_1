@@ -3,6 +3,7 @@ using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Authorization;
 using DESOFT.Server.API.Shared.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
 
@@ -10,6 +11,7 @@ namespace DESOFT.Server.API.Controllers.ShoppingCart
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableRateLimiting("fixed")]
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartService _shoppingCartService;
