@@ -1,7 +1,12 @@
-﻿using DESOFT.Server.API.Application.DTO.ComicBook;
+﻿using Azure.Core;
+using DESOFT.Server.API.Application.DTO.ComicBook;
 using DESOFT.Server.API.Application.Interfaces.Services;
+using DESOFT.Server.API.Application.Services;
 using DESOFT.Server.API.Authorization;
+using DESOFT.Server.API.Domain.Entities.User;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
 
 namespace DESOFT.Server.API.Controllers.ComicBook
@@ -20,10 +25,34 @@ namespace DESOFT.Server.API.Controllers.ComicBook
         }
 
         [HttpGet(nameof(GetCatalog))]
-        [TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
         public async Task<ServiceResult<List<ComicBookDTO>>> GetCatalog()
         {
             return await _comicService.GetCatalog();
+        }
+        
+        [HttpGet(nameof(GetCatalogBackOffice))]
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        public async Task<ServiceResult<List<ComicBookDTO>>> GetCatalogBackOffice()
+        {
+            var authorizationHeader = Request.Headers["Authorization"];
+
+            if (!authorizationHeader.IsNullOrEmpty() || authorizationHeader.ToString().StartsWith("Bearer"))
+            {
+                var accessToken = authorizationHeader.ToString().Substring("Bearer ".Length).Trim();
+
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(accessToken);
+                var tokenS = jsonToken as JwtSecurityToken;
+
+                tokenS.Payload.TryGetValue("userId", out var userId);
+
+                return await _comicService.GetCatalogBackOffice(int.Parse(userId.ToString()));
+
+            } else
+            {
+                return await _comicService.GetCatalog();
+            }
+
         }
         
         [HttpGet(nameof(GetComicBook)+"/{comicBookId}")]

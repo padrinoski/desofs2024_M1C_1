@@ -1,48 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import ComicBookBackOffice from './comic-book-backOffice';
+import ComicBookFrontOffice from './comic-book-frontOffice';
 export default function ComicBook() {
 
-    const [comics, setComics] = useState([]);
+    const [backOffice, setbackOffice] = useState(false);
 
     useEffect(() => {
-        axios.get('https://localhost:7242/api/ComicBook/GetCatalog'
+        axios.get('https://localhost:7242/api/Login/IsBackOffice'
         )
-            .then(response => {
-                console.log(response.data);
-                setComics(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        .then(response => {
+            setbackOffice(response.data);
+        })
+        .catch(() => {
+            setbackOffice(false);
+        });
 
     }, []);
 
-    return (
-        <div className="page">
-            <h1 className="title">Comic Books</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Author</th>
-                        <th>Edition</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {comics.data?.map(comic => (
-                        <tr key={comic.comicBookId}>
-                            <td>{comic.title}</td>
-                            <td>{comic.description}</td>
-                            <td>{comic.author}</td>
-                            <td>{comic.version}</td>
-                            <td>{comic.price}&euro;</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>            
-        </div>
-    );
+    if (backOffice) {
+        return (
+            <ComicBookBackOffice></ComicBookBackOffice>
+        );
+    } else {
+        return (
+            <ComicBookFrontOffice></ComicBookFrontOffice>
+        );
+    }
+
+    
 }

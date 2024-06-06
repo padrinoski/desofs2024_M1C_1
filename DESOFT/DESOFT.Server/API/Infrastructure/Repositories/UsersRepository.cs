@@ -37,5 +37,14 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<Role> GetRoleByUser(int userId)
+        {
+            return await _context.UserRoles
+                .Include(e => e.Role)
+                .Where(e => e.UserId == userId)
+                .Select(e => e.Role)
+                .SingleAsync();                
+        }
     }
 }
