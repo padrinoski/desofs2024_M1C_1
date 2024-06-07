@@ -8,9 +8,7 @@ public interface IUsersRepository : IRepository
     Task<User> GetUserByUsername(string username);
     Task AddUser(User user);
     Task RemoveUser(User user);
-
     Task UpdateUser(User user);
-
-
+    Task<Role> GetRoleByUser(int userId);
 
 }

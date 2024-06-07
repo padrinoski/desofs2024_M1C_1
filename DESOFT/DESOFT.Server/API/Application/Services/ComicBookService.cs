@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using DESOFT.Server.API.Application.DTO.ComicBook;
+using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
 using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Domain.Entities.ComicBooks;
 using DESOFT.Server.API.Shared.Infrastructure;
+using DESOFS.Server.API.Application.Utils;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
+using DESOFS.Server.API.Application.DTO.Common;
 
 namespace DESOFT.Server.API.Application.Services
 {
@@ -12,12 +15,14 @@ namespace DESOFT.Server.API.Application.Services
     {
 
         private readonly IComicBookRepository _comicBookRepository;
+        private readonly IUsersRepository _userRepository;
         private readonly ILogger<ComicBookService> _logger;
         private readonly IMapper _mapper;
 
-        public ComicBookService(IComicBookRepository comicBookRepository, ILogger<ComicBookService> logger, IMapper mapper)
+        public ComicBookService(IComicBookRepository comicBookRepository, IUsersRepository userRepository, ILogger<ComicBookService> logger, IMapper mapper)
         {
             _comicBookRepository = comicBookRepository;
+            _userRepository = userRepository;
             _logger = logger;
             _mapper = mapper;
         }
@@ -108,6 +113,51 @@ namespace DESOFT.Server.API.Application.Services
             try
             {
                 result.Data = _mapper.Map<List<ComicBookDTO>>(await _comicBookRepository.GetCatalog());
+
+            }catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+        
+        public async Task<ServiceResult<List<ComicBookDTO>>> GetCatalogBackOffice(int userId)
+        {
+            var result = new ServiceResult<List<ComicBookDTO>>();
+
+            try
+            {
+                var userRole = await _userRepository.GetRoleByUser(userId);
+                var catalog = await _comicBookRepository.GetCatalog();
+                var catalogDTO = _mapper.Map<List<ComicBookDTO>>(catalog);
+
+                foreach (var comic in catalogDTO)
+                {
+                    var comicReg = catalog.Single(e => e.ComicBookId == comic.ComicBookId);
+
+                    if (comicReg.CriacaoUtilizadorId == userId || userRole.RoleId == (int)Roles.Admin)
+                    {
+                        comic.ListButtons = new List<ListButtonDTO>()
+                        {
+                            new ListButtonDTO()
+                            {
+                                Id = $"edit_{comic.ComicBookId}",
+                                Action = "Edit",
+                                Function = $"editComicBook({comic.ComicBookId})"
+                            },
+                            new ListButtonDTO()
+                            {
+                                Id = $"delete_{comic.ComicBookId}",
+                                Action = "Delete",
+                                Function = $"deleteComicBook({comic.ComicBookId})"
+                            }
+                        };
+                    }
+
+                }
+
+                result.Data = catalogDTO;
 
             }catch (Exception ex)
             {
