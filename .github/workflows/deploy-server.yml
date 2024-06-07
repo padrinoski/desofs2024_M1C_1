@@ -1,0 +1,92 @@
+name: Deploy Comic Book Store
+
+on:
+  push:
+    branches:
+      - feature/pipeline
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        working-directory: DESOFT/desoft.client
+        run: npm install
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build the React app
+        working-directory: DESOFT/desoft.client
+        run: npm run build
+
+      - name: Build CS App
+        working-directory: DESOFT/DESOFT.Server
+        run: dotnet build DESOFS.Server.csproj -c v1.0.0
+
+      - name: Create CS artifacts
+        working-directory: DESOFT/DESOFT.Server
+        run: dotnet publish DESOFS.Server.csproj -c v1.0.0 -o csoutput
+
+      - name: Upload build artifacts - CS
+        uses: actions/upload-artifact@v3
+        with:
+          name: csbuild
+          path: DESOFT/DESOFT.Server/csoutput
+
+#      - name: Upload build artifacts
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: build
+#          path: DESOFT/desoft.client/build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download build artifacts - CS
+        uses: actions/download-artifact@v3
+        with:
+          name: csbuild
+          path: DESOFT/DESOFT.Server/csoutput
+
+      - name: Deploy to server - CS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          port: ${{ secrets.SERVER_PORT }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          source: "DESOFT/DESOFT.Server/csoutput/"
+          target: "/received/csartifacts"
+
+#      - name: Download build artifacts
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: build
+#          path: DESOFT/desoft.client/build
+#
+#      - name: Deploy to server
+#        uses: appleboy/scp-action@v0.1.7
+#        with:
+#          host: ${{ secrets.SERVER_HOST }}
+#          username: ${{ secrets.SERVER_USERNAME }}
+#          port: ${{ secrets.SERVER_PORT }}
+#          password: ${{ secrets.SERVER_PASSWORD }}
+#          source: "build/*"
+#          target: "/received/reactartifacts"
