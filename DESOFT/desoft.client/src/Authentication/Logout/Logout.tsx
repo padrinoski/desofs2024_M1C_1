@@ -5,7 +5,7 @@ import { useAuth0, LogoutOptions } from "@auth0/auth0-react";
 const LogoutButton = () => {
         const { logout } = useAuth0();
     
-        return <button onClick={() => logout({ returnTo: window.location.origin } as LogoutOptions)}>Log Out</button>;
+        return <a href="#" onClick={() => logout({ returnTo: window.location.origin } as LogoutOptions)}>Log Out</a>;
     };
 
 export default LogoutButton;

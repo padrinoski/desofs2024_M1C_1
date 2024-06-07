@@ -3,15 +3,19 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { Auth0Provider } from '@auth0/auth0-react'
-import NavBar from './Components/NavBar/NavBar.jsx'
-import ErrorPage from "./Components/error-page"
-import ComicBook from "./Components/ComicBook/comic-book"
+import NavBar from "./Components/NavBar/NavBar.jsx"
+import ErrorPage from "./Components/error-page.jsx"
+import ComicBook from "./Components/ComicBook/comic-book.jsx"
 import {
     BrowserRouter,
     createBrowserRouter,
     RouterProvider,
+    Routes,
+    Route
 } from "react-router-dom";
 import axios from 'axios';
+import LoginButton from './Authentication/Login/Login.tsx'
+import Profile from './Profile/Profile.tsx'
 
 const router = createBrowserRouter([
     {
@@ -22,6 +26,14 @@ const router = createBrowserRouter([
     {
         path: "ComicBooks",
         element: <ComicBook />,
+    },
+    {
+        path: "login",
+        element: <LoginButton />,
+    },
+    {
+        path: "profile",
+        element: <Profile />,
     },
 ]);
 
@@ -53,12 +65,19 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       domain='dev-b61l3yhgpdw5l2m2.us.auth0.com'
       clientId='a8wEXjcF9dzOlaWF4iICpR0y3LMl4L3m'
       authorizationParams={{redirect_uri: `${window.location.origin}/profile`}}
-    />
-
+    >
       <BrowserRouter>
-        <NavBar />
-        </BrowserRouter>
-        <RouterProvider router={router} />
+        <NavBar/>
+        <Routes>
+          <Route path="/" Component={App}/>
+          <Route path="/ComicBooks" Component={ComicBook}/>
+          <Route path="/login" Component={LoginButton} />
+          <Route path="/profile" Component={Profile} />
+          <Route Component={ErrorPage} />
+        </Routes>
       </BrowserRouter>
-  </React.StrictMode>,
+    </Auth0Provider>
+  </React.StrictMode>
 )
+
+//        <RouterProvider router={router} />
