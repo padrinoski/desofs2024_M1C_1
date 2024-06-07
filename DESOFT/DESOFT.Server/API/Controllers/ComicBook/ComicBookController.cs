@@ -1,5 +1,4 @@
 ﻿using DESOFT.Server.API.Application.DTO.ComicBook;
-using DESOFT.Server.API.Application.DTO.Login;
 using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -36,11 +36,19 @@ namespace DESOFT.Server.API.Authorization
 
                     tokenS.Payload.TryGetValue("userId", out var userId);
 
-                    var result = _authService.PodeAcederFrontOffice(int.Parse(userId.ToString())).Result;
-
-                    if (!result.Success || !result.Data)
+                    if (userId == null)
                     {
                         context.Result = new UnauthorizedObjectResult("Acesso Proibido");
+                    }
+                    else
+                    {
+
+                        var result = _authService.PodeAcederFrontOffice(int.Parse(userId.ToString())).Result;
+
+                        if (!result.Success || !result.Data)
+                        {
+                            context.Result = new UnauthorizedObjectResult("Acesso Proibido");
+                        }
                     }
 
                 }
