@@ -27,6 +27,21 @@ namespace DESOFT.Server.API.Controllers.Login
             return await _loginService.Login(dto);
         }
         
+        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
+        [HttpGet(nameof(IsBackOffice))]
+        public async Task<ServiceResult<bool>> IsBackOffice()
+        {
+
+            var res = new ServiceResult<bool>();
+
+            await Task.Run(() =>
+            {
+                res.Data = true;
+            });
+
+            return res;
+        }
+        
         [HttpPost(nameof(Register))]
         public async Task<ServiceResult> Register(RegisterDTO dto)
         {

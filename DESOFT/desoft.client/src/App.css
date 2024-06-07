@@ -1,19 +1,74 @@
 ﻿#root {
-    max-width: 1280px;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
     margin: 0 auto;
-    padding: 2rem;
     text-align: center;
-}
-
-tr:nth-child(even) {
-    background: #F2F2F2;
-}
-
-tr:nth-child(odd) {
-    background: #FFF;
+    display: flex;
+    flex-direction: column;
 }
 
 th, td {
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.title {
+    margin-bottom: 5rem;
+}
+
+
+.btnAdd {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 50px;
+}
+
+.btnAdd span{
+    height: 2rem;
+    padding-inline: 20px;
+    padding-block: 5px;
+    background-color: #9883e5;
+    border-radius: 20px;
+}
+
+.btnAdd span:after{
+    content:'+';
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.btnAdd a{
+    text-decoration: none !important;   
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btnAdd a:hover{
+    color: white;
+}
+
+.listActions {
+    display: flex;
+    justify-content: center;
+}
+
+.listActions span{
+    margin-inline : 5px;
+}
+
+.listActions a:hover{
+    cursor: pointer;
+    color: white;
+}
+
+.listActions span.edit button{
+    background-color: #9883e5;
+}
+
+.listActions span.delete button{
+    background-color: red;
 }

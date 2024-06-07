@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DESOFS.Server.API.Application.DTO.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace DESOFT.Server.API.Application.DTO.ComicBook
 {
@@ -29,6 +30,8 @@ namespace DESOFT.Server.API.Application.DTO.ComicBook
         [Required(ErrorMessage = "O campo é '{0}' obrigatório")]
         [MaxLength(10, ErrorMessage = "O campo é '{0}' deverá conter até 10 caracteres.")]
         public string Author { get; set; }
+
+        public List<ListButtonDTO> ListButtons { get; set; }
 
     }
 }

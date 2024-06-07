@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.SpaProxy": {
               "target": "Package",
               "version": "[8.*-*, )"
@@ -104,6 +108,10 @@
             "QuestPDF": {
               "target": "Package",
               "version": "[2024.3.6, )"
+            },
+            "React.Router": {
+              "target": "Package",
+              "version": "[5.2.12, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './App.css';
 import LoginButton from './Authentication/Login/Login';
 import { BrowserRouter,Routes, Route,  } from 'react-router-dom';
