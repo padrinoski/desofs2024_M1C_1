@@ -10,6 +10,6 @@ namespace DESOFT.Server.API.Domain.Entities.User
         public string Address { get; set; }
 
         public ShoppingCart.ShoppingCart ShoppingCart { get; set; }
-        public User_Role Role { get; set; }
+        public User_Role User_Role { get; set; }
     }
 }

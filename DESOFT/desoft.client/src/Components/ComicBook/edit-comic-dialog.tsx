@@ -28,7 +28,31 @@ export default function EditComicBookDialog(comicBookId : comicBook) {
     }, []);
 
     const comicBookPost = () => {
-        document.querySelector('.editComicBookDialog')?.setAttribute('hidden', 'true');
+        if (document.getElementById('e-version').value != '' && !document.getElementById('version').validity.valid) {
+            window.alert('Unsupported version.')
+        } else {
+            var formData = new FormData();
+
+            formData.append("comicBookId", document.getElementById('e-comicBookId').value);
+            formData.append("title", document.getElementById('e-title').value != '' ? document.getElementById('e-title').value : document.getElementById('e-title').placeholder);
+            formData.append('description', document.getElementById('e-description').value != '' ? document.getElementById('e-description').value : document.getElementById('e-description').placeholder);
+            formData.append('author', document.getElementById('e-author').value != '' ? document.getElementById('e-author').value : document.getElementById('e-author').placeholder);
+            formData.append('version', document.getElementById('e-version').value != '' ? document.getElementById('e-version').value : document.getElementById('e-version').placeholder);
+            formData.append('publishingDate', document.getElementById('e-publishingDate').value != '' ? `${document.getElementById('e-publishingDate').value}T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z` : document.getElementById('e-publishingDate').placeholder);
+            formData.append('price', document.getElementById('e-price').value != '' ? document.getElementById('e-price').value : document.getElementById('e-price').placeholder);
+
+
+            axios.post(`https://localhost:7242/api/ComicBook/EditComicBook/${document.getElementById('e-comicBookId').value}`, formData
+            )
+                .then(response => {
+                    console.log(response.data);
+                    ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
+                })
+                .catch(error => {
+                    window.alert(error.response.data.title)
+                    console.error(error);
+                });
+        }
     }
 
     const setToDate = () => {

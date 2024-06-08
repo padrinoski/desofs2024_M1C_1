@@ -19,7 +19,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
         {
 
             var user = await _context.Users
-                .Include(e => e.Role)
+                .Include(e => e.User_Role)
                 .Where(u => u.UserId == userId)
                 .AsNoTracking()
                 .SingleOrDefaultAsync();
@@ -27,13 +27,13 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             if (user == null)
                 return false;
 
-            return user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.StoreClerk || user.Role.RoleId == (int)Roles.Admin;
+            return user.User_Role.RoleId == (int)Roles.StoreManager || user.User_Role.RoleId == (int)Roles.StoreClerk || user.User_Role.RoleId == (int)Roles.Admin;
         }
 
         public async Task<bool> PodeAcederFrontOffice(int userId)
         {
             var user = await _context.Users
-                            .Include(e => e.Role)
+                            .Include(e => e.User_Role)
                             .Where(u => u.UserId == userId)
                             .AsNoTracking()
                             .SingleAsync();
@@ -41,19 +41,24 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             if (user == null)
                 return false;
 
-            return user.Role.RoleId == (int)Roles.Client || user.Role.RoleId == (int)Roles.Admin;
+            return user.User_Role.RoleId == (int)Roles.Client || user.User_Role.RoleId == (int)Roles.Admin;
         }
         
         public async Task<bool> PodeEditarComicBookFilter(int comicBookId, int userId)
         {
             var user = await _context.Users
-                            .Include(e => e.Role)
+                            .Include(e => e.User_Role)
                             .Where(u => u.UserId == userId)
                             .AsNoTracking()
                             .SingleAsync();
 
             if (user == null)
                 return false;
+
+            if (user.User_Role.RoleId == (int)Roles.Admin)
+            {
+                return true;
+            }
 
             var comicBook = await _context.ComicBook.SingleOrDefaultAsync(e => e.ComicBookId == comicBookId);
 
@@ -66,7 +71,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
         public async Task<bool> PodeAcederAInformacoesSensiveisFilter(int userId)
         {
           var user = await _context.Users
-          .Include(e => e.Role)
+          .Include(e => e.User_Role)
           .Where(u => u.UserId == userId)
           .AsNoTracking()
           .SingleOrDefaultAsync();
@@ -74,7 +79,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
            if (user == null)
            return false;
 
-           return user.Role.RoleId == (int)Roles.StoreManager || user.Role.RoleId == (int)Roles.StoreClerk || user.Role.RoleId == (int)Roles.Admin;
+           return user.User_Role.RoleId == (int)Roles.StoreManager || user.User_Role.RoleId == (int)Roles.StoreClerk || user.User_Role.RoleId == (int)Roles.Admin;
         }
     }
 }
