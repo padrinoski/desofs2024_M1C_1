@@ -70,7 +70,6 @@ namespace DESOFT.Server.API.Controllers.ComicBook
         }
         
         [HttpPost(nameof(EditComicBook)+ "/{comicBookId}")]
-        [TypeFilter(typeof(PodeAcederBackOfficeFilter))]
         [TypeFilter(typeof(PodeEditarComicBookFilter))]
         public async Task<ServiceResult> EditComicBook(int comicBookId, ComicBookDTO dto)
         {
