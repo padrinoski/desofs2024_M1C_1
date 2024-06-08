@@ -86,6 +86,7 @@ var autoMapperConfig = new MapperConfiguration(mc =>
     mc.AddProfile(new ComicBookMapping());
     mc.AddProfile(new ShoppingCartMapper());
     mc.AddProfile(new ShoppingCartItemMapper());
+    mc.AddProfile(new UserMapper());
     mc.AddProfile(new OrderMapping());
 });
 

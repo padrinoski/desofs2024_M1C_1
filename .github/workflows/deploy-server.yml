@@ -3,7 +3,7 @@ name: Deploy Comic Book Store
 on:
   push:
     branches:
-      - feature/getShoppingCart
+      - main
 
 jobs:
   build:

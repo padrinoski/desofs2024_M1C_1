@@ -1,42 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { fetchShoppingCartData } from './get-shopping-cart-backOffice.jsx';
-import '../NavBar/NavBar.css';
+import './ShoppingCart.css';
 
-function ShoppingCartModal({ modalVisible, toggleModal }) {
+function ShoppingCartModal({ modalVisible, toggleModal, userId }) {
     const [shoppingCartItems, setShoppingCartItems] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const userId = 6;
-    let shoppingCart;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setLoading(true);
                 const data = await fetchShoppingCartData(userId);
-                shoppingCart = data[0].shoppingCartId;
                 setShoppingCartItems(data);
             } catch (error) {
                 console.error('Error fetching shopping cart data:', error);
             } finally {
-                setLoading(false);
             }
         };
 
         if (modalVisible) {
             fetchData();
         }
-    }, [modalVisible]);
+    }, [modalVisible, userId]);
 
     return (
         modalVisible && (
-            <div className="modal" style={{ display: modalVisible ? 'block' : 'none' }} onClick={toggleModal}>
+            <div className="shopping-cart-modal" onClick={toggleModal}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <span className="close" onClick={toggleModal}>&times;</span>
                     <h2>Your Shopping Cart</h2>
-                    {loading ? (
-                        <p>Loading...</p>
-                    ) : shoppingCartItems.length > 0 ? (
+                    {shoppingCartItems.length > 0 ? (
                         <>
                             <table className="cart-table">
                                 <thead>
