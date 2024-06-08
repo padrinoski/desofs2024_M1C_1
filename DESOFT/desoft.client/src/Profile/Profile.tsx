@@ -3,7 +3,7 @@ import {React, useEffect} from "react"
 import { useState } from "react";
 
 const Profile = () => {
-    const {user, isAuthenticated, isLoading, getAccessTokenSilently} = useAuth0();
+    const {user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
     const [userMetadata, setUserMetadata] = useState(null);
 
     useEffect(() => {
@@ -13,12 +13,13 @@ const Profile = () => {
             try{
                 const accessToken = await getAccessTokenSilently({
                     authorizationParams: {
-                        audience: `http://${domain}/api/`,
-                        scope: "read:current_user",
+                        audience: `http://${domain}`,
                     },
                 })
-                console.log("User sub: " + user?.sub);
-                const userDetailsByIdUrl = `http://${domain}/api/users/${user.sub}`;
+                console.log("\nAccess Token: " + accessToken)
+                const userDetailsByIdUrl = (`http://${domain}/api/Users/6`);
+
+                console.log("\nUser Details By Id Url: " + userDetailsByIdUrl)
 
                 const metadataResponse = await fetch(userDetailsByIdUrl, {
                     headers: {
@@ -27,12 +28,12 @@ const Profile = () => {
                     },
                 });
 
-                const {user_metadata} =  await metadataResponse.json();
+                const {data} =  await metadataResponse.json();
 
-                setUserMetadata(user_metadata);
+                setUserMetadata(data);
 
             } catch(e){
-                console.log(e.message);
+                console.log(e);
             }
         };
         if (user && isAuthenticated) {
