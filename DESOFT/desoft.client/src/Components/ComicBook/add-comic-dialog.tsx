@@ -17,7 +17,7 @@ export default function AddComicBookDialog() {
         formData.append('description', document.getElementById('description').value);
         formData.append('author', document.getElementById('author').value);
         formData.append('version', document.getElementById('version').value);
-        formData.append('publishingDate', document.getElementById('publishingDate').value);
+        formData.append('publishingDate', `${document.getElementById('publishingDate').value}T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`);
         formData.append('price', document.getElementById('price').value);
 
 

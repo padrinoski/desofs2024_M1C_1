@@ -31,7 +31,7 @@ namespace DESOFT.Server.API.Application.DTO.ComicBook
         [MaxLength(10, ErrorMessage = "O campo é '{0}' deverá conter até 10 caracteres.")]
         public string Author { get; set; }
 
-        public List<ListButtonDTO> ListButtons { get; set; }
+        public List<ListButtonDTO> ListButtons { get; set; } = new();
 
     }
 }
