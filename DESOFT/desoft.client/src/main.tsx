@@ -6,6 +6,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import NavBar from "./Components/NavBar/NavBar.jsx"
 import ErrorPage from "./Components/error-page.jsx"
 import ComicBook from "./Components/ComicBook/comic-book.jsx"
+import PlaceOrder from "./Components/PlaceOrder/place-order"
 import OrderHistory from "./Components/OrderHistory/order-history.jsx"
 import ViewCostumersOrders from "./Components/OrderHistory/view-customers-orders.jsx"
 import {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     {
         path: "ComicBooks",
         element: <ComicBook />,
+    },
+    {
+        path: "PlaceOrder",
+        element: <PlaceOrder />,
     },
     {
         path: "login",
