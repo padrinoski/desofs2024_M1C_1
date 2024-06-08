@@ -3,6 +3,7 @@ using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Application.Services;
 using DESOFT.Server.API.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
 
 namespace DESOFT.Server.API.Controllers.Login
@@ -10,6 +11,7 @@ namespace DESOFT.Server.API.Controllers.Login
 
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableRateLimiting("fixed")]
     public class LoginController : ControllerBase
     {
 

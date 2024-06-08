@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using System.Threading.RateLimiting;
 using AutoMapper;
 using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
@@ -8,20 +9,20 @@ using DESOFT.Server.API.Application.Services;
 using DESOFT.Server.API.Infrastructure;
 using DESOFT.Server.API.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(opt =>
-     {
-         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-     });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+{
+    opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -46,12 +47,12 @@ builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
+    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+    .AddJsonFile("appsettings.json")
+    .Build();
 
 builder.Services.AddDbContext<AppDBContext>(options =>
-        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
 );
 
 builder.Services.AddSession(options =>
@@ -62,6 +63,21 @@ builder.Services.AddSession(options =>
 //QuestPDF Configuration
 
 QuestPDF.Settings.License = LicenseType.Community;
+
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("fixed", context =>
+            
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: context.Connection.RemoteIpAddress?.ToString(),
+                    factory: _ => new FixedWindowRateLimiterOptions{
+                        PermitLimit = 10,
+                        Window = TimeSpan.FromSeconds(10),
+                    }));
+});
+
+
 
 //AutoMapper
 
@@ -82,9 +98,20 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
         builder => builder.WithOrigins("https://localhost:5173")
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials());
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
+
+// 1. Add Authentication Services
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.Authority = "https://dev-b61l3yhgpdw5l2m2.us.auth0.com/";
+    options.Audience = "https://localhost:5265";
 });
 
 var app = builder.Build();
@@ -105,10 +132,16 @@ app.UseRouting();
 
 app.UseCors("CorsPolicy");
 
+// 2. Enable authentication middleware
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseRateLimiter();
+
 app.MapFallbackToFile("/index.html");
 
 app.Run();
+

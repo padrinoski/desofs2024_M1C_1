@@ -7,6 +7,7 @@ using DESOFT.Server.API.Domain.Entities.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.RateLimiting;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
 
 namespace DESOFT.Server.API.Controllers.ComicBook
@@ -14,6 +15,7 @@ namespace DESOFT.Server.API.Controllers.ComicBook
 
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableRateLimiting("fixed")]
     public class ComicBookController : ControllerBase
     {
 

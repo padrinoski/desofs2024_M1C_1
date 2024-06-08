@@ -2,6 +2,7 @@
 using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
 
 namespace DESOFT.Server.API.Controllers.Users
@@ -9,6 +10,7 @@ namespace DESOFT.Server.API.Controllers.Users
 
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableRateLimiting("fixed")]
     public class UsersController : ControllerBase
     {
 

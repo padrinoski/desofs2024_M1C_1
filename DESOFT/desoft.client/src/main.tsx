@@ -2,16 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import NavBar from './Components/NavBar/NavBar.jsx'
-import ErrorPage from "./Components/error-page"
-import ComicBook from "./Components/ComicBook/comic-book"
-import OrderHistory from "./Components/OrderHistory/order-history"
+import { Auth0Provider } from '@auth0/auth0-react'
+import NavBar from "./Components/NavBar/NavBar.jsx"
+import ErrorPage from "./Components/error-page.jsx"
+import ComicBook from "./Components/ComicBook/comic-book.jsx"
 import {
     BrowserRouter,
     createBrowserRouter,
     RouterProvider,
+    Routes,
+    Route
 } from "react-router-dom";
 import axios from 'axios';
+import LoginButton from './Authentication/Login/Login.tsx'
+import Profile from './Profile/Profile.tsx'
 
 const router = createBrowserRouter([
     {
@@ -24,16 +28,20 @@ const router = createBrowserRouter([
         element: <ComicBook />,
     },
     {
-        path: "OrderHistory",
-        element: <OrderHistory />,
+        path: "login",
+        element: <LoginButton />,
+    },
+    {
+        path: "profile",
+        element: <Profile />,
     },
 ]);
 
 (function () {
     //const token = window.sessionStorage.getItem("token");
     //token admin
-    //const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74";
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms"
+    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74";
+
     // token frontoffice
     //const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNiIsIm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTUxNjIzOTAyMn0.xK9Se9DVQGOIi6411TCm6y_B5uDWQgqxl5XY9akZcp8";
 
@@ -53,9 +61,23 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-        <NavBar />
-        </BrowserRouter>
-        <RouterProvider router={router} />
-  </React.StrictMode>,
+    <Auth0Provider
+      domain='dev-b61l3yhgpdw5l2m2.us.auth0.com'
+      clientId='a8wEXjcF9dzOlaWF4iICpR0y3LMl4L3m'
+      authorizationParams={{redirect_uri: `${window.location.origin}/profile`}}
+    >
+      <BrowserRouter>
+        <NavBar/>
+        <Routes>
+          <Route path="/" Component={App}/>
+          <Route path="/ComicBooks" Component={ComicBook}/>
+          <Route path="/login" Component={LoginButton} />
+          <Route path="/profile" Component={Profile} />
+          <Route Component={ErrorPage} />
+        </Routes>
+      </BrowserRouter>
+    </Auth0Provider>
+  </React.StrictMode>
 )
+
+//        <RouterProvider router={router} />

@@ -3,12 +3,14 @@ using DESOFT.Server.API.Application.Interfaces.Services;
 using DESOFT.Server.API.Authorization;
 using DESOFT.Server.API.Shared.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using static DESOFT.Server.API.Shared.Infrastructure.Result;
 
 namespace DESOFT.Server.API.Controllers.GenerateInvoice
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableRateLimiting("fixed")]
     public class GenerateInvoiceController : ControllerBase
     {
         private readonly IInvoiceService _invoiceService;
