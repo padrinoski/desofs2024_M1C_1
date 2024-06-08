@@ -85,6 +85,24 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
+        public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetCartItemsByUser(int userId)
+        {
+            var result = new ServiceResult<List<ShoppingCartItemDTO>>();
+
+            try
+            {
+                var cartItems = await _shoppingCartRepository.GetCartItemsByUser(userId);
+                result.Data = _mapper.Map<List<ShoppingCartItemDTO>>(cartItems);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
+        }
+
         public async Task<ServiceResult> RemoveFromCart(int cartId, int id)
         {
             var result = new ServiceResult();

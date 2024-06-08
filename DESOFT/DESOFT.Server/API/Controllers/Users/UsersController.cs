@@ -20,6 +20,11 @@ namespace DESOFT.Server.API.Controllers.Users
         {
             _usersService = userService;
         }
+        [HttpGet(nameof(GetUserByUsername) + "/{username}")]
+        public async Task<ServiceResult<UserDTO>> GetUserByUsername(String username)
+        {
+            return await _usersService.GetUser(username);
+        }
 
         
         [HttpGet("{id}")]
@@ -31,6 +36,12 @@ namespace DESOFT.Server.API.Controllers.Users
         //[TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
         [HttpPost(nameof(AddAdmin))]
         public async Task<ServiceResult> AddAdmin(UserDTO dto)
+        {
+            return await _usersService.AddAdmin(dto);
+        }
+
+        [HttpPost(nameof(CreateUser))]
+        public async Task<ServiceResult> CreateUser(UserDTO dto)
         {
             return await _usersService.AddAdmin(dto);
         }

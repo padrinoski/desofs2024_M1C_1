@@ -5,6 +5,7 @@
 
 /DESOFT/Test/obj/*
 /DESOFT/Test/bin/*
+/DESOFT/Test/obj/Debug/net8.0/
 /DESOFT/DESOFT.Server/obj/*
 /DESOFT/DESOFT.Server/bin/*
 /DESOFT/DESOFT.Client/obj/*
