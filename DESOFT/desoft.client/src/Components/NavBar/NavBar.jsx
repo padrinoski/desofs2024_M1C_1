@@ -23,6 +23,7 @@ function NavBar() {
                 <div className="leftPane">
                     <Link id="homeBtn" to={`/`}>Home</Link>
                     <Link id="comicBooksBtn" to={`ComicBooks`}>ComicBooks</Link>
+                    <Link id="orderHistoryBtn" to={`OrderHistory`}>Order History</Link>
                     <a href="#">Contact</a>
                     <a href="#">About</a>
                 </div>

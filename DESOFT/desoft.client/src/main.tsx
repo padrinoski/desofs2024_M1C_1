@@ -5,6 +5,7 @@ import './index.css'
 import NavBar from './Components/NavBar/NavBar.jsx'
 import ErrorPage from "./Components/error-page"
 import ComicBook from "./Components/ComicBook/comic-book"
+import OrderHistory from "./Components/OrderHistory/order-history"
 import {
     BrowserRouter,
     createBrowserRouter,
@@ -22,13 +23,17 @@ const router = createBrowserRouter([
         path: "ComicBooks",
         element: <ComicBook />,
     },
+    {
+        path: "OrderHistory",
+        element: <OrderHistory />,
+    },
 ]);
 
 (function () {
     //const token = window.sessionStorage.getItem("token");
     //token admin
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74";
-
+    //const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74";
+    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2In0.qXULiFUsM8--BQeKj7xmxmuzsi8gTpN-oW7oKrFyQms"
     // token frontoffice
     //const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNiIsIm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTUxNjIzOTAyMn0.xK9Se9DVQGOIi6411TCm6y_B5uDWQgqxl5XY9akZcp8";
 
