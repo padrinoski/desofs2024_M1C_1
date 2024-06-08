@@ -36,7 +36,7 @@ namespace Test.ComicBook
             Author = "Ian Brooke",
             Description = "It's a story.",
             Price = 20.50m,
-            PublishingDate = DateTime.UtcNow,
+            PublishingDate = DateTime.UtcNow.ToString(),
             Title = "Title",
             Version = "1.0"
         };
@@ -47,7 +47,7 @@ namespace Test.ComicBook
             Author = "Ian Brooke",
             Description = "It's a story.",
             Price = 20.50m,
-            PublishingDate = DateTime.UtcNow,
+            PublishingDate = DateTime.UtcNow.ToString(),
             Title = "Title",
             Version = "1.0"
         };

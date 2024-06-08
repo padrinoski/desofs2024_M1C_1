@@ -11,25 +11,36 @@ export default function AddComicBookDialog() {
 
     const comicBookPost = () => {
 
-        var formData = new FormData();
+        if (document.getElementById('title') == '' || document.getElementById('description').value == '' ||
+            document.getElementById('author') == '' || document.getElementById('publishingDate').value == '' ||
+            document.getElementById('version') == '' || document.getElementById('price').value == '') {
+            window.alert('One or more validation errors occurred.');
+        } else {
+            if (!document.getElementById('version').validity.valid) {
+                window.alert('Unsupported version.')
+            } else {
+                var formData = new FormData();
 
-        formData.append("title", document.getElementById('title').value);
-        formData.append('description', document.getElementById('description').value);
-        formData.append('author', document.getElementById('author').value);
-        formData.append('version', document.getElementById('version').value);
-        formData.append('publishingDate', `${document.getElementById('publishingDate').value}T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`);
-        formData.append('price', document.getElementById('price').value);
+                formData.append("title", document.getElementById('title').value);
+                formData.append('description', document.getElementById('description').value);
+                formData.append('author', document.getElementById('author').value);
+                formData.append('version', document.getElementById('version').value);
+                formData.append('publishingDate', `${document.getElementById('publishingDate').value}T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`);
+                formData.append('price', document.getElementById('price').value);
 
 
-        axios.post(`https://localhost:7242/api/ComicBook/CreateComicbook`,formData
-        )
-        .then(response => {
-            console.log(response.data);
-            ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
-        })
-        .catch(error => {
-            console.error(error);
-        });    
+                axios.post(`https://localhost:7242/api/ComicBook/CreateComicbook`, formData
+                )
+                    .then(response => {
+                        console.log(response.data);
+                        ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
+                    })
+                    .catch(error => {
+                        window.alert(error.response.data.title)
+                        console.error(error);
+                    });
+            }
+        }
     }
 
     const cancel = () => {
@@ -69,7 +80,7 @@ export default function AddComicBookDialog() {
                     <label>Version</label>
                 </div>
                 <div className="col-8">
-                    <input id="version" title="version" name="version" type="text" pattern="\d{2}.\d{2}.\d{2}"></input>
+                    <input id="version" title="version" name="version" type="text" pattern="\d{1,2}(.\d{1,2}){0,2}"></input>
                 </div>
             </div>
             <div className="row">

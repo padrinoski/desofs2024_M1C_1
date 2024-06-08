@@ -20,7 +20,7 @@ namespace DESOFT.Server.API.Infrastructure.EntityConfigurations.User
                 .HasComment("ID of the User");
             
             builder.HasOne(e => e.User)
-                .WithOne(e => e.Role)
+                .WithOne(e => e.User_Role)
                 .HasForeignKey<User_Role>(e => e.UserId);
             
             builder.Property(e => e.RoleId)
