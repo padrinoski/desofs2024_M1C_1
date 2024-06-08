@@ -1,5 +1,0 @@
-C:/Users/Leandro/source/repos/DESOFT/desoft.client/obj/Debug/desoft.client.esproj.CoreCompileInputs.cache
-C:/Users/Leandro/Desktop/Faculdade/2º Ano/DESOFS/desofs2024_M1C_1/DESOFT/desoft.client/obj/Debug/desoft.client.esproj.CoreCompileInputs.cache
-/Users/ctw02447/Documents/Mestrado/DESOFS/desofs2024_M1C_1/DESOFT/desoft.client/obj/Debug/desoft.client.esproj.CoreCompileInputs.cache
-/Users/joaolucasroesner/Documents/ISEPLocal/NEW DESOFS/project/desofs2024_M1C_1/DESOFT/desoft.client/obj/Debug/desoft.client.esproj.CoreCompileInputs.cache
-C:\Users\Leandro\Desktop\Faculdade\2º Ano\DESOFS\desofs2024_M1C_1\DESOFT\desoft.client\obj\Debug\desoft.client.esproj.CoreCompileInputs.cache
