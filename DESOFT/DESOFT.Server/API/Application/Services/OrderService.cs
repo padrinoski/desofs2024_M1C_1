@@ -124,6 +124,9 @@ namespace DESOFT.Server.API.Application.Services
                         }
 
                         completeOrder.ShoppingCartItems = orderItems;
+                        completeOrder.OrderId = order.OrderId;
+                        completeOrder.TotalCost = order.TotalCost;
+                        completeOrder.ShoppingCartId = order.ShoppingCartId;
 
                         completeOrders.Add(completeOrder);
                     }

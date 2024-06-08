@@ -6,11 +6,13 @@ export default function OrderHistory() {
 
     const [orders, setOrders] = useState([]);
     const [orderDetails, setOrderDetails] = useState(0);
+    const [orderItems, setOrderItems] = useState(Object);
     const [orderDetailsVisible, setOrderDetailsVisible] = useState(false);
 
-    const toggleViewInfo = (orderId) => {
+    const toggleViewInfo = (orderId, orderI) => {
         return () => {
             setOrderDetails(orderId)
+            setOrderItems(orderI)
             if(orderId !== 0) {
                 setOrderDetailsVisible(true);
             }else {
@@ -33,7 +35,7 @@ export default function OrderHistory() {
     function downloadPDF(pdf) {
         const linkSource = `data:application/pdf;base64,${pdf.data}`;
         const downloadLink = document.createElement("a");
-        const fileName = "abc.pdf";
+        const fileName = "invoice.pdf";
         downloadLink.href = linkSource;
         downloadLink.download = fileName;
         downloadLink.click();}
@@ -68,16 +70,10 @@ export default function OrderHistory() {
                         <tr key={order.orderId}>
                             <td>{order.orderId}</td>
                             <td>{order.totalCost}</td>
-                            <td><button onClick={() => toggleViewInfo(order.orderId)}>View details</button></td>
+                            <td><button onClick={toggleViewInfo(order.orderId, order.shoppingCartItems)}>View details</button></td>
                             <td><button onClick={() => returnPDF(order.orderId)}>Download PDF</button></td>
                         </tr>
                     ))}
-                    <tr key={1}>
-                        <td>1</td>
-                        <td>100</td>
-                        <td><button onClick={() => toggleViewInfo(1)}>View details</button></td>
-                        <td><button onClick={() => returnPDF(17)}>Download PDF</button></td>  
-                    </tr>
                 </tbody>
             </table>
 
@@ -86,7 +82,7 @@ export default function OrderHistory() {
             <div className="modal">
                     <div className="overlay"></div>
                     <div className="modal-content">
-                        <button className='close-modal' onClick={toggleViewInfo(0)}>Close</button>
+                        <button className='close-modal' onClick={toggleViewInfo(0, null)}>Close</button>
                         <h2>Order number: {orderDetails}</h2>
                         <table>
                             <thead>
@@ -96,14 +92,12 @@ export default function OrderHistory() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Comic Book 1</td>
-                                    <td>10</td>
+                            {orderItems.map(orderItem => (
+                                <tr key={orderItem.shoppingCartItemId}>
+                                    <td>{orderItem.comicBookTitle}</td>
+                                    <td>{orderItem.comicBookPrice}</td>
                                 </tr>
-                                <tr>
-                                    <td>Comic Book 2</td>
-                                    <td>20</td>
-                                </tr>
+                            ))}
                             </tbody>
                         </table>
                     </div>
