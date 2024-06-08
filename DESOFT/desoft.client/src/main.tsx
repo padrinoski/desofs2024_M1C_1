@@ -6,6 +6,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import NavBar from "./Components/NavBar/NavBar.jsx"
 import ErrorPage from "./Components/error-page.jsx"
 import ComicBook from "./Components/ComicBook/comic-book.jsx"
+import OrderHistory from "./Components/OrderHistory/order-history.jsx"
 import {
     BrowserRouter,
     createBrowserRouter,
@@ -71,6 +72,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" Component={App}/>
           <Route path="/ComicBooks" Component={ComicBook}/>
+          <Route path="/OrderHistory" Component={OrderHistory}/>
           <Route path="/login" Component={LoginButton} />
           <Route path="/profile" Component={Profile} />
           <Route Component={ErrorPage} />

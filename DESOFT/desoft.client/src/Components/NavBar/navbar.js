@@ -4,6 +4,9 @@ switch (window.location.pathname.split('/')[1]) {
     case 'ComicBooks':
         document.querySelector('#comicBooksBtn').classList.add('active');
         break;
+    case 'OrderHistory':
+        document.querySelector('#orderHistoryBtn').classList.add('active');
+        break;
     case 'profile':
         if(aux_profileBtn){
             document.querySelector('#profileBtn').classList.add('active');
