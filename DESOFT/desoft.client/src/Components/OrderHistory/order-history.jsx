@@ -19,7 +19,19 @@ export default function OrderHistory() {
         }
     }
 
+    function returnPDF(orderId) {
+        axios.get('http://localhost:5265/api/GenerateInvoice/GenerateInvoiceDocument/'+orderId
+        )
+        .then(response => {
+            downloadPDF(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });  
+    }
+
     function downloadPDF(pdf) {
+
         const linkSource = `data:application/pdf;base64,${pdf}`;
         const downloadLink = document.createElement("a");
         const fileName = "file.pdf";
@@ -51,6 +63,7 @@ export default function OrderHistory() {
                         <th>Order number</th>
                         <th>Total Price</th>
                         <th>Order Details</th>
+                        <th>Download PDF</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,12 +71,15 @@ export default function OrderHistory() {
                         <tr key={order.orderId}>
                             <td>{order.orderId}</td>
                             <td>{comic.totalCost}</td>
+                            <td><button onClick={toggleViewInfo(order.orderId)}>View details</button></td>
+                            <td><button onClick={returnPDF(order.orderId)}>Download PDF</button></td>
                         </tr>
                     ))}
                     <tr key={1}>
                         <td>1</td>
                         <td>100</td>
                         <td><button onClick={toggleViewInfo(1)}>View details</button></td>
+                        <td><button onClick={returnPDF(9)}>Download PDF</button></td>  
                     </tr>
                 </tbody>
             </table>
