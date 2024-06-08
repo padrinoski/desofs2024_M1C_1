@@ -72,3 +72,93 @@ th, td {
 .listActions span.delete button{
     background-color: red;
 }
+
+.buttons {
+    width: 100%;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.buttons button{
+    margin-inline-start: 10px;
+}
+
+.addComicBookDialog, .editComicBookDialog {
+    position: absolute;
+    background-color: white;
+    width: 50%;
+    height: 70%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #6d6d6d;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.row {
+    display: inline-flex;
+    width: -webkit-fill-available;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.col-1{
+    padding-inline:10px;
+    width: 10%;
+}
+
+.col-2 {
+    padding-inline: 10px;
+    width: 20%;
+}
+
+.col-3 {
+    padding-inline: 10px;
+    width: 30%;
+}
+
+.col-4 {
+    padding-inline: 10px;
+    width: 40%;
+}
+
+.col-5 {
+    padding-inline: 10px;
+    width: 50%;
+}
+
+.col-6 {
+    padding-inline: 10px;
+    width: 60%;
+}
+
+.col-7 {
+    padding-inline: 10px;
+    width: 70%;
+}
+
+.col-8 {
+    padding-inline: 10px;
+    width: 80%;
+}
+
+.col-9 {
+    padding-inline: 10px;
+    width: 90%;
+}
+
+.col-10 {
+    padding-inline: 10px;
+    width: 100%;
+}
+
+input{
+    width: 100%;
+}
