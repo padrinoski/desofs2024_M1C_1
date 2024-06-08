@@ -6,6 +6,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import NavBar from "./Components/NavBar/NavBar.jsx"
 import ErrorPage from "./Components/error-page.jsx"
 import ComicBook from "./Components/ComicBook/comic-book.jsx"
+import ShoppingCart from "./Components/ShoppingCart/shopping-cart.jsx"
 import PlaceOrder from "./Components/PlaceOrder/place-order.jsx"
 import OrderHistory from "./Components/OrderHistory/order-history.jsx"
 import ViewCostumersOrders from "./Components/OrderHistory/view-customers-orders.jsx"
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
     {
         path: "profile",
         element: <Profile />,
+    },
+    {
+        path: "ShoppingCart",
+        element: <ShoppingCart />,
     },
 ]);
 
@@ -84,6 +89,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/login" Component={LoginButton} />
           <Route path="/profile" Component={Profile} />
           <Route path="/PlaceOrder" Component={PlaceOrder} />
+          <Route path="/ShoppingCart" Component={ShoppingCart} />
           <Route Component={ErrorPage} />
         </Routes>
       </BrowserRouter>

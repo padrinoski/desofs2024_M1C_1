@@ -18,10 +18,8 @@ const customUseAuth0 = () => {
                     if (response.data.data !== null && response.data.data.username === username) {
                         console.log("User exists");
                         setUserInfo(response.data.data);
-                        console.log(response.data.data.userId);
                     } else {
                         console.log("User doesn't exist - creating it");
-                        console.log(user.sub);
                         // Neste newUser tens que guardar o userId como user.sub, mas só qd mudares o modelo de dadaos
                         const newUser = {
                             //userId: user.sub,
