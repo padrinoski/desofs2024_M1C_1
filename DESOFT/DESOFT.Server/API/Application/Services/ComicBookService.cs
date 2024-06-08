@@ -91,7 +91,7 @@ namespace DESOFT.Server.API.Application.Services
                 model.Author = dto.Author;
                 model.Description = dto.Description;
                 model.Price = dto.Price;
-                model.PublishingDate = dto.PublishingDate;
+                model.PublishingDate = DateTime.Parse(dto.PublishingDate);
                 model.Title = dto.Title;
                 model.Version = dto.Version;
 

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddComicBookBtn from './add-comicBook';
+import EditComicBookDialog from './edit-comic-dialog';
+import ReactDom from 'react-dom';
+
 export default function ComicBookBackOffice() {
 
     const [comics, setComics] = useState([]);
@@ -19,7 +22,9 @@ export default function ComicBookBackOffice() {
 
 
     const editComicBook = (comicBookId) => {
-        console.log(comicBookId);
+        ReactDom.render(<EditComicBookDialog comicBookId={comicBookId}></EditComicBookDialog>, document.querySelector('.page'));
+        ReactDom.render(<ComicBook/>, document.querySelector('.page'));
+        //document.querySelector('.editComicBookDialog')?.removeAttribute('hidden');
     }
 
     const deleteComicBook= (comicBookId) => {

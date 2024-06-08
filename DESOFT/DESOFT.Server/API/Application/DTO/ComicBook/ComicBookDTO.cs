@@ -13,7 +13,7 @@ namespace DESOFT.Server.API.Application.DTO.ComicBook
         public string Version { get; set; }
 
         [Required(ErrorMessage = "O campo '{0}' é obrigatório")]
-        public DateTime PublishingDate { get; set; }
+        public string PublishingDate { get; set; }
 
         [Required(ErrorMessage = "O campo é '{0}' obrigatório")]
         [Range(0.0, Double.MaxValue, ErrorMessage = "O campo '{0}' deve ser maior que {1}.")]
