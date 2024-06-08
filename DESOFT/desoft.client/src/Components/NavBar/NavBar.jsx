@@ -8,7 +8,7 @@ import Profile from "../../Profile/Profile.tsx"
 
 function NavBar() {
 
-    const {user, isAuthenticated, logout } = useAuth0();
+    const { user, isAuthenticated, logout } = useAuth0();
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -32,14 +32,16 @@ function NavBar() {
                     <Link id="orderHistoryBtn" to={`OrderHistory`}>Order History</Link>
                     <a href="#">Contact</a>
                     <a href="#">About</a>
-                    {isAuthenticated && <Link id="profileBtn" to="/profile">Profile</Link>}
                 </div>
                 <div className="rightPane">
+                    {isAuthenticated && <Link id="profileBtn" to="/profile">Profile</Link>}
+                    {isAuthenticated && <Link id="customersOrders" to={`CostumersOrders`}>Customers Orders</Link>}
                     {isAuthenticated ? <LogoutButton>Logout</LogoutButton> : <LoginButton>Login</LoginButton>}
                 </div>
-            </div> 
+
+            </div>
         </>
-  );
+    );
 }
 
 export default NavBar;
