@@ -64,11 +64,11 @@ namespace DESOFT.Server.API.Controllers.PlaceOrder
                 if (resultFromCall.Success)
                 {
                     result.Data = resultFromCall.Data;
-                    result.Messages.Add(new KeyVal { Key = "Cart was created successfully." });
+                    result.Messages.Add(new KeyVal { Key = "Order was created successfully." });
                 }
                 else
                 {
-                    result.Errors.Add(new KeyVal { Key = "Error creating the cart." });
+                    result.Errors.Add(new KeyVal { Key = "Error creating the order." });
                 }
             }
             catch (Exception ex)

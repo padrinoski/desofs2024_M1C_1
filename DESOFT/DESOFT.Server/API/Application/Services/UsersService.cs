@@ -1,3 +1,4 @@
+using AutoMapper;
 using DESOFT.Server.API.Application.DTO.User;
 using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Application.Interfaces.Services;
@@ -13,11 +14,13 @@ namespace DESOFT.Server.API.Application.Services
     {
         private readonly IUsersRepository _usersRepository;
         private readonly ILogger<UsersService> _logger;
+        private readonly IMapper _mapper;
 
-        public UsersService(ILogger<UsersService> logger, IUsersRepository usersRepository)
+        public UsersService(ILogger<UsersService> logger, IUsersRepository usersRepository, IMapper mapper)
         {
             _usersRepository = usersRepository;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task<ServiceResult> AddAdmin(UserDTO dto)
@@ -43,6 +46,28 @@ namespace DESOFT.Server.API.Application.Services
             }
 
             return res;
+        }
+        public async Task<ServiceResult<UserDTO>> GetUser(string username)
+        {
+            var result = new ServiceResult<UserDTO>();
+            try
+            {
+                var user = await _usersRepository.GetUserByUsername(username);
+                if (user != null)
+                {
+                    result.Data = _mapper.Map<UserDTO>(user);
+                }
+                else
+                {
+                    result.Data = null; // Ensure Data is null if user doesn't exist
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return result;
         }
 
         public async Task<ServiceResult> RemoveAdmin(RemoveUserDTO dto)

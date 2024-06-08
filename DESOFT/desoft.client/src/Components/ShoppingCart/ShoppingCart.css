@@ -1,0 +1,81 @@
+.shopping-cart-modal {
+    position: fixed; /* Use fixed to ensure it's relative to the viewport */
+    top: 122px;
+    right: 20px; /* Adjust right position to your preference */
+    width: 300px; /* Set a fixed width */
+    min-height: 10px;
+    max-height: 80vh; /* Maximum height to prevent overflowing */
+    height: 100px;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add some shadow for better visibility */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+
+    width: 100%;
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px; /* Adjust top position as needed */
+    right: 20px; /* Adjust right position as needed */
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #333; /* Set text color */
+    margin: 0; /* Remove default margins */
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.modal-content p {
+    color: #333; /* Set text color */
+    margin: 0; /* Remove default margins */
+}
+
+.modal-content td {
+    color: #333; /* Set text color */
+    margin: 0; /* Remove default margins */
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid transparent; /* Hide border */
+    padding: 8px;
+}
+
+.cart-table th {
+    text-align: center;
+    background-color: #646464; /* Header background color */
+}
+
+.checkout-button {
+    color: #fff; /* Change text color */
+    background-color: #646464; /* Change background color */
+    padding: 10px 15px; /* Add padding */
+    border-radius: 5px; /* Add rounded corners */
+    text-decoration: none; /* Remove default underline */
+}
+
+.checkout-button:hover {
+    background-color: #a9a9a9; /* Change background color on hover */
+    color: #ffffff; /* Change text color */
+}
