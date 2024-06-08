@@ -31,18 +31,15 @@ export default function OrderHistory() {
     }
 
     function downloadPDF(pdf) {
-
-        const linkSource = `data:application/pdf;base64,${pdf}`;
+        const linkSource = `data:application/pdf;base64,${pdf.data}`;
         const downloadLink = document.createElement("a");
-        const fileName = "file.pdf";
-    
+        const fileName = "abc.pdf";
         downloadLink.href = linkSource;
         downloadLink.download = fileName;
-        downloadLink.click();
-    }
+        downloadLink.click();}
 
     useEffect(() => {
-        axios.get('https://localhost:5265/api/PlaceOrder/GetOrdersByUserId/6'
+        axios.get('http://localhost:5265/api/PlaceOrder/GetOrdersByUserId/6'
         )
         .then(response => {
             setOrders(response.data);
@@ -63,23 +60,23 @@ export default function OrderHistory() {
                         <th>Order number</th>
                         <th>Total Price</th>
                         <th>Order Details</th>
-                        <th>Download PDF</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {orders.data?.map(order => (
                         <tr key={order.orderId}>
                             <td>{order.orderId}</td>
-                            <td>{comic.totalCost}</td>
-                            <td><button onClick={toggleViewInfo(order.orderId)}>View details</button></td>
-                            <td><button onClick={returnPDF(order.orderId)}>Download PDF</button></td>
+                            <td>{order.totalCost}</td>
+                            <td><button onClick={() => toggleViewInfo(order.orderId)}>View details</button></td>
+                            <td><button onClick={() => returnPDF(order.orderId)}>Download PDF</button></td>
                         </tr>
                     ))}
                     <tr key={1}>
                         <td>1</td>
                         <td>100</td>
-                        <td><button onClick={toggleViewInfo(1)}>View details</button></td>
-                        <td><button onClick={returnPDF(9)}>Download PDF</button></td>  
+                        <td><button onClick={() => toggleViewInfo(1)}>View details</button></td>
+                        <td><button onClick={() => returnPDF(17)}>Download PDF</button></td>  
                     </tr>
                 </tbody>
             </table>
