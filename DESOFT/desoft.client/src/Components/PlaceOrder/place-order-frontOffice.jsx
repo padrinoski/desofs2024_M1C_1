@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { fetchShoppingCartData } from '../ShoppingCart/get-shopping-cart-backOffice.jsx';
-import { createOrderBackOffice } from './create-order-backOffice.jsx';
+import React, {useState, useEffect} from 'react';
+import {fetchShoppingCartData} from '../ShoppingCart/get-shopping-cart-backOffice.jsx';
+import {createOrderBackOffice} from './create-order-backOffice.jsx';
 import './PlaceOrder.css';
+import customUseAuth0 from "../../Authentication/customUseAuth0.jsx";
 
-export default function PlaceOrderFrontOffice({ userId }) {
+export default function PlaceOrderFrontOffice() {
     const [address, setAddress] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('');
     const [cartData, setCartData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [formError, setFormError] = useState('');
-
+    const [totalValue, setTotalValue] = useState(0); // State to hold the total value
+    const {userInfo, isAuthenticated, logout} = customUseAuth0();
+    const currentUserId = userInfo?.userId;
     useEffect(() => {
         async function getShoppingCartData() {
             try {
-                const data = await fetchShoppingCartData(userId);
-                setCartData(data);
-                setLoading(false);
+                if (isAuthenticated && currentUserId !== undefined) {
+                    console.log(currentUserId);
+                    const data = await fetchShoppingCartData(currentUserId);
+                    setCartData(data);
+                    setLoading(false);
+                }
             } catch (error) {
                 setError(error.message);
                 setLoading(false);
@@ -24,7 +30,20 @@ export default function PlaceOrderFrontOffice({ userId }) {
         }
 
         getShoppingCartData();
-    }, [userId]);
+    }, [currentUserId]);
+
+    useEffect(() => {
+        // Calculate total value when cartData changes
+        const calculateTotalValue = () => {
+            let total = 0;
+            cartData.forEach(item => {
+                total += item.quantity * item.comicBookDetails.data.price;
+            });
+            setTotalValue(total);
+        };
+
+        calculateTotalValue();
+    }, [cartData]);
 
     const handlePlaceOrder = async (e) => {
         e.preventDefault();
@@ -102,6 +121,7 @@ export default function PlaceOrderFrontOffice({ userId }) {
                         <option value="bankTransfer">Bank Transfer</option>
                     </select>
                 </div>
+                {totalValue > 0 && <div>Total Value: {totalValue}€</div>}
                 {formError && <div className="form-error">{formError}</div>}
                 <button type="submit">Place Order</button>
             </form>

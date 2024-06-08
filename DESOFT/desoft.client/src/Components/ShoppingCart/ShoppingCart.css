@@ -1,14 +1,12 @@
-.shopping-cart-modal {
-    position: fixed; /* Use fixed to ensure it's relative to the viewport */
-    top: 122px;
-    right: 20px; /* Adjust right position to your preference */
-    width: 300px; /* Set a fixed width */
-    min-height: 10px;
-    max-height: 80vh; /* Maximum height to prevent overflowing */
-    height: 100px;
-    background-color: #fefefe;
-    border: 1px solid #888;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add some shadow for better visibility */
+.modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    color: #000;
 }
 
 /* Modal Content */
@@ -16,23 +14,6 @@
     background-color: #fefefe;
 
     width: 100%;
-}
-
-/* Close Button */
-.close {
-    color: #aaa;
-    position: absolute;
-    top: 10px; /* Adjust top position as needed */
-    right: 20px; /* Adjust right position as needed */
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .modal-content h2 {

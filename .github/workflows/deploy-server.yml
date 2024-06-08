@@ -31,6 +31,10 @@ jobs:
         working-directory: DESOFT/desoft.client
         run: npm run build
 
+      - name: see files
+        working-directory: DESOFT/desoft.client
+        run: ls -la
+
       - name: Build CS App
         working-directory: DESOFT/DESOFT.Server
         run: dotnet build DESOFS.Server.csproj -c v1.0.0
@@ -45,11 +49,11 @@ jobs:
           name: csbuild
           path: DESOFT/DESOFT.Server/csoutput
 
-  #      - name: Upload build artifacts
-  #        uses: actions/upload-artifact@v3
-  #        with:
-  #          name: build
-  #          path: DESOFT/desoft.client/build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: DESOFT/desoft.client/build
 
   deploy:
     runs-on: ubuntu-latest

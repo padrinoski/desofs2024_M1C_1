@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export async function fetchShoppingCartData(userId) {
     try {
-        console.log(userId);
         const response = await axios.get(`http://localhost:5265/api/ShoppingCart/GetShoppingCartByUser/${userId}`);
 
         const items = response.data.data;

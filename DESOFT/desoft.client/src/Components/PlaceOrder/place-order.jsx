@@ -14,9 +14,8 @@ export default function PlaceOrder() {
                     setbackOffice(false);
                 });
         }, []);*/
-    const userId = 6;
 
     return (
-        <PlaceOrderFrontOffice userId={userId}></PlaceOrderFrontOffice>
+        <PlaceOrderFrontOffice></PlaceOrderFrontOffice>
     );
 }

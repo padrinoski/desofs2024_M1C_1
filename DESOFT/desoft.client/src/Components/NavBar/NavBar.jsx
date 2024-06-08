@@ -1,13 +1,12 @@
 import './NavBar.css';
 import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
-import ShoppingCartModal from '../ShoppingCart/ShoppingCartModal.jsx';
 import LoginButton from "../../Authentication/Login/Login.tsx";
 import LogoutButton from "../../Authentication/Logout/Logout.tsx";
 import customUseAuth0 from "../../Authentication/customUseAuth0.jsx";
 
 function NavBar() {
-    const [modalVisible, setModalVisible] = useState(false);
+
     const {userInfo, isAuthenticated, logout} = customUseAuth0();
 
     //user.userId dá o userId
@@ -26,10 +25,6 @@ function NavBar() {
         }
     }, []);
 
-    const toggleModal = () => {
-        setModalVisible(prevState => !prevState);
-    };
-
     return (
         <>
             <div className="topnav">
@@ -41,8 +36,7 @@ function NavBar() {
                     <a href="#">About</a>
                 </div>
                 <div className="rightPane">
-                    {isAuthenticated && <a href="#" onClick={toggleModal}>Shopping Cart</a>}
-                    {isAuthenticated && <ShoppingCartModal modalVisible={modalVisible} toggleModal={toggleModal} userId={userInfo?.userId} />}
+                    {isAuthenticated && <Link id="shoppingCart" to="/ShoppingCart">Shopping Cart</Link>}
                     {isAuthenticated && <Link id="profileBtn" to="/profile">Profile</Link>}
                     {isAuthenticated && <Link id="customersOrders" to={`CostumersOrders`}>Customers Orders</Link>}
                     {isAuthenticated ? <LogoutButton>Logout</LogoutButton> : <LoginButton>Login</LoginButton>}
