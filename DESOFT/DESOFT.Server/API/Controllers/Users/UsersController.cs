@@ -21,6 +21,13 @@ namespace DESOFT.Server.API.Controllers.Users
             _usersService = userService;
         }
 
+        
+        [HttpGet("{id}")]
+        public async Task<ServiceResult<UserDTO>> getUserById(int id)
+        {
+            return await _usersService.getUserById(id);
+        }
+        
         //[TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
         [HttpPost(nameof(AddAdmin))]
         public async Task<ServiceResult> AddAdmin(UserDTO dto)

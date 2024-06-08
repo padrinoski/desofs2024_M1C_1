@@ -10,5 +10,7 @@ public interface IUsersRepository : IRepository
     Task RemoveUser(User user);
     Task UpdateUser(User user);
     Task<Role> GetRoleByUser(int userId);
+    
+    Task<User> GetUserById(int id);
 
 }

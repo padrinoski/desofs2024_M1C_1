@@ -15,6 +15,11 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             _context = context;
         }
 
+        
+        public async Task<User> GetUserById(int id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
         public async Task<User> GetUserByUsername(string username)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);

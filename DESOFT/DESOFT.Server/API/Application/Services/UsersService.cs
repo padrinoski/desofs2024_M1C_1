@@ -20,6 +20,37 @@ namespace DESOFT.Server.API.Application.Services
             _logger = logger;
         }
 
+        
+        public async Task<ServiceResult<UserDTO>> getUserById(int id)
+        {
+            var res = new ServiceResult<UserDTO>();
+
+            try
+            {
+                var user = await _usersRepository.GetUserById(id);
+
+                if (user != null)
+                {
+                    res.Data = new UserDTO
+                    {
+                        Username = user.UserName,
+                        Address = user.Address
+                    };
+                }
+                else
+                {
+                    res.Errors.Add(new KeyVal("User not found"));
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                res.Errors.Add(new KeyVal("An error occurred while getting the user"));
+            }
+            
+            return res;
+        }
+        
         public async Task<ServiceResult> AddAdmin(UserDTO dto)
         {
             var res = new ServiceResult();

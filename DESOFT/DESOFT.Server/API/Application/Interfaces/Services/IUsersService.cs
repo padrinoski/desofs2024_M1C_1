@@ -8,5 +8,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
         Task<ServiceResult> AddAdmin(UserDTO dto);
         Task<ServiceResult> RemoveAdmin(RemoveUserDTO dto);
         Task<ServiceResult> UpdateAdmin(UserDTO dto);
+        
+        Task<ServiceResult<UserDTO>> getUserById(int id);
     }
 }
