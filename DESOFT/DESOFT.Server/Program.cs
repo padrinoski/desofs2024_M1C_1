@@ -12,18 +12,17 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(opt =>
-     {
-         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-     });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+{
+    opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -48,12 +47,12 @@ builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
+    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+    .AddJsonFile("appsettings.json")
+    .Build();
 
 builder.Services.AddDbContext<AppDBContext>(options =>
-        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
 );
 
 builder.Services.AddSession(options =>
@@ -99,9 +98,20 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
         builder => builder.WithOrigins("https://localhost:5173")
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials());
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
+
+// 1. Add Authentication Services
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.Authority = "https://dev-b61l3yhgpdw5l2m2.us.auth0.com/";
+    options.Audience = "https://localhost:5265";
 });
 
 var app = builder.Build();
@@ -121,6 +131,9 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseCors("CorsPolicy");
+
+// 2. Enable authentication middleware
+app.UseAuthentication();
 
 app.UseAuthorization();
 
