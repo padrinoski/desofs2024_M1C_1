@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchShoppingCartData } from '../NavBar/get-shopping-cart-backOffice.jsx';
+import { fetchShoppingCartData } from '../ShoppingCart/get-shopping-cart-backOffice.jsx';
 import { createOrderBackOffice } from './create-order-backOffice.jsx';
 import './PlaceOrder.css';
 

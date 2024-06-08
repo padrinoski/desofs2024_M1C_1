@@ -1,12 +1,14 @@
 import './NavBar.css';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import ShoppingCartModal from '../ShoppingCart/ShoppingCartModal.jsx';
 import LoginButton from "../../Authentication/Login/Login.tsx"
 import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from "../../Authentication/Logout/Logout.tsx"
 import Profile from "../../Profile/Profile.tsx"
 
 function NavBar() {
+    const [modalVisible, setModalVisible] = useState(false);
 
     const { user, isAuthenticated, logout } = useAuth0();
 
