@@ -8,7 +8,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Repositories.Common
     public interface IShoppingCartRepository: IRepository
     {
         Task<List<ShoppingCartItem>> GetCartItems(int cartId);
-        Task<List<ShoppingCartItem>> GetCartItemsByUser(int userId);
+        Task<List<ShoppingCartItem>> GetCartItemsByUser(string userId);
         Task AddToCart(ShoppingCartItem shoppingCartItem);
         Task<ShoppingCart> CreateCart(ShoppingCart shoppingCart);
         Task RemoveFromCart(int cartId, int id);

@@ -21,7 +21,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             return await _context.ShoppingCartItems.Where(e => e.ShoppingCartId == cartId).ToListAsync();
         }
 
-        public async Task<List<ShoppingCartItem>> GetCartItemsByUser(int userId)
+        public async Task<List<ShoppingCartItem>> GetCartItemsByUser(string userId)
         {
             var shoppingCart = await _context.ShoppingCarts.SingleOrDefaultAsync(e => e.UserId == userId);
             if (shoppingCart != null)

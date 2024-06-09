@@ -24,7 +24,7 @@ namespace DESOFT.Server.API.Application.Services
         }
 
         
-        public async Task<ServiceResult<UserDTO>> getUserById(int id)
+        public async Task<ServiceResult<UserDTO>> getUserById(string id)
         {
             var res = new ServiceResult<UserDTO>();
 

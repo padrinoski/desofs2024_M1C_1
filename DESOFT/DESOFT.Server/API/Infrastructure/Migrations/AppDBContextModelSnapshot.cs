@@ -37,8 +37,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<string>("Author")
@@ -53,8 +53,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
                     b.Property<string>("Description")
@@ -102,8 +102,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<int>("ComicBookId")
@@ -116,8 +116,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
                     b.Property<int>("Quantity")
@@ -151,8 +151,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<DateTime>("CriacaoData")
@@ -161,8 +161,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
                     b.Property<string>("PaymentMethod")
@@ -201,8 +201,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<DateTime>("CriacaoData")
@@ -211,12 +211,12 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("ID of the User");
 
                     b.HasKey("ShoppingCartId");
@@ -242,8 +242,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<int>("ComicBookId")
@@ -256,8 +256,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
                     b.Property<int>("Quantity")
@@ -291,8 +291,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<DateTime>("CriacaoData")
@@ -301,8 +301,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
                     b.Property<string>("RoleName")
@@ -317,9 +317,9 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<string>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("ID of the User");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
@@ -335,8 +335,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<DateTime>("CriacaoData")
@@ -345,8 +345,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
                     b.Property<string>("Password")
@@ -379,8 +379,8 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de alteração do registo (auditoria).");
 
-                    b.Property<int>("AlteracaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("AlteracaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
 
                     b.Property<DateTime>("CriacaoData")
@@ -389,16 +389,16 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .HasDefaultValueSql("getdate()")
                         .HasComment("Data de criação do registo (auditoria).");
 
-                    b.Property<int>("CriacaoUtilizadorId")
-                        .HasColumnType("int")
+                    b.Property<string>("CriacaoUtilizadorId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Identificador do utilizador que criou o registo (auditoria).");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int")
                         .HasComment("ID of the Role");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("ID of the User");
 
                     b.HasKey("UserRoleId");

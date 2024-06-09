@@ -36,7 +36,7 @@ namespace DESOFT.Server.API.Authorization
 
                     tokenS.Payload.TryGetValue("userId", out var userId);
                     context.RouteData.Values.TryGetValue("comicBookId", out var comicBookId);
-                    var result = _authService.PodeEditarComicBookFilter(int.Parse(comicBookId.ToString()),int.Parse(userId.ToString())).Result;
+                    var result = _authService.PodeEditarComicBookFilter(int.Parse(comicBookId.ToString()),userId.ToString()).Result;
 
                     if (!result.Success || !result.Data)
                     {

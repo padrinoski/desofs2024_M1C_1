@@ -11,7 +11,7 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
 
         Task<ServiceResult<CompleteOrderDTO>> GetOrderInformationById(int orderId);
         
-        Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(int userId);
+        Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(string userId);
 
         Task<ServiceResult<List<CompleteOrderDTO>>> GetAllOrders();
     }

@@ -16,7 +16,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
         }
 
         
-        public async Task<User> GetUserById(int id)
+        public async Task<User> GetUserById(string id)
         {
             return await _context.Users.FindAsync(id);
         }
@@ -43,7 +43,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Role> GetRoleByUser(int userId)
+        public async Task<Role> GetRoleByUser(string userId)
         {
             return await _context.UserRoles
                 .Include(e => e.Role)

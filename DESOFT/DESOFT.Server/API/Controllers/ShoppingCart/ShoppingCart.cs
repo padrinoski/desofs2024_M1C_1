@@ -29,7 +29,7 @@ namespace DESOFT.Server.API.Controllers.ShoppingCart
         }
         [HttpGet(nameof(GetShoppingCartByUser) + "/{id}")]
         [TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
-        public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetShoppingCartByUser(int id)
+        public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetShoppingCartByUser(string id)
         {
             return await _shoppingCartService.GetCartItemsByUser(id);
         }

@@ -15,7 +15,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             _context = context;   
         }
 
-        public async Task<bool> PodeAcederBackOffice(int userId)
+        public async Task<bool> PodeAcederBackOffice(string userId)
         {
 
             var user = await _context.Users
@@ -30,7 +30,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             return user.User_Role.RoleId == (int)Roles.StoreManager || user.User_Role.RoleId == (int)Roles.StoreClerk || user.User_Role.RoleId == (int)Roles.Admin;
         }
 
-        public async Task<bool> PodeAcederFrontOffice(int userId)
+        public async Task<bool> PodeAcederFrontOffice(string userId)
         {
             var user = await _context.Users
                             .Include(e => e.User_Role)
@@ -44,7 +44,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             return user.User_Role.RoleId == (int)Roles.Client || user.User_Role.RoleId == (int)Roles.Admin;
         }
         
-        public async Task<bool> PodeEditarComicBookFilter(int comicBookId, int userId)
+        public async Task<bool> PodeEditarComicBookFilter(int comicBookId, string userId)
         {
             var user = await _context.Users
                             .Include(e => e.User_Role)
@@ -68,7 +68,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             return comicBook.CriacaoUtilizadorId == userId;
         }
 
-        public async Task<bool> PodeAcederAInformacoesSensiveisFilter(int userId)
+        public async Task<bool> PodeAcederAInformacoesSensiveisFilter(string userId)
         {
           var user = await _context.Users
           .Include(e => e.User_Role)

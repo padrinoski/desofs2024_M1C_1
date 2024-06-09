@@ -16,7 +16,7 @@ namespace DESOFT.Server.API.Application.Services
             _logger = logger;
         }
 
-        public async Task<ServiceResult<bool>> PodeAcederBackOffice(int userId)
+        public async Task<ServiceResult<bool>> PodeAcederBackOffice(string userId)
         {
             var result = new ServiceResult<bool>();
 
@@ -32,7 +32,7 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
-        public async Task<ServiceResult<bool>> PodeAcederFrontOffice(int userId)
+        public async Task<ServiceResult<bool>> PodeAcederFrontOffice(string userId)
         {
             var result = new ServiceResult<bool>();
 
@@ -46,7 +46,7 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
         
-        public async Task<ServiceResult<bool>> PodeEditarComicBookFilter(int comicBookId, int userId)
+        public async Task<ServiceResult<bool>> PodeEditarComicBookFilter(int comicBookId, string userId)
         {
             var result = new ServiceResult<bool>();
 
@@ -60,7 +60,7 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
-        public async Task<ServiceResult<bool>> PodeAcederAInformacoesSensiveisFilter(int userId)
+        public async Task<ServiceResult<bool>> PodeAcederAInformacoesSensiveisFilter(string userId)
         {
             var result = new ServiceResult<bool>();
 
