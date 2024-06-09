@@ -2,7 +2,7 @@ name: Automatic Pipeline Workflow
 on:
   push:
     branches:
-      - '*'
+      - 'feature'
 
 jobs:
   build:

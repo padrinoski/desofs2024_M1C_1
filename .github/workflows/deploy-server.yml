@@ -31,10 +31,6 @@ jobs:
         working-directory: DESOFT/desoft.client
         run: npm run build
 
-      - name: see files
-        working-directory: DESOFT/desoft.client
-        run: ls -la
-
       - name: Build CS App
         working-directory: DESOFT/DESOFT.Server
         run: dotnet build DESOFS.Server.csproj -c v1.0.0
@@ -53,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build
-          path: DESOFT/desoft.client/build
+          path: DESOFT/desoft.client/dist
 
   deploy:
     runs-on: ubuntu-latest
@@ -79,18 +75,18 @@ jobs:
           source: "DESOFT/DESOFT.Server/csoutput/"
           target: "/received/csartifacts"
 
-#      - name: Download build artifacts
-#        uses: actions/download-artifact@v3
-#        with:
-#          name: build
-#          path: DESOFT/desoft.client/build
-#
-#      - name: Deploy to server
-#        uses: appleboy/scp-action@v0.1.7
-#        with:
-#          host: ${{ secrets.SERVER_HOST }}
-#          username: ${{ secrets.SERVER_USERNAME }}
-#          port: ${{ secrets.SERVER_PORT }}
-#          password: ${{ secrets.SERVER_PASSWORD }}
-#          source: "build/*"
-#          target: "/received/reactartifacts"
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: DESOFT/desoft.client/build
+
+      - name: Deploy to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          port: ${{ secrets.SERVER_PORT }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          source: "DESOFT/desoft.client/build"
+          target: "/received/reactartifacts"
