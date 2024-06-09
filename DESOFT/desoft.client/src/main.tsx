@@ -20,9 +20,15 @@ import LoginButton from './Authentication/Login/Login.tsx'
 import Profile from './Profile/Profile.tsx'
 
 (function () {
-    //const token = window.sessionStorage.getItem("token");
+    let token = "";
+    if (window.sessionStorage.getItem("token")) {
+        token = window.sessionStorage.getItem("token")!;
+    } else {
+        token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74";
+    }
+
+    //
     //token admin
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.NlVN1CIDgT4ITGGpRQPkabyWOgi_VBEL0AUIpBKSW74";
 
     // token frontoffice
     //const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNiIsIm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTUxNjIzOTAyMn0.xK9Se9DVQGOIi6411TCm6y_B5uDWQgqxl5XY9akZcp8";
