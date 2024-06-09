@@ -37,7 +37,7 @@ namespace Test.Login
         public LoginTests()
         {
             _loginService = new LoginService(_logger, _loginRepository);
-            _usersService = new UsersService(_logger2, _usersRepository);
+            _usersService = new UsersService(_logger2, _usersRepository, _mapper);
         }
 
         [Fact]

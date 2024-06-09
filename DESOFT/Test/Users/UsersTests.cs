@@ -32,7 +32,7 @@ namespace Test.User
 
         public UserTests()
         {
-            _usersService = new UsersService(_logger, _usersRepository);
+            _usersService = new UsersService(_logger, _usersRepository,_mapper); ;
         }
 
         [Fact]
