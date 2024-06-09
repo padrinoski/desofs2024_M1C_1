@@ -43,7 +43,7 @@ namespace DESOFT.Server.API.Authorization
                     else
                     {
 
-                        var result = _authService.PodeAcederFrontOffice(int.Parse(userId.ToString())).Result;
+                        var result = _authService.PodeAcederFrontOffice(userId.ToString()).Result;
 
                         if (!result.Success || !result.Data)
                         {

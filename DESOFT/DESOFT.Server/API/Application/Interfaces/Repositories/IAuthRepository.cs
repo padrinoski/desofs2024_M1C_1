@@ -2,9 +2,9 @@
 {
     public interface IAuthRepository
     {
-        Task<bool> PodeAcederBackOffice(int userId);
-        Task<bool> PodeAcederFrontOffice(int userId);
-        Task<bool> PodeEditarComicBookFilter(int userId, int userId1);
-        Task<bool> PodeAcederAInformacoesSensiveisFilter(int userId);
+        Task<bool> PodeAcederBackOffice(string userId);
+        Task<bool> PodeAcederFrontOffice(string userId);
+        Task<bool> PodeEditarComicBookFilter(int userId, string userId1);
+        Task<bool> PodeAcederAInformacoesSensiveisFilter(string userId);
     }
 }

@@ -4,9 +4,9 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
 {
     public interface IAuthService
     {
-        Task<ServiceResult<bool>> PodeAcederBackOffice(int userId);
-        Task<ServiceResult<bool>> PodeAcederFrontOffice(int userId);
-        Task<ServiceResult<bool>> PodeEditarComicBookFilter(int comicBookId,int userId);
-        Task<ServiceResult<bool>> PodeAcederAInformacoesSensiveisFilter(int userId);
+        Task<ServiceResult<bool>> PodeAcederBackOffice(string userId);
+        Task<ServiceResult<bool>> PodeAcederFrontOffice(string userId);
+        Task<ServiceResult<bool>> PodeEditarComicBookFilter(int comicBookId,string userId);
+        Task<ServiceResult<bool>> PodeAcederAInformacoesSensiveisFilter(string userId);
     }
 }

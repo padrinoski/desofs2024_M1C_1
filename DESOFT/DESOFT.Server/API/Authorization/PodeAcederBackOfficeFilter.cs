@@ -36,7 +36,7 @@ namespace DESOFT.Server.API.Authorization
 
                     tokenS.Payload.TryGetValue("userId", out var userId);
 
-                    var result = _authService.PodeAcederBackOffice(int.Parse(userId.ToString())).Result;
+                    var result = _authService.PodeAcederBackOffice(userId.ToString()).Result;
 
                     if (!result.Success || !result.Data)
                     {
