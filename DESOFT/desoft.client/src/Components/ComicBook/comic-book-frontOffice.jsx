@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FilterComicBooks from './search-comic-books';
 export default function ComicBookFrontOffice() {
 
     const [comics, setComics] = useState([]);
@@ -19,6 +20,8 @@ export default function ComicBookFrontOffice() {
     return (
         <div className="page">
             <h1 className="title">Comic Books</h1>
+            <FilterComicBooks></FilterComicBooks>
+
             <table>
                 <thead>
                     <tr>
