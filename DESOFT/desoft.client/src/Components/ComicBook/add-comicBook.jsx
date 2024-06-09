@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddComicBookDialog from './add-comic-dialog';
+import ComicBook from './comic-book';
 
 export default function AddComicBookBtn() {
     const [showDialog, setShowDialog] = useState(false);
@@ -21,7 +22,7 @@ export default function AddComicBookBtn() {
                 <a onClick={toggleDialog}>Add Comic Book</a>
             </span>
             {showDialog && <AddComicBookDialog onActionCompleted={onActionCompleted} />}
-            {showComicBook && <ComicBook />}
+            {showComicBook && window.location.reload()}
         </div>
     );
 }

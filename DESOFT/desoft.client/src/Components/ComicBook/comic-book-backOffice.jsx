@@ -115,11 +115,11 @@ export default function ComicBookBackOffice() {
                             <td style={{ width: 20 + 'px' }}>
                                 <div className="listActions">
                                     <span className="edit">
-                                        <button onClick={() => editComicBook(comic.comicBookId)}>{comic.listButtons[0].action}</button>
+                                        <button onClick={() => editComicBook(comic.comicBookId)}>{comic.listButtons[0]?.action}</button>
                                     </span>
                                     {isDialogOpen && <EditComicBookDialog comicBookId={currentComicBookId} onClose={closeDialog} onActionComplete={onActionComplete} />}
                                     <span className="delete">
-                                        <button onClick={() => deleteComicBook(comic.comicBookId)}>{comic.listButtons[1].action}</button>
+                                        <button onClick={() => deleteComicBook(comic.comicBookId)}>{comic.listButtons[1]?.action}</button>
                                     </span>
                                 </div>
                             </td>
