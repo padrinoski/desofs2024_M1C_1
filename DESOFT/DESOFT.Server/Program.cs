@@ -86,6 +86,7 @@ var autoMapperConfig = new MapperConfiguration(mc =>
     mc.AddProfile(new ComicBookMapping());
     mc.AddProfile(new ShoppingCartMapper());
     mc.AddProfile(new ShoppingCartItemMapper());
+    mc.AddProfile(new UserMapper());
     mc.AddProfile(new OrderMapping());
 });
 
@@ -111,7 +112,7 @@ builder.Services.AddAuthentication(options =>
 }).AddJwtBearer(options =>
 {
     options.Authority = "https://dev-b61l3yhgpdw5l2m2.us.auth0.com/";
-    options.Audience = "https://localhost:5265";
+    options.Audience = "http://localhost:5265";
 });
 
 var app = builder.Build();

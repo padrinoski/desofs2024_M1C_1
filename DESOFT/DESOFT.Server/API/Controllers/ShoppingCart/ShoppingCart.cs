@@ -27,6 +27,12 @@ namespace DESOFT.Server.API.Controllers.ShoppingCart
         {
             return await _shoppingCartService.GetCartItems(id);
         }
+        [HttpGet(nameof(GetShoppingCartByUser) + "/{id}")]
+        [TypeFilter(typeof(PodeAcederFrontOfficeFilter))]
+        public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetShoppingCartByUser(int id)
+        {
+            return await _shoppingCartService.GetCartItemsByUser(id);
+        }
 
         [HttpPost(nameof(AddToCart))]
         [TypeFilter(typeof(PodeAcederBackOfficeFilter))]

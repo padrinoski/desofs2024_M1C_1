@@ -1,0 +1,62 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    color: #000;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+
+    width: 100%;
+}
+
+.modal-content h2 {
+    color: #333; /* Set text color */
+    margin: 0; /* Remove default margins */
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.modal-content p {
+    color: #333; /* Set text color */
+    margin: 0; /* Remove default margins */
+}
+
+.modal-content td {
+    color: #333; /* Set text color */
+    margin: 0; /* Remove default margins */
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid transparent; /* Hide border */
+    padding: 8px;
+}
+
+.cart-table th {
+    text-align: center;
+    background-color: #646464; /* Header background color */
+}
+
+.checkout-button {
+    color: #fff; /* Change text color */
+    background-color: #646464; /* Change background color */
+    padding: 10px 15px; /* Add padding */
+    border-radius: 5px; /* Add rounded corners */
+    text-decoration: none; /* Remove default underline */
+}
+
+.checkout-button:hover {
+    background-color: #a9a9a9; /* Change background color on hover */
+    color: #ffffff; /* Change text color */
+}
