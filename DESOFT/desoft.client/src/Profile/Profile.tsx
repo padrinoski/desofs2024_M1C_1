@@ -21,8 +21,6 @@ const Profile = () => {
 
                 const userDetailsByIdUrl = (`http://${domain}/api/Users/${user?.sub}`);
 
-                console.log("\nUser Details By Id Url: " + userDetailsByIdUrl)
-
                 const metadataResponse = await fetch(userDetailsByIdUrl, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,

@@ -37,10 +37,8 @@ const customUseAuth0 = () => {
                     const {data} =  await metadataResponse.json();
 
                     if (data !== null && data.userId === id) {
-                        console.log("User exists");
                         setUserInfo(data);
                     } else {
-                        console.log("User doesn't exist - creating it");
                         const newUser = {
                             UserId: user.sub,
                             Username: user.name,
@@ -64,7 +62,6 @@ const customUseAuth0 = () => {
                         console.log(createResponse);
 
                         setUserInfo(createResponse.data);
-                        console.log("User Created successfully");
                     }
                 } catch (e) {
                     if (e.error === 'consent_required') {
