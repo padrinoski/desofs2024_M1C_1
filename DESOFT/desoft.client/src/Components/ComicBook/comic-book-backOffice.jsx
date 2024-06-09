@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddComicBookBtn from './add-comicBook';
 import EditComicBookDialog from './edit-comic-dialog';
+import FilterComicBooks from './search-comic-books';
 import ReactDom from 'react-dom';
 
 export default function ComicBookBackOffice() {
@@ -39,6 +40,7 @@ export default function ComicBookBackOffice() {
     return (
         <div className="page">
             <h1 className="title">Comic Books</h1>
+            <FilterComicBooks></FilterComicBooks>
             <AddComicBookBtn></AddComicBookBtn>
             <table>
                 <thead>
