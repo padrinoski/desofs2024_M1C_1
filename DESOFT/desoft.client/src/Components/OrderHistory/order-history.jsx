@@ -11,7 +11,6 @@ export default function OrderHistory() {
     const [orderDetailsVisible, setOrderDetailsVisible] = useState(false);
     const [hasAccess, setAccessCheck] = useState(false);
     const { user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect } = useAuth0();
-    const {accessToken, setAccessToken} = useState();
 
     const toggleViewInfo = (orderId, orderI) => {
         return () => {
@@ -35,7 +34,13 @@ export default function OrderHistory() {
         //    console.error(error);
         //});  
 
-        const url = `http://${domain}/api/GenerateInvoice/GenerateInvoiceDocument/`+orderId
+     getAccessTokenSilently({
+            authorizationParams: {
+                audience: `http://${domain}`,
+            },
+        }).then(accessToken => {
+
+            const url = `http://${domain}/api/GenerateInvoice/GenerateInvoiceDocument/`+orderId
                 fetch(url, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
@@ -45,6 +50,12 @@ export default function OrderHistory() {
                 }).catch(error => {
                     console.error(error);
                 });
+                
+        }
+        ).catch(error => {
+            console.error(error);
+        });
+
 
     }
 
@@ -76,7 +87,6 @@ export default function OrderHistory() {
                     },
                 })
 
-                setAccessToken(accessToken);
 
                 console.log(user);
 
