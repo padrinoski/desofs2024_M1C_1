@@ -12,5 +12,5 @@ public interface IUsersRepository : IRepository
     Task<Role> GetRoleByUser(string userId);
     
     Task<User> GetUserById(string id);
-
+    
 }

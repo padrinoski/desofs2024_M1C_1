@@ -17,7 +17,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
 
         public async Task<bool> PodeAcederBackOffice(string userId)
         {
-
+            
             var user = await _context.Users
                 .Include(e => e.User_Role)
                 .Where(u => u.UserId == userId)

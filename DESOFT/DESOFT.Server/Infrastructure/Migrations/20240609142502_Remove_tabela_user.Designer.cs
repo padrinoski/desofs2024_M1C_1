@@ -4,16 +4,19 @@ using DESOFT.Server.API.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DESOFT.Server.API.Infrastructure.Migrations
+namespace DESOFS.Server.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240609142502_Remove_tabela_user")]
+    partial class Remove_tabela_user
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -277,13 +280,10 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("ID of the User");
 
                     b.HasKey("ShoppingCartId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("ShoppingCart", (string)null);
                 });
@@ -380,54 +380,6 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                     b.ToTable("Role", (string)null);
                 });
 
-            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)")
-                        .HasComment("ID of the User");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Address");
-
-                    b.Property<DateTime>("AlteracaoData")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()")
-                        .HasComment("Data de alteração do registo (auditoria).");
-
-                    b.Property<string>("AlteracaoUtilizadorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Identificador do utilizador que alterou o registo (auditoria).");
-
-                    b.Property<DateTime>("CriacaoData")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()")
-                        .HasComment("Data de criação do registo (auditoria).");
-
-                    b.Property<string>("CriacaoUtilizadorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Identificador do utilizador que criou o registo (auditoria).");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Password");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Username");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("User", (string)null);
-                });
-
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User_Role", b =>
                 {
                     b.Property<int>("UserRoleId")
@@ -465,15 +417,12 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("ID of the User");
 
                     b.HasKey("UserRoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("User_Role", (string)null);
                 });
@@ -519,17 +468,6 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", b =>
-                {
-                    b.HasOne("DESOFT.Server.API.Domain.Entities.User.User", "User")
-                        .WithOne("ShoppingCart")
-                        .HasForeignKey("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCart", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ShoppingCart.ShoppingCartItem", b =>
                 {
                     b.HasOne("DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook", "ComicBook")
@@ -557,15 +495,7 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DESOFT.Server.API.Domain.Entities.User.User", "User")
-                        .WithOne("User_Role")
-                        .HasForeignKey("DESOFT.Server.API.Domain.Entities.User.User_Role", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Role");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook", b =>
@@ -586,15 +516,6 @@ namespace DESOFT.Server.API.Infrastructure.Migrations
             modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.Role", b =>
                 {
                     b.Navigation("User_Role");
-                });
-
-            modelBuilder.Entity("DESOFT.Server.API.Domain.Entities.User.User", b =>
-                {
-                    b.Navigation("ShoppingCart")
-                        .IsRequired();
-
-                    b.Navigation("User_Role")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
