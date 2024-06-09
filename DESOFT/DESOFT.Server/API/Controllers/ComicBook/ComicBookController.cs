@@ -97,10 +97,9 @@ namespace DESOFT.Server.API.Controllers.ComicBook
         }
 
         [HttpGet((nameof(SearchComicBooks)))]
-        public async Task<IActionResult> SearchComicBooks([FromQuery] string? title, [FromQuery] string? author, [FromQuery] string sortBy = "title", [FromQuery] string sortOrder = "asc")
+        public async Task<ServiceResult<List<ComicBookDTO>>> SearchComicBooks([FromQuery] string? title, [FromQuery] string? author, [FromQuery] string sortBy = "title", [FromQuery] string sortOrder = "asc")
         {
-            var result = await _comicService.SearchComicBooks(title, author, sortBy, sortOrder);
-            return Ok(result);
+            return await _comicService.SearchComicBooks(title, author, sortBy, sortOrder);
         }
         
     }

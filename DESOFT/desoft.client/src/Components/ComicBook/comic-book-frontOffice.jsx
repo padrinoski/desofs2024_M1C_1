@@ -11,6 +11,10 @@ export default function ComicBookFrontOffice() {
     const [comics, setComics] = useState([]);
     const domain = `localhost:5265`;
 
+    const handleFilter = ({ data: newFilteredCatalog }) => {
+        setComics(Array.isArray(newFilteredCatalog) ? newFilteredCatalog : []);
+    };
+
     useEffect(() => {
         const getComics = async () => {
             try {
@@ -32,8 +36,6 @@ export default function ComicBookFrontOffice() {
 
                 const {data} =  await catalogResponse.json();
                 
-                console.log(JSON.stringify(data));
-
                 if(data != null){
                     setComics(data);
                 }
@@ -48,7 +50,7 @@ export default function ComicBookFrontOffice() {
     return (
         <div className="page">
             <h1 className="title">Comic Books</h1>
-            <FilterComicBooks></FilterComicBooks>
+            <FilterComicBooks onFilter={handleFilter}></FilterComicBooks>
 
             <table>
                 <thead>

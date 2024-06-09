@@ -17,7 +17,7 @@ export default function SearchComicBooks({ onFilter }) {
         return div.innerHTML;
     };
 
-    const handleFilter = async () => {
+    const filterData = async () => {
         const sanitizedTitle = sanitizeInput(titleToFilter);
         const sanitizedAuthor = sanitizeInput(authorToFilter);
         const domain = "localhost:5265";
@@ -127,7 +127,7 @@ export default function SearchComicBooks({ onFilter }) {
                             border: 'none',
                             borderRadius: '5px',
                             cursor: 'pointer'
-                        }} onClick={handleFilter}> Filter </button>
+                        }} onClick={filterData}> Filter </button>
                     </div>
                 </div>
             )}
