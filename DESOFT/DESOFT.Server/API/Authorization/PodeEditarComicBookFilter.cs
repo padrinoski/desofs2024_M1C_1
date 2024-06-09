@@ -34,9 +34,20 @@ namespace DESOFT.Server.API.Authorization
                     var jsonToken = handler.ReadToken(accessToken);
                     var tokenS = jsonToken as JwtSecurityToken;
 
-                    tokenS.Payload.TryGetValue("userId", out var userId);
+                    var currentUserId = "1";
+                    if (tokenS.Payload.ContainsKey("userId"))
+                    {
+                        tokenS.Payload.TryGetValue("userId", out var userId);
+                        currentUserId = userId.ToString();
+                    }
+                    else if (tokenS.Payload.ContainsKey("sub"))
+                    {
+                        tokenS.Payload.TryGetValue("sub", out var userId);
+                        currentUserId = userId.ToString();
+                    }
+
                     context.RouteData.Values.TryGetValue("comicBookId", out var comicBookId);
-                    var result = _authService.PodeEditarComicBookFilter(int.Parse(comicBookId.ToString()),userId.ToString()).Result;
+                    var result = _authService.PodeEditarComicBookFilter(int.Parse(comicBookId.ToString()),currentUserId).Result;
 
                     if (!result.Success || !result.Data)
                     {

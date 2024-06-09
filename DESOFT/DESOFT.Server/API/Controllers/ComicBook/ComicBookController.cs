@@ -46,9 +46,19 @@ namespace DESOFT.Server.API.Controllers.ComicBook
                 var jsonToken = handler.ReadToken(accessToken);
                 var tokenS = jsonToken as JwtSecurityToken;
 
-                tokenS.Payload.TryGetValue("userId", out var userId);
-
-                return await _comicService.GetCatalogBackOffice(userId.ToString());
+                var currentUserId = "1";
+                if (tokenS.Payload.ContainsKey("userId"))
+                {
+                    tokenS.Payload.TryGetValue("userId", out var userId);
+                    currentUserId = userId.ToString();
+                }
+                else if (tokenS.Payload.ContainsKey("sub"))
+                {
+                    tokenS.Payload.TryGetValue("sub", out var userId);
+                    currentUserId = userId.ToString();
+                }
+                
+                return await _comicService.GetCatalogBackOffice(currentUserId);
 
             } else
             {
