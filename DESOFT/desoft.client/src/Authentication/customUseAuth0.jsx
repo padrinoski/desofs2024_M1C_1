@@ -21,10 +21,6 @@ const customUseAuth0 = () => {
                             audience: `http://${domain}`,
                         },
                     })
-
-                    console.log(accessToken);
-
-                    console.log("\nAccess Token: " + accessToken)
                     const getUserByIdUrl = (`http://${domain}/api/Users/${user?.sub}`);
 
                     const metadataResponse = await fetch(getUserByIdUrl, {
@@ -46,8 +42,6 @@ const customUseAuth0 = () => {
                             Password: "authenticated_by_auth0",
                         };
 
-                        console.log(JSON.stringify(newUser));
-
                         const createUser = (`http://${domain}/api/Users/CreateUser`);
 
                         const createResponse = await fetch(createUser, {
@@ -59,8 +53,6 @@ const customUseAuth0 = () => {
                             body: JSON.stringify(newUser)
                         });
                                         
-                        console.log(createResponse);
-
                         setUserInfo(createResponse.data);
                     }
                 } catch (e) {
