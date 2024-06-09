@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 
-export default function SearchComicBooks() {
+export default function SearchComicBooks({ onFilter }) {
     const [titleToFilter, setTitleToFilter] = useState('');
     const [authorToFilter, setAuthorToFilter] = useState('');
     const [sortBy, setSortBy] = useState('');
     const [sortingOrder, setSortingOrder] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const [filteredCatalogToResult, setFilteredCatalog] = useState([]);
+    const { getAccessTokenSilently } = useAuth0();
+
 
     const sanitizeInput = (input) => {
         const div = document.createElement('div');
@@ -19,11 +20,12 @@ export default function SearchComicBooks() {
     const handleFilter = async () => {
         const sanitizedTitle = sanitizeInput(titleToFilter);
         const sanitizedAuthor = sanitizeInput(authorToFilter);
-
+        const domain = "localhost:5265";
         try {
             const accessToken = await getAccessTokenSilently({
                 authorizationParams: {
                     audience: `http://${domain}`,
+                    credentials: 'same-origin',
                 },
             })
 
@@ -36,9 +38,10 @@ export default function SearchComicBooks() {
             });
 
             const filteredCatalog = await filterResponse.json();
-            console.log(filteredCatalog);
-
-            setFilteredCatalog(filteredCatalog);
+            if (typeof onFilter === 'function') {
+                onFilter(filteredCatalog);
+            }
+            setShowModal(false);
         } catch (e) {
             console.error(e);
         }
@@ -105,7 +108,8 @@ export default function SearchComicBooks() {
                             color: 'white',
                             border: 'none',
                             borderRadius: '5px',
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            marginRight: '10px'
                         }} onClick={() => { setTitleToFilter(''); setAuthorToFilter(''); setSortBy(''); setSortingOrder(''); }}> Clear Filters </button>
                         <button style={{
                             padding: '10px 20px',
@@ -113,7 +117,8 @@ export default function SearchComicBooks() {
                             color: 'white',
                             border: 'none',
                             borderRadius: '5px',
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            marginRight: '10px'
                         }} onClick={() => { setShowModal(false); }}> Close </button>
                         <button style={{
                             padding: '10px 20px',
