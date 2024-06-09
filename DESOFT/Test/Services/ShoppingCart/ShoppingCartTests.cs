@@ -7,6 +7,7 @@ using DESOFT.Server.API.Application.DTO.ShoppingCart;
 using DESOFT.Server.API.Domain.Entities.ShoppingCart;
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
 using DESOFT.Server.API.Application.Services;
+using Assert = NUnit.Framework.Assert;
 
 namespace DESOFT.Server.API.Tests
 {

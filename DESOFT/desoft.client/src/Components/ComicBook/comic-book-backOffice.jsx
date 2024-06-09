@@ -23,12 +23,18 @@ export default function ComicBookBackOffice() {
 
     const editComicBook = (comicBookId) => {
         ReactDom.render(<EditComicBookDialog comicBookId={comicBookId}></EditComicBookDialog>, document.querySelector('.page'));
-        ReactDom.render(<ComicBook/>, document.querySelector('.page'));
         //document.querySelector('.editComicBookDialog')?.removeAttribute('hidden');
     }
 
     const deleteComicBook= (comicBookId) => {
-        console.log(comicBookId);
+        axios.delete(`https://localhost:7242/api/ComicBook/DeleteComicBook/${comicBookId}`
+        )
+        .then(() => {
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error(error);
+        });
     }
 
     return (

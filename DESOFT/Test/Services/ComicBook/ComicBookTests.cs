@@ -1,4 +1,5 @@
 using DESOFT.Server.API.Application.DTO.ComicBook;
+using DESOFT.Server.API.Application.Interfaces.Repositories;
 using DESOFT.Server.API.Application.Interfaces.Repositories.Common;
 using DESOFT.Server.API.Application.Services;
 using DESOFT.Server.API.Domain.Entities.ComicBooks;
@@ -14,6 +15,7 @@ namespace Test.ComicBook
 
         private readonly ComicBookService comicBookService;
         private readonly IComicBookRepository _comicBookRepository = Substitute.For<IComicBookRepository>();
+        private readonly IUsersRepository _userRepository = Substitute.For<IUsersRepository>();
         private readonly ILogger<ComicBookService> _logger = Substitute.For<ILogger<ComicBookService>>();
 
         private DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook model = new DESOFT.Server.API.Domain.Entities.ComicBooks.ComicBook()
@@ -36,7 +38,7 @@ namespace Test.ComicBook
             Author = "Ian Brooke",
             Description = "It's a story.",
             Price = 20.50m,
-            PublishingDate = DateTime.UtcNow,
+            PublishingDate = DateTime.UtcNow.ToString(),
             Title = "Title",
             Version = "1.0"
         };
@@ -47,14 +49,14 @@ namespace Test.ComicBook
             Author = "Ian Brooke",
             Description = "It's a story.",
             Price = 20.50m,
-            PublishingDate = DateTime.UtcNow,
+            PublishingDate = DateTime.UtcNow.ToString(),
             Title = "Title",
             Version = "1.0"
         };
 
         public ComicBookTests()
         {
-            comicBookService = new ComicBookService(_comicBookRepository, _logger,_mapper);
+            comicBookService = new ComicBookService(_comicBookRepository, _userRepository, _logger,_mapper);
         }
 
         [Fact]
