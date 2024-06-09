@@ -1,21 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import AddComicBookBtn from './add-comicBook';
+import EditComicBookDialog from './edit-comic-dialog';
 import FilterComicBooks from './search-comic-books';
-export default function ComicBookFrontOffice() {
+import ReactDom from 'react-dom';
 
+export default function ComicBookFrontOffice() {
+    const { getAccessTokenSilently } = useAuth0();
     const [comics, setComics] = useState([]);
+    const domain = `localhost:5265`;
 
     useEffect(() => {
-        axios.get('https://localhost:7242/api/ComicBook/GetCatalog'
-        )
-        .then(response => {
-            setComics(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });        
+        const getComics = async () => {
+            try {
+                const accessToken = await getAccessTokenSilently({
+                    authorizationParams: {
+                        audience: `http://${domain}`,
+                    },
+                });
+                
+                const url = `http://${domain}/api/ComicBook/GetCatalog`;
 
-    }, []);
+                const catalogResponse = await fetch(url, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+
+                    },
+                });
+                
+
+                const {data} =  await catalogResponse.json();
+                
+                console.log(JSON.stringify(data));
+
+                if(data != null){
+                    setComics(data);
+                }
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getComics();
+    }, [getAccessTokenSilently]);
 
     return (
         <div className="page">
@@ -33,7 +61,7 @@ export default function ComicBookFrontOffice() {
                     </tr>
                 </thead>
                 <tbody>
-                    {comics.data?.map(comic => (
+                    {comics.map(comic => (
                         <tr key={comic.comicBookId}>
                             <td>{comic.title}</td>
                             <td>{comic.description}</td>

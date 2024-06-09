@@ -1,42 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
 import AddComicBookBtn from './add-comicBook';
 import EditComicBookDialog from './edit-comic-dialog';
 import FilterComicBooks from './search-comic-books';
 import ReactDom from 'react-dom';
 
 export default function ComicBookBackOffice() {
-
+    const { getAccessTokenSilently } = useAuth0();
     const [comics, setComics] = useState([]);
+    const domain = `localhost:5265`;
 
     useEffect(() => {
-        axios.get('https://localhost:7242/api/ComicBook/GetCatalogBackOffice'
-        )
-        .then(response => {
-            setComics(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+        const getComics = async () => {
+            try {
+                const accessToken = await getAccessTokenSilently({
+                    authorizationParams: {
+                        audience: `http://${domain}`,
+                    },
+                });
+                
+                const url = `http://${domain}/api/ComicBook/GetCatalogBackOffice`;
 
-    }, []);
+                const catalogResponse = await fetch(url, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
 
+                    },
+                });
+                
+
+                const {data} =  await catalogResponse.json();
+                
+                console.log(JSON.stringify(data));
+
+                if(data != null){
+                    setComics(data);
+                }
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getComics();
+    }, [getAccessTokenSilently]);
 
     const editComicBook = (comicBookId) => {
         ReactDom.render(<EditComicBookDialog comicBookId={comicBookId}></EditComicBookDialog>, document.querySelector('.page'));
     }
 
-    const deleteComicBook= (comicBookId) => {
-        axios.delete(`https://localhost:7242/api/ComicBook/DeleteComicBook/${comicBookId}`
-        )
-        .then(() => {
-            window.location.reload();
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    }
+    const deleteComicBook = async (comicBookId) => {
+        try {
+            const accessToken = await getAccessTokenSilently({
+                authorizationParams: {
+                    audience: `http://${domain}`,
+                },
+            });
 
+            const url = `http://${domain}/api/ComicBook/DeleteComicBook/${comicBookId}`;
+
+            const deleteResponse = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+
+                },
+            });
+
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <div className="page">
             <h1 className="title">Comic Books</h1>
@@ -54,7 +88,7 @@ export default function ComicBookBackOffice() {
                     </tr>
                 </thead>
                 <tbody>
-                    {comics.data?.map(comic => (
+                    {comics.map(comic => (
                         <tr key={comic.comicBookId}>
                             <td>{comic.title}</td>
                             <td>{comic.description}</td>
