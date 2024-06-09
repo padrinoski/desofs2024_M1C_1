@@ -9,7 +9,8 @@ export default function viewCustomersOrders() {
     const [orderDetails, setOrderDetails] = useState(0);
     const [orderItems, setOrderItems] = useState(Object);
     const [orderDetailsVisible, setOrderDetailsVisible] = useState(false);
-    const {user, isAuthenticated, isLoading, getAccessTokenSilently} = useAuth0();
+    const [hasAccess, setAccessCheck] = useState(false);
+    const {user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
 
     useEffect(() => {
         const getOrders = async () => {
@@ -20,7 +21,6 @@ export default function viewCustomersOrders() {
                     authorizationParams: {
                         audience: `http://${domain}`,
                         scope: "read:customer_orders",
-                        prompt: 'consent',
                     },
                 })
     
@@ -35,8 +35,9 @@ export default function viewCustomersOrders() {
                 const ordersData =  await ordersResponse.json();
     
                 setOrders(ordersData);
-    
+                setAccessCheck(true);
             } catch(e){
+                setAccessCheck(false);
                 console.error(e);
             }
         };
@@ -60,30 +61,35 @@ export default function viewCustomersOrders() {
 
     return (
         <div className="page">
-            <h1 className="title">View Customers Orders</h1>
+            <h1 className="title">View All Customers Orders</h1>
             <table>
                 <thead>
                     <tr>
                         <th>Order number</th>
                         <th>Total Price</th>
-                        <th>Submitted Date</th>
+                        <th>Address</th>
                         <th>Payment Method</th>
-                        <th>Order Details</th>
+                        <th>Order Cart</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                {hasAccess && <tbody>
                     {orders.data?.map(order => (
                         <tr key={order.orderId}>
                             <td>{order.orderId}</td>
                             <td>{order.totalCost}</td>
-                            <td>{order.submittedDate}</td>
+                            <td>{order.address}</td>
                             <td>{order.paymentMethod}</td>
                             <td><button onClick={toggleViewInfo(order.orderId, order.shoppingCartItems)}>View details</button></td>
                         
                         </tr>
                     ))}
-                </tbody>
+                </tbody>}
+                {!hasAccess && <tbody>
+                    <tr>
+                        <td colSpan="6">You do not have access to this page</td>
+                    </tr>
+                    </tbody>}
             </table>
 
             {orderDetailsVisible ? (
