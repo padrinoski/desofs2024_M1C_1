@@ -33,23 +33,25 @@ export default function OrderHistory() {
         //.catch(error => {
         //    console.error(error);
         //});  
+        const domain = "localhost:5265";
 
      getAccessTokenSilently({
+
             authorizationParams: {
                 audience: `http://${domain}`,
             },
         }).then(accessToken => {
-
             const url = `http://${domain}/api/GenerateInvoice/GenerateInvoiceDocument/`+orderId
                 fetch(url, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
-                }).then(response => {
-                    downloadPDF(response.data);
-                }).catch(error => {
-                    console.error(error);
-                });
+                }).then(response => response.json())
+                .then(data => {
+                  downloadPDF(data);
+              }).catch(error => {
+                  console.error(error);
+              });
                 
         }
         ).catch(error => {
@@ -88,9 +90,8 @@ export default function OrderHistory() {
                 })
 
 
-                console.log(user);
 
-                const url = `http://${domain}/api/PlaceOrder/GetOrdersByUserId/${user.id}`;
+                const url = `http://${domain}/api/PlaceOrder/GetOrdersByUserId/${user.sub}`;
 
                 const ordersResponse = await fetch(url, {
                     headers: {
@@ -135,12 +136,6 @@ export default function OrderHistory() {
                             <td><button onClick={() => returnPDF(order.orderId)}>Download PDF</button></td>
                         </tr>
                     ))}
-                    <tr key={1}>
-                        <td>1</td>
-                        <td>100</td>
-                        <td><button onClick={toggleViewInfo(1)}>View details</button></td>
-                        <td><button onClick={() => returnPDF(17)}>Download PDF</button></td>  
-                    </tr>
                 </tbody>
             </table>
 
