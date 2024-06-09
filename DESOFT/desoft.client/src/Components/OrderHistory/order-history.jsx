@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import './order-history.css';
 
@@ -8,6 +9,8 @@ export default function OrderHistory() {
     const [orderDetails, setOrderDetails] = useState(0);
     const [orderItems, setOrderItems] = useState(Object);
     const [orderDetailsVisible, setOrderDetailsVisible] = useState(false);
+    const [hasAccess, setAccessCheck] = useState(false);
+    const { user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect } = useAuth0();
 
     const toggleViewInfo = (orderId, orderI) => {
         return () => {
@@ -22,14 +25,40 @@ export default function OrderHistory() {
     }
 
     function returnPDF(orderId) {
-        axios.get('http://localhost:5265/api/GenerateInvoice/GenerateInvoiceDocument/'+orderId
-        )
-        .then(response => {
-            downloadPDF(response.data);
-        })
-        .catch(error => {
+        //axios.get('http://localhost:5265/api/GenerateInvoice/GenerateInvoiceDocument/'+orderId
+        //)
+        //.then(response => {
+        //    downloadPDF(response.data);
+        //})
+        //.catch(error => {
+        //    console.error(error);
+        //});  
+        const domain = "localhost:5265";
+
+     getAccessTokenSilently({
+
+            authorizationParams: {
+                audience: `http://${domain}`,
+            },
+        }).then(accessToken => {
+            const url = `http://${domain}/api/GenerateInvoice/GenerateInvoiceDocument/`+orderId
+                fetch(url, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }).then(response => response.json())
+                .then(data => {
+                  downloadPDF(data);
+              }).catch(error => {
+                  console.error(error);
+              });
+                
+        }
+        ).catch(error => {
             console.error(error);
-        });  
+        });
+
+
     }
 
     function downloadPDF(pdf) {
@@ -41,16 +70,49 @@ export default function OrderHistory() {
         downloadLink.click();}
 
     useEffect(() => {
-        axios.get('http://localhost:5265/api/PlaceOrder/GetOrdersByUserId/6'
-        )
-        .then(response => {
-            setOrders(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });        
+        //axios.get('http://localhost:5265/api/PlaceOrder/GetOrdersByUserId/6'
+        //)
+        //.then(response => {
+        //    setOrders(response.data);
+        //})
+        //.catch(error => {
+        //    console.error(error);
+        //});     
 
-    }, []);
+        const getOrderHistory = async () => {
+            const domain = "localhost:5265";
+
+            try {
+                const accessToken = await getAccessTokenSilently({
+                    authorizationParams: {
+                        audience: `http://${domain}`,
+                    },
+                })
+
+
+
+                const url = `http://${domain}/api/PlaceOrder/GetOrdersByUserId/${user.sub}`;
+
+                const ordersResponse = await fetch(url, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+
+                const ordersData = await ordersResponse.json();
+
+                setOrders(ordersData);
+            } catch (e) {
+                console.error(e);
+            }
+
+        };
+        
+        if (user && isAuthenticated) {
+            getOrderHistory();
+        }
+
+    }, [user, getAccessTokenSilently]);
 
 
     return (
@@ -89,6 +151,8 @@ export default function OrderHistory() {
                                 <tr>
                                     <th>Comic Book</th>
                                     <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,6 +160,8 @@ export default function OrderHistory() {
                                 <tr key={orderItem.shoppingCartItemId}>
                                     <td>{orderItem.comicBookTitle}</td>
                                     <td>{orderItem.comicBookPrice}</td>
+                                    <td>{orderItem.quantity}</td>
+                                    <td>{orderItem.comicBookPrice * orderItem.quantity}</td>
                                 </tr>
                             ))}
                             </tbody>

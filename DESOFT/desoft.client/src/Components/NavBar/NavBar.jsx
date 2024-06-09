@@ -30,10 +30,8 @@ function NavBar() {
             <div className="topnav">
                 <div className="leftPane">
                     <Link id="homeBtn" to={`/`}>Home</Link>
-                    <Link id="comicBooksBtn" to={`ComicBooks`}>ComicBooks</Link>
+                    <Link id="comicBooksBtn" to={`ComicBooks`}>Comic Books</Link>
                     <Link id="orderHistoryBtn" to={`OrderHistory`}>Order History</Link>
-                    <a href="#">Contact</a>
-                    <a href="#">About</a>
                 </div>
                 <div className="rightPane">
                     {isAuthenticated && <Link id="shoppingCart" to="/ShoppingCart">Shopping Cart</Link>}
