@@ -28,7 +28,7 @@ namespace DESOFT.Server.API.Controllers.Users
 
         
         [HttpGet("{id}")]
-        public async Task<ServiceResult<UserDTO>> getUserById(int id)
+        public async Task<ServiceResult<UserDTO>> getUserById(string id)
         {
             return await _usersService.getUserById(id);
         }

@@ -10,7 +10,7 @@
         /// <summary>
         /// Identificador do utilizador que alterou o registo (auditoria).
         /// </summary>
-        int AlteracaoUtilizadorId { get; set; }
+        string AlteracaoUtilizadorId { get; set; }
     }
 
     public interface IPartialAuditableEntity
@@ -23,7 +23,7 @@
         /// <summary>
         /// Identificador do utilizador que criou o registo (auditoria).
         /// </summary>
-        int CriacaoUtilizadorId { get; set; }
+        string CriacaoUtilizadorId { get; set; }
     }
 
     public abstract class AuditableEntity : PartialAuditableEntity, IAuditableEntity
@@ -36,7 +36,7 @@
         /// <summary>
         /// Identificador do utilizador que alterou o registo (auditoria).
         /// </summary>
-        public int AlteracaoUtilizadorId { get; set; }
+        public string AlteracaoUtilizadorId { get; set; }
 
     }
 
@@ -50,7 +50,7 @@
         /// <summary>
         /// Identificador do utilizador que criou o registo (auditoria).
         /// </summary>
-        public int CriacaoUtilizadorId { get; set; }
+        public string CriacaoUtilizadorId { get; set; }
 
     }
 }

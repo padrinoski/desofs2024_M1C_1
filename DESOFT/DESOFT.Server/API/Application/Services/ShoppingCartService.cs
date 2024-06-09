@@ -85,7 +85,7 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
-        public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetCartItemsByUser(int userId)
+        public async Task<ServiceResult<List<ShoppingCartItemDTO>>> GetCartItemsByUser(string userId)
         {
             var result = new ServiceResult<List<ShoppingCartItemDTO>>();
 

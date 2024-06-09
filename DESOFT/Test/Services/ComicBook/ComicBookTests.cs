@@ -27,10 +27,10 @@ namespace Test.ComicBook
             Title = "Title",
             Version = "1.0",
             AlteracaoData = DateTime.UtcNow,
-            AlteracaoUtilizadorId = 1,
+            AlteracaoUtilizadorId = "1",
             ComicBookId = 1,
             CriacaoData = DateTime.UtcNow,
-            CriacaoUtilizadorId = 1
+            CriacaoUtilizadorId = "1"
         };
 
         private ComicBookDTO dto = new ComicBookDTO()

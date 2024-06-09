@@ -68,7 +68,7 @@ namespace DESOFT.Server.API.Infrastructure
         private void PopulateAuditFields()
         {
             var currentDateTime = DateTime.UtcNow;
-            int currentUserId = 1;
+            string currentUserId = "1";
 
             var authorizationHeader = _httpContextAccessor.HttpContext.Request.Headers["Authorization"];
 
@@ -84,7 +84,7 @@ namespace DESOFT.Server.API.Infrastructure
 
                 tokenS.Payload.TryGetValue("userId", out var userId);
 
-                currentUserId = int.Parse(userId.ToString());
+                currentUserId = userId.ToString();
             }
 
             foreach (var item in ChangeTracker.Entries()

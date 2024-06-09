@@ -48,7 +48,7 @@ namespace DESOFT.Server.API.Controllers.ComicBook
 
                 tokenS.Payload.TryGetValue("userId", out var userId);
 
-                return await _comicService.GetCatalogBackOffice(int.Parse(userId.ToString()));
+                return await _comicService.GetCatalogBackOffice(userId.ToString());
 
             } else
             {

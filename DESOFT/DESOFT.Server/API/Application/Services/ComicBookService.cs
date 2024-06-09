@@ -122,7 +122,7 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
         
-        public async Task<ServiceResult<List<ComicBookDTO>>> GetCatalogBackOffice(int userId)
+        public async Task<ServiceResult<List<ComicBookDTO>>> GetCatalogBackOffice(string userId)
         {
             var result = new ServiceResult<List<ComicBookDTO>>();
 

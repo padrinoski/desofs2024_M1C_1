@@ -79,7 +79,7 @@ namespace DESOFT.Server.API.Application.Services
             return result;
         }
 
-        public async Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(int userId)
+        public async Task<ServiceResult<List<CompleteOrderDTO>>> GetOrdersByUserId(string userId)
         {
             var result = new ServiceResult<List<CompleteOrderDTO>>();
 

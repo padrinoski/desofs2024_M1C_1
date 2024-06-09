@@ -25,6 +25,7 @@ namespace DESOFT.Server.API.Application.Services
         try
         {
             // Check if a user with the provided username and password exists
+            
             var user = await _loginRepository.GetUserByUsernameAndPassword(loginDTO.Username, loginDTO.Password);
 
             if (user != null)
@@ -56,14 +57,14 @@ namespace DESOFT.Server.API.Application.Services
             var res = new ServiceResult();
 
             try
-            {
+            {/*
                 var user = new User { 
                     Address = dto.Address,
                     Password = dto.Password,
                     UserName = dto.UserName
                 };
 
-                await _loginRepository.Register(user);
+                await _loginRepository.Register(user);*/
 
                 await _loginRepository.SaveTransaction(res,"Ocorreu um erro a guardar os dados.");
 

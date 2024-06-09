@@ -10,6 +10,6 @@ namespace DESOFT.Server.API.Application.Interfaces.Services
         Task<ServiceResult> RemoveAdmin(RemoveUserDTO dto);
         Task<ServiceResult> UpdateAdmin(UserDTO dto);
         
-        Task<ServiceResult<UserDTO>> getUserById(int id);
+        Task<ServiceResult<UserDTO>> getUserById(string id);
     }
 }
