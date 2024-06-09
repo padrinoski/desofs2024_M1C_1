@@ -3,48 +3,111 @@ import axios from 'axios';
 import ReactDom from 'react-dom';
 import { useState, useEffect } from 'react';
 import ComicBook from "./comic-book.jsx";
+import { useAuth0 } from '@auth0/auth0-react';
 
-export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) {
+export default function EditComicBookDialog({comicBookId, onActionComplete}: { comicBookId: any, onActionComplete: () => void }) {
+
+    const domain = `localhost:5265`;
+    const { getAccessTokenSilently } = useAuth0();
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [author, setAuthor] = useState('');
+    const [version, setVersion] = useState('');
+    const [publishingDate, setPublishingDate] = useState('');
+    const [price, setPrice] = useState('');
+
 
     const [comic, setComic] = useState<any>([]);
 
     useEffect(() => {
-        axios.get(`https://localhost:7242/api/ComicBook/GetComicBook/${comicBookId.comicBookId}`
-        )
-        .then(response => {
-            setComic(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+        const fetchData = async () => {
+            try {
+                const token = await getAccessTokenSilently({
+                    authorizationParams: {
+                        audience: `http://${domain}`
+                    }
+                });
+                const response = await fetch(`http://${domain}/api/ComicBook/GetComicBook/${comicBookId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                } else {
+                    const data = await response.json();
+                    setComic(data.data);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+        // axios.get(`https://localhost:7242/api/ComicBook/GetComicBook/${comicBookId.comicBookId}`
+        // )
+        // .then(response => {
+        //     setComic(response.data);
+        // })
+        // .catch(error => {
+        //     console.error(error);
+        // });
 
-    }, []);
+    }, [comicBookId]);
 
-    const comicBookPost = () => {
+    const comicBookPost = async () => {
         if ((document.getElementById('e-version') as HTMLInputElement).value != '' && !(document.getElementById('version') as HTMLInputElement).validity.valid) {
             window.alert('Unsupported version.')
         } else {
             const formData = new FormData();
+            // formData.append("comicBookId", (document.getElementById('e-comicBookId') as HTMLInputElement).value);
+            // formData.append("title", (document.getElementById('e-title') as HTMLInputElement).value != '' ? (document.getElementById('e-title') as HTMLInputElement).value : (document.getElementById('e-title') as HTMLInputElement).placeholder);
+            // formData.append('description', (document.getElementById('e-description') as HTMLInputElement).value != '' ? (document.getElementById('e-description') as HTMLInputElement).value : (document.getElementById('e-description') as HTMLInputElement).placeholder);
+            // formData.append('author', (document.getElementById('e-author') as HTMLInputElement).value != '' ? (document.getElementById('e-author') as HTMLInputElement).value : (document.getElementById('e-author') as HTMLInputElement).placeholder);
+            // formData.append('version', (document.getElementById('e-version') as HTMLInputElement).value != '' ? (document.getElementById('e-version') as HTMLInputElement).value : (document.getElementById('e-version') as HTMLInputElement).placeholder);
+            // formData.append('publishingDate', (document.getElementById('e-publishingDate') as HTMLInputElement).value != '' ? `${(document.getElementById('e-publishingDate') as HTMLInputElement).value}` : (document.getElementById('e-publishingDate') as HTMLInputElement).placeholder);
+            // formData.append('price', (document.getElementById('e-price') as HTMLInputElement).value != '' ? (document.getElementById('e-price') as HTMLInputElement).value : (document.getElementById('e-price') as HTMLInputElement).placeholder);
 
-            formData.append("comicBookId", (document.getElementById('e-comicBookId') as HTMLInputElement).value);
-            formData.append("title", (document.getElementById('e-title') as HTMLInputElement).value != '' ? (document.getElementById('e-title') as HTMLInputElement).value : (document.getElementById('e-title') as HTMLInputElement).placeholder);
-            formData.append('description', (document.getElementById('e-description') as HTMLInputElement).value != '' ? (document.getElementById('e-description') as HTMLInputElement).value : (document.getElementById('e-description') as HTMLInputElement).placeholder);
-            formData.append('author', (document.getElementById('e-author') as HTMLInputElement).value != '' ? (document.getElementById('e-author') as HTMLInputElement).value : (document.getElementById('e-author') as HTMLInputElement).placeholder);
-            formData.append('version', (document.getElementById('e-version') as HTMLInputElement).value != '' ? (document.getElementById('e-version') as HTMLInputElement).value : (document.getElementById('e-version') as HTMLInputElement).placeholder);
-            formData.append('publishingDate', (document.getElementById('e-publishingDate') as HTMLInputElement).value != '' ? `${(document.getElementById('e-publishingDate') as HTMLInputElement).value}` : (document.getElementById('e-publishingDate') as HTMLInputElement).placeholder);
-            formData.append('price', (document.getElementById('e-price') as HTMLInputElement).value != '' ? (document.getElementById('e-price') as HTMLInputElement).value : (document.getElementById('e-price') as HTMLInputElement).placeholder);
 
+            formData.append("comicBookId", comicBookId);
+            formData.append("title", title !== '' ? title : (document.getElementById('e-title') as HTMLInputElement).placeholder);
+            formData.append('description', description !== '' ? description : (document.getElementById('e-description') as HTMLInputElement).placeholder);
+            formData.append('author', author !== '' ? author : (document.getElementById('e-author') as HTMLInputElement).placeholder);
+            formData.append('version', version !== '' ? version : (document.getElementById('e-version') as HTMLInputElement).placeholder);
+            formData.append('publishingDate', publishingDate !== '' ? `${publishingDate}` : (document.getElementById('e-publishingDate') as HTMLInputElement).placeholder);
+            formData.append('price', price !== '' ? price : (document.getElementById('e-price') as HTMLInputElement).placeholder);
+            
+            let object = {};
+            formData.forEach((value, key) => {object[key] = value});
+            let json = JSON.stringify(object);
 
-            axios.post(`https://localhost:7242/api/ComicBook/EditComicBook/${(document.getElementById('e-comicBookId') as HTMLInputElement).value}`, formData
-            )
-                .then(response => {
-                    console.log(response.data);
-                    ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
-                })
-                .catch(error => {
-                    window.alert(error.response.data.title)
-                    console.error(error);
+            try {
+                const token = await getAccessTokenSilently({
+                    authorizationParams: {
+                        audience: `http://${domain}`
+                    }
                 });
+
+                const response = await fetch(`http://${domain}/api/ComicBook/EditComicBook/${(document.getElementById('e-comicBookId') as HTMLInputElement).value}`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: json,
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                } else {
+                    const data = await response.json();
+                    onActionComplete();
+                    //ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
+                }
+            } catch (error) {
+                window.alert(error.message);
+                console.error(error);
+            }
         }
     }
 
@@ -57,13 +120,14 @@ export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) 
     }
 
     const cancel = () => {
-        ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
+        onActionComplete();
+        //ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
     }
 
     return (
         <div className="editComicBookDialog">
-            <input id="e-comicBookId" title="comicBookId" name="comicBookId" type="number" value={comic.data?.comicBookId} hidden readOnly={true}></input>
-            <h3>{comic.data?.title}</h3>
+            <input id="e-comicBookId" title="comicBookId" name="comicBookId" type="number" value={comic.comicBookId} hidden readOnly={true}></input>
+            <h3>{comic.title}</h3>
             <div className="row">
                 <div className="col-2">
                     <label>Title</label>
@@ -74,8 +138,10 @@ export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) 
                         title="title"
                         name="title"
                         type="text"
-                        maxLength={20}  
-                        placeholder={comic.data?.title}
+                        maxLength={20}
+                        value={title || ''}
+                        onChange={e => setTitle(e.target.value)}  
+                        placeholder={comic.title}
                     ></input>
                 </div>
             </div>
@@ -84,7 +150,7 @@ export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) 
                     <label>Description</label>
                 </div>
                 <div className="col-8">
-                    <input id="e-description" title="description" name="description" type="text" maxLength={50} placeholder={comic.data?.description}></input>
+                    <input id="e-description" value={description || ''} onChange={e => setDescription(e.target.value)} title="description" name="description" type="text" maxLength={50} placeholder={comic.description}></input>
                 </div>
             </div>
             <div className="row">
@@ -92,7 +158,7 @@ export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) 
                     <label>Author</label>
                 </div>
                 <div className="col-8">
-                    <input id="e-author" title="author" name="author" type="text" maxLength={10} placeholder={comic.data?.author}></input>
+                    <input id="e-author" title="author" value={author || ''} onChange={e => setAuthor(e.target.value)}name="author" type="text" maxLength={10} placeholder={comic.author}></input>
                 </div>
             </div>
             <div className="row">
@@ -100,7 +166,7 @@ export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) 
                     <label>Version</label>
                 </div>
                 <div className="col-8">
-                    <input id="e-version" title="version" name="version" type="text" placeholder={comic.data?.version}></input>
+                    <input id="e-version" title="version" value={version || ''} onChange={e => setVersion(e.target.value)} name="version" type="text" placeholder={comic.version}></input>
                 </div>
             </div>
             <div className="row">
@@ -111,7 +177,8 @@ export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) 
                     <input id="e-publishingDate" title="publishingDate" name="publishingDate" type="text"
                         onFocus={() => setToDate()}
                         onBlur={() => setToText()}
-                        placeholder={comic.data?.publishingDate}></input>
+                        value={publishingDate || ''} onChange={e => setPublishingDate(e.target.value)}
+                        placeholder={comic.publishingDate}></input>
                 </div>
             </div>
             <div className="row">
@@ -119,7 +186,7 @@ export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) 
                     <label>Price</label>
                 </div>
                 <div className="col-8">
-                    <input id="e-price" title="price" name="price" type="number" placeholder={comic.data?.price}></input>
+                    <input id="e-price" title="price" value={price || ''} onChange={e => setPrice(e.target.value)} name="price" type="number" placeholder={comic.price}></input>
                 </div>
             </div>
             <div className="row">

@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddComicBookDialog from './add-comic-dialog';
-import ReactDom from 'react-dom';
-
-const showDialog = () => {
-
-    ReactDom.render(<AddComicBookDialog></AddComicBookDialog>, document.querySelector('.page'));
-
-}
 
 export default function AddComicBookBtn() {
+    const [showDialog, setShowDialog] = useState(false);
+    const [showComicBook, setShowComicBook] = useState(false);
+
+
+    const toggleDialog = () => {
+        setShowDialog(!showDialog);
+    }
+
+    const onActionCompleted = () => {
+        setShowDialog(false);
+        setShowComicBook(true);
+    }
 
     return (
         <div className="btnAdd">
             <span>
-                <a onClick={() => showDialog()} >Add Comic Book</a>
+                <a onClick={toggleDialog}>Add Comic Book</a>
             </span>
+            {showDialog && <AddComicBookDialog onActionCompleted={onActionCompleted} />}
+            {showComicBook && <ComicBook />}
         </div>
     );
 }

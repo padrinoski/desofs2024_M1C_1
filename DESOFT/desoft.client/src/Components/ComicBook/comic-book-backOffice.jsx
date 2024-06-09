@@ -11,6 +11,18 @@ export default function ComicBookBackOffice() {
     const [comics, setComics] = useState([]);
     const domain = `localhost:5265`;
 
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [currentComicBookId, setCurrentComicBookId] = useState(null);
+
+    const editComicBook = (comicBookId) => {
+        setCurrentComicBookId(comicBookId);
+        setIsDialogOpen(true);
+    }
+
+    const closeDialog = () => {
+        setIsDialogOpen(false);
+    }
+
     useEffect(() => {
         const getComics = async () => {
             try {
@@ -32,8 +44,6 @@ export default function ComicBookBackOffice() {
 
                 const {data} =  await catalogResponse.json();
                 
-                console.log(JSON.stringify(data));
-
                 if(data != null){
                     setComics(data);
                 }
@@ -44,10 +54,6 @@ export default function ComicBookBackOffice() {
         };
         getComics();
     }, [getAccessTokenSilently]);
-
-    const editComicBook = (comicBookId) => {
-        ReactDom.render(<EditComicBookDialog comicBookId={comicBookId}></EditComicBookDialog>, document.querySelector('.page'));
-    }
 
     const deleteComicBook = async (comicBookId) => {
         try {
@@ -60,17 +66,23 @@ export default function ComicBookBackOffice() {
             const url = `http://${domain}/api/ComicBook/DeleteComicBook/${comicBookId}`;
 
             const deleteResponse = await fetch(url, {
+                method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
 
                 },
             });
-
             window.location.reload();
         } catch (error) {
             console.error(error);
         }
     }
+
+    const onActionComplete = () => {
+        window.location.reload();
+
+    };
+
     return (
         <div className="page">
             <h1 className="title">Comic Books</h1>
@@ -100,6 +112,7 @@ export default function ComicBookBackOffice() {
                                     <span className="edit">
                                         <button onClick={() => editComicBook(comic.comicBookId)}>{comic.listButtons[0].action}</button>
                                     </span>
+                                    {isDialogOpen && <EditComicBookDialog comicBookId={currentComicBookId} onClose={closeDialog} onActionComplete={onActionComplete} />}
                                     <span className="delete">
                                         <button onClick={() => deleteComicBook(comic.comicBookId)}>{comic.listButtons[1].action}</button>
                                     </span>

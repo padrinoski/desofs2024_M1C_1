@@ -32,8 +32,6 @@ export default function ComicBookFrontOffice() {
 
                 const {data} =  await catalogResponse.json();
                 
-                console.log(JSON.stringify(data));
-
                 if(data != null){
                     setComics(data);
                 }

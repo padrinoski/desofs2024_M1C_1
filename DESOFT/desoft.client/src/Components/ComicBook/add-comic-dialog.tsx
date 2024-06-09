@@ -2,14 +2,18 @@ import { useEffect } from 'react';
 import  ReactDom from 'react-dom';
 import ComicBook from "./comic-book.jsx";
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
 
-export default function AddComicBookDialog() {
+export default function AddComicBookDialog({onActionCompleted}) {
+
+    const { getAccessTokenSilently } = useAuth0();
+    const domain = `localhost:5265`;
 
     useEffect(() => {
         
     }, []);
 
-    const comicBookPost = () => {
+    const comicBookPost = async () => {
 
         if ((document.getElementById('title') as HTMLInputElement).value == '' || (document.getElementById('description') as HTMLInputElement).value == '' ||
             (document.getElementById('author') as HTMLInputElement).value == '' || (document.getElementById('publishingDate') as HTMLInputElement).value == '' ||
@@ -21,31 +25,52 @@ export default function AddComicBookDialog() {
             } else {
                 const formData = new FormData();
 
-                formData.append("title", (document.getElementById('title') as HTMLInputElement).value);
-                formData.append('description', (document.getElementById('description') as HTMLInputElement).value);
-                formData.append('author', (document.getElementById('author') as HTMLInputElement).value);
-                formData.append('version', (document.getElementById('version') as HTMLInputElement).value);
-                formData.append('publishingDate', `${(document.getElementById('publishingDate') as HTMLInputElement).value}T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`);
-                formData.append('price', (document.getElementById('price') as HTMLInputElement).value);
+                formData.append("Title", (document.getElementById('title') as HTMLInputElement).value);
+                formData.append('Description', (document.getElementById('description') as HTMLInputElement).value);
+                formData.append('Author', (document.getElementById('author') as HTMLInputElement).value);
+                formData.append('Version', (document.getElementById('version') as HTMLInputElement).value);
+                formData.append('PublishingDate', `${(document.getElementById('publishingDate') as HTMLInputElement).value}T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`);
+                formData.append('Price', (document.getElementById('price') as HTMLInputElement).value);
 
+                let object = {};
+                formData.forEach((value, key) => {object[key] = value});
+                let json = JSON.stringify(object);
 
-                axios.post(`https://localhost:7242/api/ComicBook/CreateComicbook`, formData
-                )
-                    .then(response => {
-                        console.log(response.data);
-                        ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
-                    })
-                    .catch(error => {
-                        window.alert(error.response.data.title)
-                        console.error(error);
+                try{
+                    const token = await getAccessTokenSilently({
+                        authorizationParams: {
+                            audience: `http://${domain}`,
+                        }
                     });
+
+                    const response = await fetch(`http://${domain}/api/ComicBook/CreateComicbook`, {
+                        method: 'POST',
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            'Content-Type': 'application/json',
+
+                        },
+                        body: json,
+                    });
+                
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    } else {
+                        const data = await response.json();
+                        //ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
+                        onActionCompleted();
+                    }
+                }catch(error){
+                    window.alert(error.message);
+                    console.error(error);
+                }
             }
         }
     }
 
     const cancel = () => {
-        ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
-
+        //ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
+        onActionCompleted();
     }
 
     return (

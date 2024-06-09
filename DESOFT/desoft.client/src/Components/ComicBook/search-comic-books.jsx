@@ -36,8 +36,6 @@ export default function SearchComicBooks() {
             });
 
             const filteredCatalog = await filterResponse.json();
-            console.log(filteredCatalog);
-
             setFilteredCatalog(filteredCatalog);
         } catch (e) {
             console.error(e);

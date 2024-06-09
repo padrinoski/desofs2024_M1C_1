@@ -18,7 +18,6 @@ export default function PlaceOrderFrontOffice() {
         async function getShoppingCartData() {
             try {
                 if (isAuthenticated && currentUserId !== undefined) {
-                    console.log(currentUserId);
                     const data = await fetchShoppingCartData(currentUserId);
                     setCartData(data);
                     setLoading(false);
@@ -60,7 +59,6 @@ export default function PlaceOrderFrontOffice() {
             const shoppingCartId = cartData[0]?.shoppingCartId; // Assuming all items have the same shoppingCartId
             await createOrderBackOffice(shoppingCartId, address, paymentMethod);
             setFormError(''); // Clear form error on successful submission
-            console.log('Order placed successfully');
         } catch (error) {
             setFormError('Error placing order');
             console.error(error);
