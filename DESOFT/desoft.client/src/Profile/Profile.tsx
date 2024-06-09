@@ -19,7 +19,7 @@ const Profile = () => {
 
                 window.sessionStorage.setItem("token", accessToken);
 
-                const userDetailsByIdUrl = (`http://${domain}/api/Users/6`);
+                const userDetailsByIdUrl = (`http://${domain}/api/Users/${user?.sub}`);
 
                 console.log("\nUser Details By Id Url: " + userDetailsByIdUrl)
 
