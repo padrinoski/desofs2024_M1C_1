@@ -16,10 +16,7 @@ const Profile = () => {
                         audience: `http://${domain}`,
                     },
                 })
-                console.log("\nAccess Token: " + accessToken)
-                const userDetailsByIdUrl = (`http://${domain}/api/Users/6`);
-
-                console.log("\nUser Details By Id Url: " + userDetailsByIdUrl)
+                const userDetailsByIdUrl = (`http://${domain}/api/Users/${user?.sub}`);
 
                 const metadataResponse = await fetch(userDetailsByIdUrl, {
                     headers: {

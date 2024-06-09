@@ -3,37 +3,81 @@ import {useAuth0} from '@auth0/auth0-react';
 import axios from 'axios';
 
 const customUseAuth0 = () => {
-    const {user, isAuthenticated, isLoading} = useAuth0();
+    const {user, isAuthenticated, isLoading,getAccessTokenSilently,loginWithRedirect} = useAuth0();
     const [userInfo, setUserInfo] = useState(null);
     const [isUserChecked, setIsUserChecked] = useState(false);
 
     useEffect(() => {
         const checkAndCreateUser = async () => {
             if (isAuthenticated && user) {
-                const username = user.nickname || user.name;
+                const id = user?.sub;
+                const domain = "localhost:5265";
+
 
                 try {
-                    const response = await axios.get(`http://localhost:5265/api/Users/GetUserByUsername/${username}`);
 
-                    if (response.data.data !== null && response.data.data.username === username) {
+                    const accessToken = await getAccessTokenSilently({
+                        authorizationParams: {
+                            audience: `http://${domain}`,
+                        },
+                    })
+
+                    console.log(accessToken);
+
+                    console.log("\nAccess Token: " + accessToken)
+                    const getUserByIdUrl = (`http://${domain}/api/Users/${user?.sub}`);
+
+                    const metadataResponse = await fetch(getUserByIdUrl, {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+    
+                        },
+                    });
+
+                    const {data} =  await metadataResponse.json();
+
+                    if (data !== null && data.userId === id) {
                         console.log("User exists");
-                        setUserInfo(response.data.data);
+                        setUserInfo(data);
                     } else {
                         console.log("User doesn't exist - creating it");
-                        // Neste newUser tens que guardar o userId como user.sub, mas só qd mudares o modelo de dadaos
                         const newUser = {
-                            //userId: user.sub,
-                            username: username,
-                            address: username,
-                            password: "authenticated_by_auth0",
+                            UserId: user.sub,
+                            Username: user.name,
+                            Address: user.email,
+                            Password: "authenticated_by_auth0",
                         };
 
-                        const createResponse = await axios.post(`http://localhost:5265/api/Users/CreateUser`, newUser);
+                        console.log(JSON.stringify(newUser));
+
+                        const createUser = (`http://${domain}/api/Users/CreateUser`);
+
+                        const createResponse = await fetch(createUser, {
+                            method: 'POST',
+                            headers:{
+                                'content-type': 'application/json',
+                                Authorization: `Bearer ${accessToken}`,
+                            },
+                            body: JSON.stringify(newUser)
+                        });
+                                        
+                        console.log(createResponse);
+
                         setUserInfo(createResponse.data);
                         console.log("User Created successfully");
                     }
-                } catch (error) {
-                    console.error("Error checking or creating user:", error);
+                } catch (e) {
+                    if (e.error === 'consent_required') {
+                        loginWithRedirect({
+                            authorizationParams: {
+                                audience: `http://${domain}`,
+                                prompt: 'consent',
+                            },
+                        });
+                    }else{
+                        console.error("Error checking or creating user:", e);
+                    }
+
                 } finally {
                     setIsUserChecked(true);
                 }

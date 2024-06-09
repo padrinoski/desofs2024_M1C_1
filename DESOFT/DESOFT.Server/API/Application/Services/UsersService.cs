@@ -36,6 +36,7 @@ namespace DESOFT.Server.API.Application.Services
                 {
                     res.Data = new UserDTO
                     {
+                        UserId = user.UserId,
                         Username = user.UserName,
                         Address = user.Address
                     };
@@ -62,9 +63,10 @@ namespace DESOFT.Server.API.Application.Services
             {
                 var user = new User
                 {
+                    UserId = dto.UserId,
                     UserName = dto.Username,
                     Password = dto.Password,
-                    Address = dto.Address
+                    Address = dto.Address,
                 };
 
                 await _usersRepository.AddUser(user);

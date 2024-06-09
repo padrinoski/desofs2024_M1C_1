@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace DESOFT.Server.API.Infrastructure
 {
@@ -82,9 +83,16 @@ namespace DESOFT.Server.API.Infrastructure
                 var jsonToken = handler.ReadToken(accessToken);
                 var tokenS = jsonToken as JwtSecurityToken;
 
-                tokenS.Payload.TryGetValue("userId", out var userId);
-
-                currentUserId = userId.ToString();
+                if (tokenS.Payload.ContainsKey("userId"))
+                {
+                    tokenS.Payload.TryGetValue("userId", out var userId);
+                    currentUserId = userId.ToString();
+                }
+                else if (tokenS.Payload.ContainsKey("sub"))
+                {
+                    tokenS.Payload.TryGetValue("sub", out var userId);
+                    currentUserId = userId.ToString();
+                }
             }
 
             foreach (var item in ChangeTracker.Entries()
