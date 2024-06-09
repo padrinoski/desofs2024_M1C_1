@@ -12,42 +12,12 @@ import OrderHistory from "./Components/OrderHistory/order-history.jsx"
 import ViewCostumersOrders from "./Components/OrderHistory/view-customers-orders.jsx"
 import {
     BrowserRouter,
-    createBrowserRouter,
-    RouterProvider,
     Routes,
     Route
 } from "react-router-dom";
 import axios from 'axios';
 import LoginButton from './Authentication/Login/Login.tsx'
 import Profile from './Profile/Profile.tsx'
-
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "ComicBooks",
-        element: <ComicBook />,
-    },
-    {
-        path: "PlaceOrder",
-        element: <PlaceOrder />,
-    },
-    {
-        path: "login",
-        element: <LoginButton />,
-    },
-    {
-        path: "profile",
-        element: <Profile />,
-    },
-    {
-        path: "ShoppingCart",
-        element: <ShoppingCart />,
-    },
-]);
 
 (function () {
     //const token = window.sessionStorage.getItem("token");

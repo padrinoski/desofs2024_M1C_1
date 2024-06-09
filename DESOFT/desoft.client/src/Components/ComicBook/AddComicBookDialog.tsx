@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import  ReactDom from 'react-dom';
+﻿import { useEffect } from 'react';
+import ReactDom from 'react-dom';
 import ComicBook from "./comic-book.jsx";
 import axios from 'axios';
+
 
 export default function AddComicBookDialog() {
 
     useEffect(() => {
-        
     }, []);
 
     const comicBookPost = () => {
@@ -17,7 +17,7 @@ export default function AddComicBookDialog() {
             window.alert('One or more validation errors occurred.');
         } else {
             if (!(document.getElementById('version') as HTMLInputElement).validity.valid) {
-                window.alert('Unsupported version.')
+                window.alert('Unsupported version.');
             } else {
                 const formData = new FormData();
 
@@ -36,17 +36,17 @@ export default function AddComicBookDialog() {
                         ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
                     })
                     .catch(error => {
-                        window.alert(error.response.data.title)
+                        window.alert(error.response.data.title);
                         console.error(error);
                     });
             }
         }
-    }
+    };
 
     const cancel = () => {
         ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
 
-    }
+    };
 
     return (
         <div className="addComicBookDialog">
@@ -96,7 +96,7 @@ export default function AddComicBookDialog() {
                     <label>Price</label>
                 </div>
                 <div className="col-8">
-                    <input id="price" title="price" name="price" type="number" ></input>
+                    <input id="price" title="price" name="price" type="number"></input>
                 </div>
             </div>
             <div className="row">

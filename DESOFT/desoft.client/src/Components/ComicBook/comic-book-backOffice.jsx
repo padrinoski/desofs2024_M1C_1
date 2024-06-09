@@ -23,7 +23,6 @@ export default function ComicBookBackOffice() {
 
     const editComicBook = (comicBookId) => {
         ReactDom.render(<EditComicBookDialog comicBookId={comicBookId}></EditComicBookDialog>, document.querySelector('.page'));
-        //document.querySelector('.editComicBookDialog')?.removeAttribute('hidden');
     }
 
     const deleteComicBook= (comicBookId) => {

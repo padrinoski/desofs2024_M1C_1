@@ -1,5 +1,5 @@
 import './NavBar.css';
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {Link} from "react-router-dom";
 import LoginButton from "../../Authentication/Login/Login.tsx";
 import LogoutButton from "../../Authentication/Logout/Logout.tsx";
@@ -7,7 +7,7 @@ import customUseAuth0 from "../../Authentication/customUseAuth0.jsx";
 
 function NavBar() {
 
-    const {userInfo, isAuthenticated, logout} = customUseAuth0();
+    const { isAuthenticated} = customUseAuth0();
 
     //user.userId dá o userId
     //user.username dá o username

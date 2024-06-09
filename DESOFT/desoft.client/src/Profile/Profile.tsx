@@ -1,9 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import {React, useEffect} from "react"
+import { useEffect} from "react"
 import { useState } from "react";
 
 const Profile = () => {
-    const {user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
+    const {user, isAuthenticated, isLoading, getAccessTokenSilently} = useAuth0();
     const [userMetadata, setUserMetadata] = useState(null);
 
     useEffect(() => {

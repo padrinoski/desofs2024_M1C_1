@@ -1,24 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 import ReactDom from 'react-dom';
 import { useState, useEffect } from 'react';
-import ComicBook from "./comic-book";
+import ComicBook from "./comic-book.jsx";
 
-export default function EditComicBookDialog(comicBookId : comicBook) {
+export default function EditComicBookDialog(comicBookId: { comicBookId: any; }) {
 
-    const title = document.getElementById('title');
-    const description = document.getElementById('description');
-    const author = document.getElementById('author');
-    const version = document.getElementById('version');
-    const publishingDate = document.getElementById('publishingDate');
-    const price = document.getElementById('price');
-
-    const [comic, setComic] = useState([]);
+    const [comic, setComic] = useState<any>([]);
 
     useEffect(() => {
         axios.get(`https://localhost:7242/api/ComicBook/GetComicBook/${comicBookId.comicBookId}`
         )
         .then(response => {
-            console.log(response.data);
             setComic(response.data);
         })
         .catch(error => {
@@ -28,21 +21,21 @@ export default function EditComicBookDialog(comicBookId : comicBook) {
     }, []);
 
     const comicBookPost = () => {
-        if (document.getElementById('e-version').value != '' && !document.getElementById('version').validity.valid) {
+        if ((document.getElementById('e-version') as HTMLInputElement).value != '' && !(document.getElementById('version') as HTMLInputElement).validity.valid) {
             window.alert('Unsupported version.')
         } else {
-            var formData = new FormData();
+            const formData = new FormData();
 
-            formData.append("comicBookId", document.getElementById('e-comicBookId').value);
-            formData.append("title", document.getElementById('e-title').value != '' ? document.getElementById('e-title').value : document.getElementById('e-title').placeholder);
-            formData.append('description', document.getElementById('e-description').value != '' ? document.getElementById('e-description').value : document.getElementById('e-description').placeholder);
-            formData.append('author', document.getElementById('e-author').value != '' ? document.getElementById('e-author').value : document.getElementById('e-author').placeholder);
-            formData.append('version', document.getElementById('e-version').value != '' ? document.getElementById('e-version').value : document.getElementById('e-version').placeholder);
-            formData.append('publishingDate', document.getElementById('e-publishingDate').value != '' ? `${document.getElementById('e-publishingDate').value}T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z` : document.getElementById('e-publishingDate').placeholder);
-            formData.append('price', document.getElementById('e-price').value != '' ? document.getElementById('e-price').value : document.getElementById('e-price').placeholder);
+            formData.append("comicBookId", (document.getElementById('e-comicBookId') as HTMLInputElement).value);
+            formData.append("title", (document.getElementById('e-title') as HTMLInputElement).value != '' ? (document.getElementById('e-title') as HTMLInputElement).value : (document.getElementById('e-title') as HTMLInputElement).placeholder);
+            formData.append('description', (document.getElementById('e-description') as HTMLInputElement).value != '' ? (document.getElementById('e-description') as HTMLInputElement).value : (document.getElementById('e-description') as HTMLInputElement).placeholder);
+            formData.append('author', (document.getElementById('e-author') as HTMLInputElement).value != '' ? (document.getElementById('e-author') as HTMLInputElement).value : (document.getElementById('e-author') as HTMLInputElement).placeholder);
+            formData.append('version', (document.getElementById('e-version') as HTMLInputElement).value != '' ? (document.getElementById('e-version') as HTMLInputElement).value : (document.getElementById('e-version') as HTMLInputElement).placeholder);
+            formData.append('publishingDate', (document.getElementById('e-publishingDate') as HTMLInputElement).value != '' ? `${(document.getElementById('e-publishingDate') as HTMLInputElement).value}` : (document.getElementById('e-publishingDate') as HTMLInputElement).placeholder);
+            formData.append('price', (document.getElementById('e-price') as HTMLInputElement).value != '' ? (document.getElementById('e-price') as HTMLInputElement).value : (document.getElementById('e-price') as HTMLInputElement).placeholder);
 
 
-            axios.post(`https://localhost:7242/api/ComicBook/EditComicBook/${document.getElementById('e-comicBookId').value}`, formData
+            axios.post(`https://localhost:7242/api/ComicBook/EditComicBook/${(document.getElementById('e-comicBookId') as HTMLInputElement).value}`, formData
             )
                 .then(response => {
                     console.log(response.data);
@@ -56,11 +49,11 @@ export default function EditComicBookDialog(comicBookId : comicBook) {
     }
 
     const setToDate = () => {
-        document.getElementById('e-publishingDate').type = 'date';
+        (document.getElementById('e-publishingDate') as HTMLInputElement).type = 'date';
     }
 
     const setToText = () => {
-        document.getElementById('e-publishingDate').type = 'text';
+        (document.getElementById('e-publishingDate') as HTMLInputElement).type = 'text';
     }
 
     const cancel = () => {
