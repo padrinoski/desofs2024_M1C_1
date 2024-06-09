@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
-import  ReactDom from 'react-dom';
-import ComicBook from "./comic-book.jsx";
-import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
+// @ts-ignore
 export default function AddComicBookDialog({onActionCompleted}) {
 
     const { getAccessTokenSilently } = useAuth0();
     const domain = `localhost:5265`;
 
     useEffect(() => {
-        
+
     }, []);
 
     const comicBookPost = async () => {
@@ -33,7 +31,8 @@ export default function AddComicBookDialog({onActionCompleted}) {
                 formData.append('Price', (document.getElementById('price') as HTMLInputElement).value);
 
                 let object = {};
-                formData.forEach((value, key) => {object[key] = value});
+                formData.forEach((value, key) => { // @ts-ignore
+                    object[key] = value});
                 let json = JSON.stringify(object);
 
                 try{
@@ -52,15 +51,15 @@ export default function AddComicBookDialog({onActionCompleted}) {
                         },
                         body: json,
                     });
-                
+
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     } else {
-                        const data = await response.json();
                         //ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
                         onActionCompleted();
                     }
                 }catch(error){
+                    // @ts-ignore
                     window.alert(error.message);
                     console.error(error);
                 }

@@ -1,8 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import axios from 'axios';
-import ReactDom from 'react-dom';
 import { useState, useEffect } from 'react';
-import ComicBook from "./comic-book.jsx";
 import { useAuth0 } from '@auth0/auth0-react';
 
 export default function EditComicBookDialog({comicBookId, onActionComplete}: { comicBookId: any, onActionComplete: () => void }) {
@@ -32,7 +28,7 @@ export default function EditComicBookDialog({comicBookId, onActionComplete}: { c
                         Authorization: `Bearer ${token}`,
                     },
                 });
-    
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 } else {
@@ -76,9 +72,10 @@ export default function EditComicBookDialog({comicBookId, onActionComplete}: { c
             formData.append('version', version !== '' ? version : (document.getElementById('e-version') as HTMLInputElement).placeholder);
             formData.append('publishingDate', publishingDate !== '' ? `${publishingDate}` : (document.getElementById('e-publishingDate') as HTMLInputElement).placeholder);
             formData.append('price', price !== '' ? price : (document.getElementById('e-price') as HTMLInputElement).placeholder);
-            
+
             let object = {};
-            formData.forEach((value, key) => {object[key] = value});
+            formData.forEach((value, key) => { // @ts-ignore
+                object[key] = value});
             let json = JSON.stringify(object);
 
             try {
@@ -96,15 +93,15 @@ export default function EditComicBookDialog({comicBookId, onActionComplete}: { c
                     },
                     body: json,
                 });
-        
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 } else {
-                    const data = await response.json();
                     onActionComplete();
                     //ReactDom.render(<ComicBook></ComicBook>, document.querySelector('.page'));
                 }
             } catch (error) {
+                // @ts-ignore
                 window.alert(error.message);
                 console.error(error);
             }
@@ -140,7 +137,7 @@ export default function EditComicBookDialog({comicBookId, onActionComplete}: { c
                         type="text"
                         maxLength={20}
                         value={title || ''}
-                        onChange={e => setTitle(e.target.value)}  
+                        onChange={e => setTitle(e.target.value)}
                         placeholder={comic.title}
                     ></input>
                 </div>
@@ -175,10 +172,10 @@ export default function EditComicBookDialog({comicBookId, onActionComplete}: { c
                 </div>
                 <div className="col-8">
                     <input id="e-publishingDate" title="publishingDate" name="publishingDate" type="text"
-                        onFocus={() => setToDate()}
-                        onBlur={() => setToText()}
-                        value={publishingDate || ''} onChange={e => setPublishingDate(e.target.value)}
-                        placeholder={comic.publishingDate}></input>
+                           onFocus={() => setToDate()}
+                           onBlur={() => setToText()}
+                           value={publishingDate || ''} onChange={e => setPublishingDate(e.target.value)}
+                           placeholder={comic.publishingDate}></input>
                 </div>
             </div>
             <div className="row">
