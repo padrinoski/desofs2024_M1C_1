@@ -65,7 +65,7 @@ namespace DESOFT.Server.API.Infrastructure.Repositories
             if (comicBook == null)
                 return false;
 
-            return comicBook.CriacaoUtilizadorId == userId;
+            return comicBook.CriacaoUtilizadorId.ToString() == userId;
         }
 
         public async Task<bool> PodeAcederAInformacoesSensiveisFilter(string userId)

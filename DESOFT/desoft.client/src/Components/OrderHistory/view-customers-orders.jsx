@@ -9,50 +9,60 @@ export default function viewCustomersOrders() {
     const [orderDetails, setOrderDetails] = useState(0);
     const [orderItems, setOrderItems] = useState(Object);
     const [orderDetailsVisible, setOrderDetailsVisible] = useState(false);
-    const {user, isAuthenticated, isLoading, getAccessTokenSilently} = useAuth0();
+    const [hasAccess, setAccessCheck] = useState(false);
+    const { user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect } = useAuth0();
 
     useEffect(() => {
         const getOrders = async () => {
             const domain = "localhost:5265";
-            
-            try{
+
+            try {
                 const accessToken = await getAccessTokenSilently({
                     authorizationParams: {
                         audience: `http://${domain}`,
                         scope: "read:customer_orders",
-                        prompt: 'consent',
                     },
                 })
-    
+
                 const ordersUrl = `http://${domain}/api/PlaceOrder/GetallOrders`;
-    
+
                 const ordersResponse = await fetch(ordersUrl, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
                 });
-    
-                const ordersData =  await ordersResponse.json();
-    
+
+                const ordersData = await ordersResponse.json();
+
                 setOrders(ordersData);
-    
-            } catch(e){
+                setAccessCheck(true);
+            } catch (e) {
+                if (e.error === 'consent_required') {
+                    loginWithRedirect({
+                        authorizationParams: {
+                            audience: `http://${domain}`,
+                            scope: "read:customer_orders",
+                            prompt: 'consent',
+                        },
+                    });
+                }
+                setAccessCheck(false);
                 console.error(e);
             }
         };
         if (user && isAuthenticated) {
             getOrders();
         }
-    
+
     }, [user, getAccessTokenSilently]);
 
     const toggleViewInfo = (orderId, orderI) => {
         return () => {
             setOrderDetails(orderId)
             setOrderItems(orderI)
-            if(orderId !== 0) {
+            if (orderId !== 0) {
                 setOrderDetailsVisible(true);
-            }else {
+            } else {
                 setOrderDetailsVisible(false);
             }
         }
@@ -60,35 +70,40 @@ export default function viewCustomersOrders() {
 
     return (
         <div className="page">
-            <h1 className="title">View Customers Orders</h1>
+            <h1 className="title">View All Customers Orders</h1>
             <table>
                 <thead>
                     <tr>
                         <th>Order number</th>
                         <th>Total Price</th>
-                        <th>Submitted Date</th>
+                        <th>Address</th>
                         <th>Payment Method</th>
-                        <th>Order Details</th>
+                        <th>Order Cart</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                {hasAccess && <tbody>
                     {orders.data?.map(order => (
                         <tr key={order.orderId}>
                             <td>{order.orderId}</td>
                             <td>{order.totalCost}</td>
-                            <td>{order.submittedDate}</td>
+                            <td>{order.address}</td>
                             <td>{order.paymentMethod}</td>
                             <td><button onClick={toggleViewInfo(order.orderId, order.shoppingCartItems)}>View details</button></td>
-                        
+
                         </tr>
                     ))}
-                </tbody>
+                </tbody>}
+                {!hasAccess && <tbody>
+                    <tr>
+                        <td colSpan="6">You do not have access to this page</td>
+                    </tr>
+                </tbody>}
             </table>
 
             {orderDetailsVisible ? (
-  
-            <div className="modal">
+
+                <div className="modal">
                     <div className="overlay"></div>
                     <div className="modal-content">
                         <button className='close-modal' onClick={toggleViewInfo(0, null)}>Close</button>
@@ -101,20 +116,20 @@ export default function viewCustomersOrders() {
                                 </tr>
                             </thead>
                             <tbody>
-                            {orderItems.map(orderItem => (
-                                <tr key={orderItem.shoppingCartItemId}>
-                                    <td>{orderItem.comicBookTitle}</td>
-                                    <td>{orderItem.comicBookPrice}</td>
-                                </tr>
-                            ))}
+                                {orderItems.map(orderItem => (
+                                    <tr key={orderItem.shoppingCartItemId}>
+                                        <td>{orderItem.comicBookTitle}</td>
+                                        <td>{orderItem.comicBookPrice}</td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
-            </div>
+                </div>
 
-                ) : (
-                    <div></div>
-                )}
+            ) : (
+                <div></div>
+            )}
 
         </div>
 

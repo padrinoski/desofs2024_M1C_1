@@ -1,4 +1,3 @@
-let aux_profileBtn = document.querySelector('#profileBtn');
 
 switch (window.location.pathname.split('/')[1]) {
     case 'ComicBooks':
@@ -8,7 +7,7 @@ switch (window.location.pathname.split('/')[1]) {
         document.querySelector('#orderHistoryBtn').classList.add('active');
         break;
     case 'profile':
-        if(aux_profileBtn){
+        if (document.querySelector('#profileBtn')){
             document.querySelector('#profileBtn').classList.add('active');
         }
         break;
