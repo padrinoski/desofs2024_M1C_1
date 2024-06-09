@@ -34,9 +34,19 @@ namespace DESOFT.Server.API.Authorization
                     var jsonToken = handler.ReadToken(accessToken);
                     var tokenS = jsonToken as JwtSecurityToken;
 
-                    tokenS.Payload.TryGetValue("userId", out var userId);
+                    var currentUserId = "1";
+                    if (tokenS.Payload.ContainsKey("userId"))
+                    {
+                        tokenS.Payload.TryGetValue("userId", out var userId);
+                        currentUserId = userId.ToString();
+                    }
+                    else if (tokenS.Payload.ContainsKey("sub"))
+                    {
+                        tokenS.Payload.TryGetValue("sub", out var userId);
+                        currentUserId = userId.ToString();
+                    }
 
-                    var result = _authService.PodeAcederAInformacoesSensiveisFilter(userId.ToString()).Result;
+                    var result = _authService.PodeAcederBackOffice(currentUserId).Result;
 
                     if (!result.Success || !result.Data)
                     {
